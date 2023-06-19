@@ -11,6 +11,13 @@
 		8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904D2A3C5D7600E3D262 /* ContentView.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
+		AC76C4032A4067250009EDFE /* APICosmilyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4022A4067250009EDFE /* APICosmilyDataSource.swift */; };
+		AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4062A409D060009EDFE /* ProductAnalysis.swift */; };
+		AC76C40A2A40BDCA0009EDFE /* APICosmilyDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4092A40BDCA0009EDFE /* APICosmilyDataSourceProtocol.swift */; };
+		AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AC82D6912A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld */; };
+		AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */; };
+		AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */; };
+		AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		8396904D2A3C5D7600E3D262 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC76C4022A4067250009EDFE /* APICosmilyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICosmilyDataSource.swift; sourceTree = "<group>"; };
+		AC76C4062A409D060009EDFE /* ProductAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAnalysis.swift; sourceTree = "<group>"; };
+		AC76C4092A40BDCA0009EDFE /* APICosmilyDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICosmilyDataSourceProtocol.swift; sourceTree = "<group>"; };
+		AC82D6922A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SkinPediaModel.xcdatamodel; sourceTree = "<group>"; };
+		AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepository.swift; sourceTree = "<group>"; };
+		AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +49,10 @@
 		8396903F2A3C5D7600E3D262 = {
 			isa = PBXGroup;
 			children = (
+				8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */,
+				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
+				AC82D69A2A3CCE1300CC80F0 /* Config */,
+				AC82D6962A3CCBEA00CC80F0 /* Core */,
 				8396904A2A3C5D7600E3D262 /* SkinPedia */,
 				839690492A3C5D7600E3D262 /* Products */,
 			);
@@ -51,8 +69,7 @@
 		8396904A2A3C5D7600E3D262 /* SkinPedia */ = {
 			isa = PBXGroup;
 			children = (
-				8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */,
-				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
+				AC82D68C2A3C69BB00CC80F0 /* Features */,
 				8396904F2A3C5D7700E3D262 /* Assets.xcassets */,
 				839690512A3C5D7700E3D262 /* Preview Content */,
 			);
@@ -65,6 +82,122 @@
 				839690522A3C5D7700E3D262 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC76C4002A4067060009EDFE /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4092A40BDCA0009EDFE /* APICosmilyDataSourceProtocol.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		AC76C4012A40670D0009EDFE /* Respositories */ = {
+			isa = PBXGroup;
+			children = (
+				AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */,
+			);
+			path = Respositories;
+			sourceTree = "<group>";
+		};
+		AC76C4042A4067920009EDFE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4052A409CFF0009EDFE /* Entities */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AC76C4052A409CFF0009EDFE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4062A409D060009EDFE /* ProductAnalysis.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		AC76C4082A40BD8E0009EDFE /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4022A4067250009EDFE /* APICosmilyDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		AC82D68C2A3C69BB00CC80F0 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				AC82D68D2A3C69E500CC80F0 /* SkinPedia */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		AC82D68D2A3C69E500CC80F0 /* SkinPedia */ = {
+			isa = PBXGroup;
+			children = (
+				AC82D68E2A3C69F900CC80F0 /* Domain */,
+				AC82D68F2A3C69FE00CC80F0 /* Data */,
+				AC82D6902A3C6A0200CC80F0 /* Presentation */,
+			);
+			path = SkinPedia;
+			sourceTree = "<group>";
+		};
+		AC82D68E2A3C69F900CC80F0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4002A4067060009EDFE /* DataSources */,
+				AC76C4012A40670D0009EDFE /* Respositories */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		AC82D68F2A3C69FE00CC80F0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4082A40BD8E0009EDFE /* DataSources */,
+				AC8D954C2A40C689002CB9AE /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AC82D6902A3C6A0200CC80F0 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		AC82D6962A3CCBEA00CC80F0 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4042A4067920009EDFE /* Data */,
+				AC82D6972A3CCBF300CC80F0 /* Utils */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		AC82D6972A3CCBF300CC80F0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC82D6912A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld */,
+				AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AC82D69A2A3CCE1300CC80F0 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		AC8D954C2A40C689002CB9AE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +270,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */,
+				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
+				AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */,
+				AC76C40A2A40BDCA0009EDFE /* APICosmilyDataSourceProtocol.swift in Sources */,
+				AC76C4032A4067250009EDFE /* APICosmilyDataSource.swift in Sources */,
+				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
+				AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */,
 				8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +479,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AC82D6912A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AC82D6922A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodel */,
+			);
+			currentVersion = AC82D6922A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodel */;
+			path = SkinPediaModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 839690402A3C5D7600E3D262 /* Project object */;
 }
