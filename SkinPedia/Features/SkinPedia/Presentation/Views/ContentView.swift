@@ -17,10 +17,7 @@ struct ContentView: View {
     
     var content: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text(scanViewModel.analyzedProductResult.analysis.debugDescription)
+            Text(scanViewModel.analyzedProductResult.analysis?.ingredientsTable?.debugDescription ?? "")
         }
         .padding()
         .onAppear {
