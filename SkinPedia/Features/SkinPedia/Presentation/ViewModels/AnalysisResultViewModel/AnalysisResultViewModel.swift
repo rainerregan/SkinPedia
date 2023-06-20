@@ -1,5 +1,5 @@
 //
-//  ScanViewModel.swift
+//  AnalysisResultViewModel.swift
 //  SkinPedia
 //
 //  Created by Rainer Regan on 20/06/23.
@@ -8,15 +8,16 @@
 import Foundation
 import Combine
 
-protocol ScanViewModelProtocol : ScanViewModelInput, ScanViewModelOutput {}
+protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, AnalysisResultViewModelOutput {}
 
-class ScanViewModel: ObservableObject, ScanViewModelProtocol {
+class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
+    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
     
     // MARK: - Private
     private func getProductAnalysis() async {
-        let productAnalysisResult = await GetProductAnalysisUseCase().call(productAnalysisRequest: ProductAnalysisRequest(ingredients: "water"))
+        let productAnalysisResult = await GetProductAnalysisUseCase().call(productAnalysisRequest: ProductAnalysisRequest(ingredients: toBeAnalyzedRequest.ingredients))
         switch productAnalysisResult {
         case .success(let result):
             await MainActor.run {
@@ -29,11 +30,10 @@ class ScanViewModel: ObservableObject, ScanViewModelProtocol {
     
     private func onLoad() async {
         await getProductAnalysis()
-        print("OKSOKSOS")
     }
 }
 
-extension ScanViewModel {
+extension AnalysisResultViewModel {
     func didAppear() {
         Task {
             await onLoad()

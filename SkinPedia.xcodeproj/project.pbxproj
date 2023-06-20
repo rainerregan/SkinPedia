@@ -10,11 +10,14 @@
 		8316F6C62A4149C000E529AE /* ProductAnalysisRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6C52A4149C000E529AE /* ProductAnalysisRequest.swift */; };
 		8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6C72A414A6800E529AE /* ProductAnalysisResult.swift */; };
 		8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6CD2A4155DA00E529AE /* GetProductAnalysisUseCase.swift */; };
-		8316F6D22A4159C400E529AE /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D12A4159C400E529AE /* ScanViewModel.swift */; };
-		8316F6D42A4159F200E529AE /* ScanViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D32A4159F200E529AE /* ScanViewModelOutput.swift */; };
-		8316F6D62A415A2100E529AE /* ScanViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D52A415A2100E529AE /* ScanViewModelInput.swift */; };
+		8316F6D22A4159C400E529AE /* AnalysisResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D12A4159C400E529AE /* AnalysisResultViewModel.swift */; };
+		8316F6D42A4159F200E529AE /* AnalysisResultViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D32A4159F200E529AE /* AnalysisResultViewModelOutput.swift */; };
+		8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D52A415A2100E529AE /* AnalysisResultViewModelInput.swift */; };
+		8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D82A41879700E529AE /* AnalysisResultView.swift */; };
+		8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6DD2A419B6200E529AE /* SampleFormView.swift */; };
+		8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */; };
+		8316F6E22A41B5BB00E529AE /* IngredientRowComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6E12A41B5BB00E529AE /* IngredientRowComponent.swift */; };
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
-		8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904D2A3C5D7600E3D262 /* ContentView.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
 		AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */; };
@@ -30,12 +33,15 @@
 		8316F6C52A4149C000E529AE /* ProductAnalysisRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAnalysisRequest.swift; sourceTree = "<group>"; };
 		8316F6C72A414A6800E529AE /* ProductAnalysisResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAnalysisResult.swift; sourceTree = "<group>"; };
 		8316F6CD2A4155DA00E529AE /* GetProductAnalysisUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductAnalysisUseCase.swift; sourceTree = "<group>"; };
-		8316F6D12A4159C400E529AE /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
-		8316F6D32A4159F200E529AE /* ScanViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModelOutput.swift; sourceTree = "<group>"; };
-		8316F6D52A415A2100E529AE /* ScanViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModelInput.swift; sourceTree = "<group>"; };
+		8316F6D12A4159C400E529AE /* AnalysisResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultViewModel.swift; sourceTree = "<group>"; };
+		8316F6D32A4159F200E529AE /* AnalysisResultViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultViewModelOutput.swift; sourceTree = "<group>"; };
+		8316F6D52A415A2100E529AE /* AnalysisResultViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultViewModelInput.swift; sourceTree = "<group>"; };
+		8316F6D82A41879700E529AE /* AnalysisResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultView.swift; sourceTree = "<group>"; };
+		8316F6DD2A419B6200E529AE /* SampleFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFormView.swift; sourceTree = "<group>"; };
+		8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleFormViewModel.swift; sourceTree = "<group>"; };
+		8316F6E12A41B5BB00E529AE /* IngredientRowComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRowComponent.swift; sourceTree = "<group>"; };
 		839690482A3C5D7600E3D262 /* SkinPedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinPedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
-		8396904D2A3C5D7600E3D262 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmilyAPIDataSource.swift; sourceTree = "<group>"; };
@@ -85,27 +91,53 @@
 		8316F6CF2A41598400E529AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				8316F6D02A4159B100E529AE /* ScanViewModel */,
+				8316F6D02A4159B100E529AE /* AnalysisResultViewModel */,
+				8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		8316F6D02A4159B100E529AE /* ScanViewModel */ = {
+		8316F6D02A4159B100E529AE /* AnalysisResultViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8316F6D12A4159C400E529AE /* ScanViewModel.swift */,
-				8316F6D32A4159F200E529AE /* ScanViewModelOutput.swift */,
-				8316F6D52A415A2100E529AE /* ScanViewModelInput.swift */,
+				8316F6D12A4159C400E529AE /* AnalysisResultViewModel.swift */,
+				8316F6D32A4159F200E529AE /* AnalysisResultViewModelOutput.swift */,
+				8316F6D52A415A2100E529AE /* AnalysisResultViewModelInput.swift */,
 			);
-			path = ScanViewModel;
+			path = AnalysisResultViewModel;
 			sourceTree = "<group>";
 		};
 		8316F6D72A415C5E00E529AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
+				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
+				8316F6DD2A419B6200E529AE /* SampleFormView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8316F6DA2A4193A600E529AE /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4062A409D060009EDFE /* ProductAnalysis.swift */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
+		8316F6DB2A419A4200E529AE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8316F6DC2A419A4F00E529AE /* AnalysisResult */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8316F6DC2A419A4F00E529AE /* AnalysisResult */ = {
+			isa = PBXGroup;
+			children = (
+				8316F6E12A41B5BB00E529AE /* IngredientRowComponent.swift */,
+			);
+			path = AnalysisResult;
 			sourceTree = "<group>";
 		};
 		8396903F2A3C5D7600E3D262 = {
@@ -170,7 +202,7 @@
 		AC76C4052A409CFF0009EDFE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				AC76C4062A409D060009EDFE /* ProductAnalysis.swift */,
+				8316F6DA2A4193A600E529AE /* Deprecated */,
 				8316F6C52A4149C000E529AE /* ProductAnalysisRequest.swift */,
 				8316F6C72A414A6800E529AE /* ProductAnalysisResult.swift */,
 			);
@@ -225,6 +257,7 @@
 		AC82D6902A3C6A0200CC80F0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8316F6DB2A419A4200E529AE /* Components */,
 				8316F6D72A415C5E00E529AE /* Views */,
 				8316F6CF2A41598400E529AE /* ViewModels */,
 			);
@@ -337,18 +370,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
-				8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */,
-				8316F6D22A4159C400E529AE /* ScanViewModel.swift in Sources */,
+				8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */,
+				8316F6E22A41B5BB00E529AE /* IngredientRowComponent.swift in Sources */,
+				8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */,
+				8316F6D22A4159C400E529AE /* AnalysisResultViewModel.swift in Sources */,
 				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
-				8316F6D62A415A2100E529AE /* ScanViewModelInput.swift in Sources */,
+				8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */,
 				AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */,
 				8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */,
 				AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */,
 				AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
-				8316F6D42A4159F200E529AE /* ScanViewModelOutput.swift in Sources */,
+				8316F6D42A4159F200E529AE /* AnalysisResultViewModelOutput.swift in Sources */,
 				8316F6C62A4149C000E529AE /* ProductAnalysisRequest.swift in Sources */,
 				AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */,
 				8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */,

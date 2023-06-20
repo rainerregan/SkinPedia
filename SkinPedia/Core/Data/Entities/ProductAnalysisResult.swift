@@ -63,25 +63,35 @@ struct Harmful: Codable {
 // MARK: - Alcohol
 struct Alcohol: Codable {
     let title, description, imageURL: String?
-    let list: [List]?
+    let itemList: [ItemList]?
     let count: Int?
     let slug: String?
 
     enum CodingKeys: String, CodingKey {
         case title, description
         case imageURL = "image_url"
-        case list, count, slug
+        case itemList = "list"
+        case count, slug
     }
 }
 
-// MARK: - List
-struct List: Codable {
+// MARK: - ItemList
+struct ItemList: Codable {
     let index: Int?
     let title, alias: String?
 }
 
 // MARK: - IngredientsTable
-struct IngredientsTable: Codable, Identifiable {
+struct IngredientsTable: Codable, Hashable {
+    static func == (lhs: IngredientsTable, rhs: IngredientsTable) -> Bool {
+        return lhs.title == rhs.title && lhs.alias == rhs.alias
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(alias)
+    }
+    
     let index: Int?
     let title: String?
     let alias: String?
@@ -169,7 +179,7 @@ struct Notable: Codable {
 // MARK: - Aha
 struct Aha: Codable {
     let title: String?
-    let list: [List]?
+    let itemList: [ItemList]?
     let count: Int?
 }
 

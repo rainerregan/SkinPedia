@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ScanViewModelOutput {
+protocol AnalysisResultViewModelOutput {
     var analyzedProductResult: ProductAnalysisResult { get }
 }

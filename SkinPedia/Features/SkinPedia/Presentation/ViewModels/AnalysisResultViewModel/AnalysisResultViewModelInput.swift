@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ScanViewModelInput {
+protocol AnalysisResultViewModelInput {
     func didAppear() async throws
 }
