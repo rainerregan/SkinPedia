@@ -116,6 +116,21 @@
 			path = Deprecated;
 			sourceTree = "<group>";
 		};
+		8316F6DB2A419A4200E529AE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8316F6DC2A419A4F00E529AE /* AnalysisResult */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8316F6DC2A419A4F00E529AE /* AnalysisResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AnalysisResult;
+			sourceTree = "<group>";
+		};
 		8396903F2A3C5D7600E3D262 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +248,7 @@
 		AC82D6902A3C6A0200CC80F0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8316F6DB2A419A4200E529AE /* Components */,
 				8316F6D72A415C5E00E529AE /* Views */,
 				8316F6CF2A41598400E529AE /* ViewModels */,
 			);

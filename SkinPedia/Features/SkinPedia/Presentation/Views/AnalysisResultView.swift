@@ -16,21 +16,37 @@ struct AnalysisResultView: View {
     }
     
     var content: some View {
-        VStack {
-            ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
-                VStack {
-                    Text(ingredient.title ?? "")
-                    Text(ingredient.categories ?? "")
-                    Text(ingredient.introtext ?? "")
+        NavigationStack {
+            VStack {
+                ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
+                    VStack {
+                        Text(ingredient.title ?? "")
+                        Text(ingredient.categories ?? "")
+                        Text(ingredient.introtext ?? "")
+                    }
+                    
                 }
-                
-            }
 
+            }
+            .onAppear{
+                self.analysisResultViewModel.didAppear()
+            }
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button{
+                        print("back")
+                    } label: {
+                        Label("Back" ,systemImage: "chevron.left")
+                    }
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("Product Scan Analysis")
+                        .fontWeight(.medium)
+                }
+            }
+            
         }
-        .onAppear{
-            self.analysisResultViewModel.didAppear()
-        }
-        .padding()
     }
 }
 
