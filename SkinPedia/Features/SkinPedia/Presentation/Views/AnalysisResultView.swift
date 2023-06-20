@@ -8,8 +8,29 @@
 import SwiftUI
 
 struct AnalysisResultView: View {
+    @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        content
+            .environmentObject(analysisResultViewModel)
+    }
+    
+    var content: some View {
+        VStack {
+            ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
+                VStack {
+                    Text(ingredient.title ?? "")
+                    Text(ingredient.categories ?? "")
+                    Text(ingredient.introtext ?? "")
+                }
+                
+            }
+
+        }
+        .onAppear{
+            self.analysisResultViewModel.didAppear()
+        }
+        .padding()
     }
 }
 

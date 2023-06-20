@@ -15,7 +15,6 @@
 		8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D52A415A2100E529AE /* AnalysisResultViewModelInput.swift */; };
 		8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D82A41879700E529AE /* AnalysisResultView.swift */; };
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
-		8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904D2A3C5D7600E3D262 /* ContentView.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
 		AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */; };
@@ -37,7 +36,6 @@
 		8316F6D82A41879700E529AE /* AnalysisResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultView.swift; sourceTree = "<group>"; };
 		839690482A3C5D7600E3D262 /* SkinPedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinPedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
-		8396904D2A3C5D7600E3D262 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmilyAPIDataSource.swift; sourceTree = "<group>"; };
@@ -105,10 +103,17 @@
 		8316F6D72A415C5E00E529AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
 				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8316F6DA2A4193A600E529AE /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				AC76C4062A409D060009EDFE /* ProductAnalysis.swift */,
+			);
+			path = Deprecated;
 			sourceTree = "<group>";
 		};
 		8396903F2A3C5D7600E3D262 = {
@@ -173,7 +178,7 @@
 		AC76C4052A409CFF0009EDFE /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				AC76C4062A409D060009EDFE /* ProductAnalysis.swift */,
+				8316F6DA2A4193A600E529AE /* Deprecated */,
 				8316F6C52A4149C000E529AE /* ProductAnalysisRequest.swift */,
 				8316F6C72A414A6800E529AE /* ProductAnalysisResult.swift */,
 			);
@@ -342,7 +347,6 @@
 			files = (
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */,
-				8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */,
 				8316F6D22A4159C400E529AE /* AnalysisResultViewModel.swift in Sources */,
 				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
 				8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */,
