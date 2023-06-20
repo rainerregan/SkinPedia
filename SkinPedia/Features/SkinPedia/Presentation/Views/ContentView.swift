@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var scanViewModel = ScanViewModel()
+    
     var body: some View {
+        content
+            .environmentObject(scanViewModel)
+    }
+    
+    var content: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(scanViewModel.analyzedProductResult.resultString)
         }
         .padding()
+        .onAppear {
+            self.scanViewModel.didAppear()
+        }
     }
 }
 

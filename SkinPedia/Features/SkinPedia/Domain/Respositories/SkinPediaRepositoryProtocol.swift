@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SkinPediaRepositoryProtocol {
-    
+    func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
 }
