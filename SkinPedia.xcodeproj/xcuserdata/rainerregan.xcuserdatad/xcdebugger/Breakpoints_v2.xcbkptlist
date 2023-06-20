@@ -14,8 +14,24 @@
             filePath = "SkinPedia/Features/SkinPedia/Data/DataSources/CosmilyAPIDataSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "getProductAnalysis(productAnalysisRequest:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "46D6C222-9BF9-4E3E-B0EB-EDECB108C05F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SkinPedia/Features/SkinPedia/Data/DataSources/CosmilyAPIDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "getProductAnalysis(productAnalysisRequest:)"
             landmarkType = "7">
          </BreakpointContent>

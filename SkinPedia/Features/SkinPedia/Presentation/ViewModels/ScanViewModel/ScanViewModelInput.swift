@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ScanViewModelInput {
-    func didAppear() async
+    func didAppear() async throws
 }

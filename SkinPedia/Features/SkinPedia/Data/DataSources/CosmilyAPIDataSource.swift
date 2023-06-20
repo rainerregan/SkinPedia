@@ -8,6 +8,7 @@
 import Foundation
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
+    
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError> {
         
         guard let url : URL = URL(string: "https://api.cosmily.com/api/v1/analyze/ingredient_list") else {
@@ -22,12 +23,48 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody)
         
-        let (data, response) = try await URLSession.shared.dataTask(with: request)
+        do {
+            
+            let task = try URLSession.shared.dataTask(with: request) {
+                (data, response, error) in
+                if error == nil, let usableData=data {
+                    let response =  try? JSONSerialization.jsonObject(with: usableData, options:[])
+                    let result = try? JSONDecoder().decode(ProductAnalysisResult.self, from: usableData)
+                    print(result) //JSONSerialization
+                }
+            }
+            task.resume()
+            
+            return .success(ProductAnalysisResult(analysis: nil))
+        } catch let error {
+            return .failure(.decodingFailed(error))
+        } catch {
+            print("Fail: \(error)")
+        }
         
-        print(data)
+//        let task = URLSession.shared.dataTask(with: request) {
+//            data, response, error in
+//
+//            print(data)
+//
+//        }
+//
+//        task.resume()
+//
+//        return .success(ProductAnalysisResult(analysis: nil))
         
-        return .success(ProductAnalysisResult(resultString: "S"))
-        
+//        do {
+//            let (data, _) = try await URLSession.shared.data(for: request)
+//
+//            //checks if there are errors regarding the HTTP status code and decodes using the passed struct
+//            let fetchedData = try JSONDecoder().decode(ProductAnalysisResult.self, from: try data)
+//
+//            print(data)
+//
+//            return .success(fetchedData)
+//        } catch {
+//            return .failure(.invalidURL)
+//        }
 //
 ////        print(request, "REquest")
 //

@@ -12,7 +12,7 @@ protocol ScanViewModelProtocol : ScanViewModelInput, ScanViewModelOutput {}
 
 class ScanViewModel: ObservableObject, ScanViewModelProtocol {
     // MARK: - Output
-    @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(resultString: "")
+    @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
     
     // MARK: - Private
     private func getProductAnalysis() async {
