@@ -13,6 +13,7 @@
 		8316F6D22A4159C400E529AE /* ScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D12A4159C400E529AE /* ScanViewModel.swift */; };
 		8316F6D42A4159F200E529AE /* ScanViewModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D32A4159F200E529AE /* ScanViewModelOutput.swift */; };
 		8316F6D62A415A2100E529AE /* ScanViewModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D52A415A2100E529AE /* ScanViewModelInput.swift */; };
+		8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6D82A41879700E529AE /* AnalysisResultView.swift */; };
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
 		8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904D2A3C5D7600E3D262 /* ContentView.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		8316F6D12A4159C400E529AE /* ScanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModel.swift; sourceTree = "<group>"; };
 		8316F6D32A4159F200E529AE /* ScanViewModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModelOutput.swift; sourceTree = "<group>"; };
 		8316F6D52A415A2100E529AE /* ScanViewModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewModelInput.swift; sourceTree = "<group>"; };
+		8316F6D82A41879700E529AE /* AnalysisResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisResultView.swift; sourceTree = "<group>"; };
 		839690482A3C5D7600E3D262 /* SkinPedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinPedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
 		8396904D2A3C5D7600E3D262 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
+				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
+				8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */,
 				8396904E2A3C5D7600E3D262 /* ContentView.swift in Sources */,
 				8316F6D22A4159C400E529AE /* ScanViewModel.swift in Sources */,
 				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
