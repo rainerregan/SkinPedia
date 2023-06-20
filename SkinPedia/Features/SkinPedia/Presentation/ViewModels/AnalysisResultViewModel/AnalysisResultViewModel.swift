@@ -13,10 +13,11 @@ protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, Analysi
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
+    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
     
     // MARK: - Private
     private func getProductAnalysis() async {
-        let productAnalysisResult = await GetProductAnalysisUseCase().call(productAnalysisRequest: ProductAnalysisRequest(ingredients: "water"))
+        let productAnalysisResult = await GetProductAnalysisUseCase().call(productAnalysisRequest: ProductAnalysisRequest(ingredients: toBeAnalyzedRequest.ingredients))
         switch productAnalysisResult {
         case .success(let result):
             await MainActor.run {
@@ -29,7 +30,6 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     
     private func onLoad() async {
         await getProductAnalysis()
-        print("OKSOKSOS")
     }
 }
 

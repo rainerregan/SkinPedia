@@ -14,7 +14,7 @@ struct SkinPediaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AnalysisResultView()
+            SampleFormView()
                 .environment(\.managedObjectContext, model.container.viewContext)
         }
     }
