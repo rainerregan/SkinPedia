@@ -46,13 +46,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8396903F2A3C5D7600E3D262 = {
+		8316F6C22A41472E00E529AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8396904F2A3C5D7700E3D262 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8316F6C42A41476100E529AE /* Apps */ = {
 			isa = PBXGroup;
 			children = (
 				8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */,
-				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
-				AC82D69A2A3CCE1300CC80F0 /* Config */,
-				AC82D6962A3CCBEA00CC80F0 /* Core */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
+		8396903F2A3C5D7600E3D262 = {
+			isa = PBXGroup;
+			children = (
 				8396904A2A3C5D7600E3D262 /* SkinPedia */,
 				839690492A3C5D7600E3D262 /* Products */,
 			);
@@ -69,8 +81,9 @@
 		8396904A2A3C5D7600E3D262 /* SkinPedia */ = {
 			isa = PBXGroup;
 			children = (
+				AC82D69A2A3CCE1300CC80F0 /* Config */,
+				AC82D6962A3CCBEA00CC80F0 /* Core */,
 				AC82D68C2A3C69BB00CC80F0 /* Features */,
-				8396904F2A3C5D7700E3D262 /* Assets.xcassets */,
 				839690512A3C5D7700E3D262 /* Preview Content */,
 			);
 			path = SkinPedia;
@@ -163,6 +176,7 @@
 		AC82D6902A3C6A0200CC80F0 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				8396904D2A3C5D7600E3D262 /* ContentView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -188,8 +202,11 @@
 		AC82D69A2A3CCE1300CC80F0 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				8316F6C42A41476100E529AE /* Apps */,
+				8316F6C22A41472E00E529AE /* Resources */,
 			);
-			path = Config;
+			name = Config;
+			path = ../Config;
 			sourceTree = "<group>";
 		};
 		AC8D954C2A40C689002CB9AE /* Repositories */ = {
