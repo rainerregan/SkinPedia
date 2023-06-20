@@ -14,6 +14,6 @@ enum CosmilyAPIError: Error {
     case decodingFailed(Error)
 }
 
-protocol APICosmilyDataSourceProtocol {
-    func getProductAnalysis(ingredientName : String) async -> Result<ProductAnalysis, CosmilyAPIError>
+protocol CosmilyAPIDataSourceProtocol {
+    func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
 }
