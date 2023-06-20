@@ -81,7 +81,7 @@ struct List: Codable {
 }
 
 // MARK: - IngredientsTable
-struct IngredientsTable: Codable {
+struct IngredientsTable: Codable, Identifiable {
     let index: Int?
     let title: String?
     let alias: String?
