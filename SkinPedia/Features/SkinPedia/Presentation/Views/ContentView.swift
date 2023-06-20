@@ -17,12 +17,20 @@ struct ContentView: View {
     
     var content: some View {
         VStack {
-            Text(scanViewModel.analyzedProductResult.analysis?.ingredientsTable?.debugDescription ?? "")
+            ForEach(scanViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
+                VStack {
+                    Text(ingredient.title ?? "")
+                    Text(ingredient.categories ?? "")
+                    Text(ingredient.introtext ?? "")
+                }
+                
+            }
+
         }
-        .padding()
-        .onAppear {
+        .onAppear{
             self.scanViewModel.didAppear()
         }
+        .padding()
     }
 }
 
