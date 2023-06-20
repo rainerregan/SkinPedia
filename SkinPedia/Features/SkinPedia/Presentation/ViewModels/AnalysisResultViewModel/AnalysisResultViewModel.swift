@@ -1,5 +1,5 @@
 //
-//  ScanViewModel.swift
+//  AnalysisResultViewModel.swift
 //  SkinPedia
 //
 //  Created by Rainer Regan on 20/06/23.
@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-protocol ScanViewModelProtocol : ScanViewModelInput, ScanViewModelOutput {}
+protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, AnalysisResultViewModelOutput {}
 
-class ScanViewModel: ObservableObject, ScanViewModelProtocol {
+class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
     
@@ -33,7 +33,7 @@ class ScanViewModel: ObservableObject, ScanViewModelProtocol {
     }
 }
 
-extension ScanViewModel {
+extension AnalysisResultViewModel {
     func didAppear() {
         Task {
             await onLoad()

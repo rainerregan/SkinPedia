@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var scanViewModel = ScanViewModel()
+    @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     
     var body: some View {
         content
-            .environmentObject(scanViewModel)
+            .environmentObject(analysisResultViewModel)
     }
     
     var content: some View {
         VStack {
-            ForEach(scanViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
+            ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? []) { ingredient in
                 VStack {
                     Text(ingredient.title ?? "")
                     Text(ingredient.categories ?? "")
@@ -28,7 +28,7 @@ struct ContentView: View {
 
         }
         .onAppear{
-            self.scanViewModel.didAppear()
+            self.analysisResultViewModel.didAppear()
         }
         .padding()
     }
