@@ -19,13 +19,13 @@ struct CameraView: View {
         NavigationView{
             VStack {
                 // Camera preview
-                CameraPreviewView(session: cameraViewModel.session)
+                CameraPreviewView(session: cameraViewModel.session, roi: cameraViewModel.roi)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .ignoresSafeArea()
                 // Capture button
                 Button(action: {
                     cameraViewModel.capturePhoto()
-//                    print(cameraViewModel.capturedImage == nil)
+                    
                     
                 }, label: {
                     Image(systemName: "camera")
@@ -44,10 +44,12 @@ struct CameraView: View {
             }
             .onAppear {
                 cameraViewModel.checkCameraPermission()
+                
             }
             // Debugging the camera capture
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in
+                
                 showDetailOCR = true;
                 ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
                 
@@ -67,25 +69,71 @@ struct CameraPreviewView: UIViewRepresentable {
     typealias UIViewType = UIView
     
     let session: AVCaptureSession
-
+    let roi : CGSize
+    
     func makeUIView(context: Context) -> UIView {
-        let view = UIView(frame: .zero)
-        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+//        let view = UIView(frame: .zero)
+//        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
+//
+//        previewLayer.videoGravity = .resizeAspectFill
+//        view.layer.addSublayer(previewLayer)
+//
+//        DispatchQueue.main.async {
+//            previewLayer.frame = view.bounds
+//        }
+//        return view
         
+        let cameraView = UIView(frame: .zero)
+                
+        // Create AVCaptureVideoPreviewLayer
+        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
         previewLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(previewLayer)
+        
+        
+        // Create the annotation view
+        var rectOrigin = CGPoint(x: (previewLayer.bounds.width - roi.width) / 2 ,
+                                 y: (previewLayer.bounds.height - roi.height) / 2)
+        
+        var roiRect : CGRect = CGRect(origin: rectOrigin, size: roi)
+        
+        let annotationView = UIView(frame: roiRect)
+        annotationView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // Customize the annotation appearance as needed
         
         DispatchQueue.main.async {
-            previewLayer.frame = view.bounds
+            updateAnnotationViewFrame(cameraView: cameraView, annotationView: annotationView)
+            previewLayer.frame = cameraView.bounds
         }
-        return view
+        
+        cameraView.layer.addSublayer(previewLayer)
+        cameraView.addSubview(annotationView)
+        
+        return cameraView
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        guard let previewLayer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer else {
-            return
+            guard let previewLayer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer,
+                  let annotationView = uiView.subviews.first else {
+                return
+            }
+            
+            previewLayer.frame = uiView.bounds
+            updateAnnotationViewFrame(cameraView: uiView, annotationView: annotationView)
         }
-        previewLayer.frame = uiView.bounds
+        
+    
+    // masih butuh perbaiki roinya tidak sama gede dan penempatannya tidak jelas.
+    private func updateAnnotationViewFrame(cameraView: UIView, annotationView: UIView) {
+        let previewLayerSize = cameraView.bounds
+        
+        
+        var rectOrigin = CGPoint(x: (previewLayerSize.width - roi.width) / 2 ,
+                                 y: (previewLayerSize.height - roi.height) / 2)
+        
+        var roiRect : CGRect = CGRect(origin: rectOrigin, size: roi)
+        
+        
+        
+        annotationView.frame = roiRect
     }
 }
 
