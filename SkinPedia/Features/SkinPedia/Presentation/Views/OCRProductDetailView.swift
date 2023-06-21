@@ -21,23 +21,33 @@ struct OCRProductDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
+                Spacer()
+                
+                VStack{
+                    Button{
+                        ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
+                    } label : {
+                        Text("Run OCR diagnose")
+                    }
+                }
+                
                 
                 NavigationLink("", destination: CameraView().navigationBarHidden(true), isActive: $isShowCameraView)
-            }.navigationBarItems(trailing :
-                Button {
-                    isShowCameraView = true
-                } label: {
-                    Text("Retake")
-                }
+                
+            }
+                .navigationBarItems(trailing :
+                    Button {
+                        isShowCameraView = true
+                    } label: {
+                        Text("Retake")
+                    }
             )
-//            .sheet(isPresented: $sheetIsPresented) {
-//                VStack{
-//                    Text("Testing 123")
-//                }.background(.white)
-//            }.presentationDetents([.fraction(0.45)])
-            
-            
-            
+//                .sheet(isPresented: $sheetIsPresented) {
+//                    VStack{
+//
+//                    }
+//                    .presentationDetents([.height(100), .large])
+//            }
             
         }
     }
