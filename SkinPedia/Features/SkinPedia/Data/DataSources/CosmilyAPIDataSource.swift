@@ -23,15 +23,20 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody)
         
+        print(String(describing: productAnalysisRequest))
+        
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+//            print(String(decoding: data ?? Data(), as: UTF8.self))
+            
             let decoder = JSONDecoder()
             let result = try decoder.decode(ProductAnalysisResult.self, from: data)
+            
             return .success(result)
         } catch let error {
+            print(String(describing: error))
             return .failure(.decodingFailed(error))
-        } catch {
-            print("Fail: \(error)")
         }
     
     }

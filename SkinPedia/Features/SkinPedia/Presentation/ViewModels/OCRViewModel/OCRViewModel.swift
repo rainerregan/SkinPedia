@@ -11,7 +11,6 @@ import Vision
 
 class OCRViewModel : ObservableObject, OCRViewModelProtocol {
     
-    
     @Published var ingredients: String = ""
 
     func performTextRecog(capturedImage : UIImage) {
@@ -26,9 +25,10 @@ class OCRViewModel : ObservableObject, OCRViewModelProtocol {
                     return
                 }
                 DispatchQueue.main.async {
-                    print("String : \(bestCandidate)")
+                    let finalBestCandidate = bestCandidate.processEachSkincareIngredient()
+                    print("String : \(finalBestCandidate)")
                     
-                    self.ingredients = "\(self.ingredients)\(bestCandidate)"
+                    self.ingredients = "\(self.ingredients) \(finalBestCandidate.removeSpecialCharacters())"
                 }
             }
         }
