@@ -75,7 +75,16 @@ struct Alcohol: Codable {
 }
 
 // MARK: - ItemList
-struct ItemList: Codable {
+struct ItemList: Codable, Hashable {
+    static func == (lhs: ItemList, rhs: ItemList) -> Bool {
+        return lhs.title == rhs.title && lhs.alias == rhs.alias
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(alias)
+    }
+    
     var index: Int?
     var title, alias: String?
 }

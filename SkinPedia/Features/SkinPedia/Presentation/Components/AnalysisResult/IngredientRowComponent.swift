@@ -14,8 +14,8 @@ struct IngredientRowComponent: View {
         VStack(alignment: .leading) {
             Text(ingredient.title ?? "-")
                 .font(.headline)
-            Text(ingredient.categories ?? "-").font(.subheadline)
-            Text(ingredient.introtext?.trimHTMLTags() ?? "")
+            Text(ingredient.categories ?? "-").font(.subheadline).padding(.bottom, 8)
+            Text(ingredient.introtext?.trimHTMLTags() ?? "No description available")
         }
     }
 }
