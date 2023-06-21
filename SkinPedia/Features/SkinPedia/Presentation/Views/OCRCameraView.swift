@@ -12,6 +12,9 @@ struct CameraView: View {
     @StateObject private var cameraViewModel = CameraViewModel()
     @StateObject var ocrViewModel = OCRViewModel();
     @State var showDetailOCR : Bool = false;
+    
+    @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    
     var body: some View {
         NavigationView{
             VStack {
@@ -36,6 +39,7 @@ struct CameraView: View {
                 
                 NavigationLink("", destination: OCRProductDetailView()
                     .environmentObject(cameraViewModel)
+                    .environmentObject(analysisResultViewModel)
                     .navigationBarHidden(true), isActive: $showDetailOCR)
             }
             .onAppear {
@@ -46,10 +50,13 @@ struct CameraView: View {
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in
                 showDetailOCR = true;
+                ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
                 
             }.onChange(of: ocrViewModel.ingredients) {
                 newIngred in
-                print("Ingredients : \(newIngred)")
+                let processedIngredients = newIngred.processSkincareIngredients()
+                print("Ingredients : \(processedIngredients)")
+                analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
             }
             
             

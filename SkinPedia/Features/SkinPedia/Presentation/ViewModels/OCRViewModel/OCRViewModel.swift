@@ -11,7 +11,6 @@ import Vision
 
 class OCRViewModel : ObservableObject, OCRViewModelProtocol {
     
-    
     @Published var ingredients: String = ""
     let roi = CGRect(x: 0.1, y: 0.1, width: 0.5, height: 0.5)
     
@@ -27,9 +26,10 @@ class OCRViewModel : ObservableObject, OCRViewModelProtocol {
                     return
                 }
                 DispatchQueue.main.async {
-                    print("String : \(bestCandidate)")
+                    let finalBestCandidate = bestCandidate.processEachSkincareIngredient()
+                    print("String : \(finalBestCandidate)")
                     
-                    self.ingredients = "\(self.ingredients)\(bestCandidate)"
+                    self.ingredients = "\(self.ingredients) \(finalBestCandidate.removeSpecialCharacters())"
                 }
             }
         }

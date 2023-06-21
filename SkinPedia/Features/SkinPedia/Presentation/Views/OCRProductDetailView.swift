@@ -14,6 +14,8 @@ struct OCRProductDetailView: View {
     @StateObject var ocrViewModel : OCRViewModel = OCRViewModel();
     @State var sheetIsPresented = true;
     
+    @EnvironmentObject var analysisResultViewModel : AnalysisResultViewModel
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -33,22 +35,22 @@ struct OCRProductDetailView: View {
                 
                 
                 NavigationLink("", destination: CameraView().navigationBarHidden(true), isActive: $isShowCameraView)
-                
-            }
-                .navigationBarItems(trailing :
-                    Button {
-                        isShowCameraView = true
-                    } label: {
-                        Text("Retake")
-                    }
+            }.navigationBarItems(leading :
+                Button {
+                    isShowCameraView = true
+                } label: {
+                    Text("Retake")
+                }
+            ).navigationBarItems(trailing:
+                NavigationLink(destination: AnalysisResultView(analysisResultViewModel: analysisResultViewModel)){
+                    Text("See Result")
+                }
             )
-//                .sheet(isPresented: $sheetIsPresented) {
-//                    VStack{
-//
-//                    }
-//                    .presentationDetents([.height(100), .large])
-//            }
-            
+//            .sheet(isPresented: $sheetIsPresented) {
+//                VStack{
+//                    Text("Testing 123")
+//                }.background(.white)
+//            }.presentationDetents([.fraction(0.45)])
         }
     }
 }
