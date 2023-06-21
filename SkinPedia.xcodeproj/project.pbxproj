@@ -21,6 +21,12 @@
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
+		AC6CC7F92A41DE05007BF6FA /* OCRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */; };
+		AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */; };
+		AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */; };
+		AC6CC8022A41E1D2007BF6FA /* OCRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC8012A41E1D2007BF6FA /* OCRViewModel.swift */; };
+		AC6CC8072A41E2C7007BF6FA /* OCRViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC8062A41E2C7007BF6FA /* OCRViewModelProtocol.swift */; };
+		AC6CC8092A421986007BF6FA /* OCRProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC8082A421986007BF6FA /* OCRProductDetailView.swift */; };
 		AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */; };
 		AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4062A409D060009EDFE /* ProductAnalysis.swift */; };
 		AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC76C4092A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift */; };
@@ -46,6 +52,12 @@
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRCameraView.swift; sourceTree = "<group>"; };
+		AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewProtocol.swift; sourceTree = "<group>"; };
+		AC6CC8012A41E1D2007BF6FA /* OCRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewModel.swift; sourceTree = "<group>"; };
+		AC6CC8062A41E2C7007BF6FA /* OCRViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewModelProtocol.swift; sourceTree = "<group>"; };
+		AC6CC8082A421986007BF6FA /* OCRProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRProductDetailView.swift; sourceTree = "<group>"; };
 		AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmilyAPIDataSource.swift; sourceTree = "<group>"; };
 		AC76C4062A409D060009EDFE /* ProductAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAnalysis.swift; sourceTree = "<group>"; };
 		AC76C4092A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosmilyAPIDataSourceProtocol.swift; sourceTree = "<group>"; };
@@ -93,6 +105,8 @@
 		8316F6CF2A41598400E529AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AC6CC8032A41E1DD007BF6FA /* CameraViewModel */,
+				AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */,
 				8316F6D02A4159B100E529AE /* AnalysisResultViewModel */,
 				8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */,
 			);
@@ -114,6 +128,8 @@
 			children = (
 				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 				8316F6DD2A419B6200E529AE /* SampleFormView.swift */,
+				AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */,
+				AC6CC8082A421986007BF6FA /* OCRProductDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +191,24 @@
 				839690522A3C5D7700E3D262 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CC8012A41E1D2007BF6FA /* OCRViewModel.swift */,
+				AC6CC8062A41E2C7007BF6FA /* OCRViewModelProtocol.swift */,
+			);
+			path = OCRViewModel;
+			sourceTree = "<group>";
+		};
+		AC6CC8032A41E1DD007BF6FA /* CameraViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */,
+				AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */,
+			);
+			path = CameraViewModel;
 			sourceTree = "<group>";
 		};
 		AC76C4002A4067060009EDFE /* DataSources */ = {
@@ -373,22 +407,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6CC8092A421986007BF6FA /* OCRProductDetailView.swift in Sources */,
 				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */,
+				AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */,
 				8316F6E22A41B5BB00E529AE /* IngredientRowComponent.swift in Sources */,
 				8316F6E42A42E60800E529AE /* StringUtils.swift in Sources */,
 				8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */,
 				8316F6D22A4159C400E529AE /* AnalysisResultViewModel.swift in Sources */,
+				AC6CC7F92A41DE05007BF6FA /* OCRCameraView.swift in Sources */,
+				AC6CC8022A41E1D2007BF6FA /* OCRViewModel.swift in Sources */,
 				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
 				8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */,
 				AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */,
 				8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */,
 				AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */,
 				AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */,
+				AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
 				8316F6D42A4159F200E529AE /* AnalysisResultViewModelOutput.swift in Sources */,
+				AC6CC8072A41E2C7007BF6FA /* OCRViewModelProtocol.swift in Sources */,
 				8316F6C62A4149C000E529AE /* ProductAnalysisRequest.swift in Sources */,
 				AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */,
 				8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */,
@@ -520,9 +560,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 8B7DH7AN2U;
+				DEVELOPMENT_TEAM = 382VG5FRJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -549,9 +590,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 8B7DH7AN2U;
+				DEVELOPMENT_TEAM = 382VG5FRJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
