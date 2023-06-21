@@ -28,7 +28,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-//            print(String(decoding: data ?? Data(), as: UTF8.self))
+            print(String(decoding: data ?? Data(), as: UTF8.self))
             
             let decoder = JSONDecoder()
             let result = try decoder.decode(ProductAnalysisResult.self, from: data)
