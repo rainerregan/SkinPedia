@@ -23,6 +23,16 @@ struct OCRProductDetailView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
+                Spacer()
+                
+                VStack{
+                    Button{
+                        ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
+                    } label : {
+                        Text("Run OCR diagnose")
+                    }
+                }
+                
                 
                 NavigationLink("", destination: CameraView().navigationBarHidden(true), isActive: $isShowCameraView)
             }.navigationBarItems(leading :
@@ -41,7 +51,6 @@ struct OCRProductDetailView: View {
 //                    Text("Testing 123")
 //                }.background(.white)
 //            }.presentationDetents([.fraction(0.45)])
-    
         }
     }
 }
