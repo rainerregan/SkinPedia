@@ -24,7 +24,7 @@ extension String {
     }
     
     func removeSpecialCharacters() -> String {
-        let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,")
+        let allowedCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,/-()")
         let filteredString = self.unicodeScalars.filter { allowedCharacterSet.contains($0) }.map { String($0) }.joined()
         return filteredString
     }
