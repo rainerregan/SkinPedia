@@ -17,10 +17,21 @@ struct AnalysisResultView: View {
     var content: some View {
         NavigationView {
             VStack{
-                VStack(alignment: .leading){
-                    Text("Summary").font(.headline).padding(.bottom, 8)
-                    Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags() ?? "")
-                }.padding(16)
+                
+                VStack{
+                    VStack(alignment: .leading){
+                        Text("Caution!").font(.headline).padding(.bottom, 8)
+                        Text("This product contains \(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0) allergens. Please be aware while using this product. Using this product may provoke allergies for some people. For more information, please seek professional advice.")
+                    }
+                    .padding(16)
+                    
+                    VStack(alignment: .leading){
+                        Text("Summary").font(.headline).padding(.bottom, 8)
+                        Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags() ?? "")
+                    }
+                    .padding(16)
+                }
+                
                 
                 List{
                     Section {
