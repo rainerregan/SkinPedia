@@ -19,13 +19,13 @@ struct CameraView: View {
         NavigationView{
             VStack {
                 // Camera preview
-                CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi)
+                CameraPreviewView(session: cameraViewModel.session, roi: cameraViewModel.roi)
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     .ignoresSafeArea()
                 // Capture button
                 Button(action: {
                     cameraViewModel.capturePhoto()
-//                    print(cameraViewModel.capturedImage == nil)
+                    
                     
                 }, label: {
                     Image(systemName: "camera")
@@ -44,11 +44,12 @@ struct CameraView: View {
             }
             .onAppear {
                 cameraViewModel.checkCameraPermission()
-                cameraViewModel.setROI(roi: ocrViewModel.roi)
+                
             }
             // Debugging the camera capture
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in
+                
                 showDetailOCR = true;
                 ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
                 
@@ -68,7 +69,7 @@ struct CameraPreviewView: UIViewRepresentable {
     typealias UIViewType = UIView
     
     let session: AVCaptureSession
-    let roi : CGRect
+    let roi : CGSize
     
     func makeUIView(context: Context) -> UIView {
 //        let view = UIView(frame: .zero)
@@ -90,7 +91,12 @@ struct CameraPreviewView: UIViewRepresentable {
         
         
         // Create the annotation view
-        let annotationView = UIView(frame: roi)
+        var rectOrigin = CGPoint(x: (previewLayer.bounds.width - roi.width) / 2 ,
+                                 y: (previewLayer.bounds.height - roi.height) / 2)
+        
+        var roiRect : CGRect = CGRect(origin: rectOrigin, size: roi)
+        
+        let annotationView = UIView(frame: roiRect)
         annotationView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // Customize the annotation appearance as needed
         
         DispatchQueue.main.async {
@@ -117,19 +123,17 @@ struct CameraPreviewView: UIViewRepresentable {
     
     // masih butuh perbaiki roinya tidak sama gede dan penempatannya tidak jelas.
     private func updateAnnotationViewFrame(cameraView: UIView, annotationView: UIView) {
-        let previewLayerSize = cameraView.bounds.size
-        let roiSize = roi.size
+        let previewLayerSize = cameraView.bounds
         
-        let widthRatio = previewLayerSize.width / roiSize.width
-        let heightRatio = previewLayerSize.height / roiSize.height
-        let scale = min(widthRatio, heightRatio)
         
-        let scaledWidth = roiSize.width * scale
-        let scaledHeight = roiSize.height * scale
-        let x = (previewLayerSize.width - scaledWidth) / 2
-        let y = (previewLayerSize.height - scaledHeight) / 2
+        var rectOrigin = CGPoint(x: (previewLayerSize.width - roi.width) / 2 ,
+                                 y: (previewLayerSize.height - roi.height) / 2)
         
-        annotationView.frame = CGRect(x: x, y: y, width: scaledWidth, height: scaledHeight)
+        var roiRect : CGRect = CGRect(origin: rectOrigin, size: roi)
+        
+        
+        
+        annotationView.frame = roiRect
     }
 }
 

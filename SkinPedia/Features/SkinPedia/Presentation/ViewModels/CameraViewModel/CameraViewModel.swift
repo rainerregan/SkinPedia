@@ -9,13 +9,16 @@ import AVFoundation
 import SwiftUI
 
 class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, CameraViewProtocol {
-    let camWidth : CGFloat = 300.0
-    let camHeight : CGFloat = 400.0
+//    let camWidth : CGFloat = 300.0
+//    let camHeight : CGFloat = 400.0
     let session = AVCaptureSession()
     private let photoOutput = AVCapturePhotoOutput()
     @Published var capturedImage : UIImage?
+    @Published var croppedImage : UIImage?
+    @Published var photoFrameRect : CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
-    var roi : CGRect?
+    
+    var roi : CGSize = CGSize(width: 300, height: 300)
     
     
     override init() {
@@ -23,9 +26,6 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         setupCamera()
     }
     
-    func setROI(roi : CGRect) {
-        self.roi = roi
-    }
 
     func checkCameraPermission() {
         AVCaptureDevice.requestAccess(for: .video) { granted in
@@ -68,6 +68,30 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
             print("masuk")
             self.capturedImage = capturedImage;
         }
+    }
+}
+
+extension CameraViewModel {
+    func cropImage(image: UIImage, cropRect: CGRect) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(cropRect.size, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        
+        let originX = -cropRect.origin.x
+        let originY = -cropRect.origin.y
+        
+        context.translateBy(x: originX, y: originY)
+        
+        image.draw(at: .zero)
+        
+        guard let croppedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return nil
+        }
+        
+        return croppedImage
     }
 }
 
