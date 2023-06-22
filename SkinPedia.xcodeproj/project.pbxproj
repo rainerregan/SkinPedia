@@ -24,6 +24,7 @@
 		8316F6ED2A443C9700E529AE /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6EC2A443C9700E529AE /* CircularProgressView.swift */; };
 		8316F6EF2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6EE2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift */; };
 		8316F6F52A4442FC00E529AE /* ScanResultSummaryCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6F42A4442FC00E529AE /* ScanResultSummaryCardComponent.swift */; };
+		8316F6F72A4456EA00E529AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8316F6F62A4456EA00E529AE /* TagView.swift */; };
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		8316F6EC2A443C9700E529AE /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		8316F6EE2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergenceRatioBadgeComponent.swift; sourceTree = "<group>"; };
 		8316F6F42A4442FC00E529AE /* ScanResultSummaryCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultSummaryCardComponent.swift; sourceTree = "<group>"; };
+		8316F6F62A4456EA00E529AE /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		839690482A3C5D7600E3D262 /* SkinPedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinPedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				8316F6EC2A443C9700E529AE /* CircularProgressView.swift */,
+				8316F6F62A4456EA00E529AE /* TagView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */,
 				8316F6EF2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift in Sources */,
 				8316F6EA2A44337D00E529AE /* ColorUtils.swift in Sources */,
+				8316F6F72A4456EA00E529AE /* TagView.swift in Sources */,
 				8316F6E82A442E5200E529AE /* OnboardingPageView.swift in Sources */,
 				8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */,
 				AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */,

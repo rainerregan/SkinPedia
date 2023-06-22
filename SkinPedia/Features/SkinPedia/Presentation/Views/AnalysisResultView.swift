@@ -53,6 +53,19 @@ struct AnalysisResultView: View {
                     }
                 }
                 
+                
+                VStack(alignment: .leading) {
+                    Text("Summary of Product").font(.title3).fontWeight(.medium).padding(.bottom, 4)
+                    Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[0] ?? "No data")
+                    
+                    TagView(tags: [
+                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[1].split(separator: ",") ?? [], id:\.self) { item in
+                            TagViewItem(title: item, isSelected: false)
+                        }
+                    ])
+                }
+                .padding(16)
+                
                 Spacer()
             } else {
                 ProgressView("Loading...")
