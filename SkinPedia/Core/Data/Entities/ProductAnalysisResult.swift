@@ -138,20 +138,23 @@ struct IngredientsTableEwg: Codable {
 enum Background: String, Codable {
     case bgSafe = "bg-safe"
     case bgUnsafe = "bg-unsafe"
+    case bgHarmful = "bg-harmful"
 }
 
 enum DataEnum: String, Codable {
     case fair = "Fair"
     case good = "Good"
     case limited = "Limited"
+    case robust = "Robust"
     case none = "None"
 }
 
 enum Decision: String, Codable {
-    case moderateHazard = "Moderate hazard"
-    case moderateHazardHighHazard = "Moderate hazard - High hazard"
     case safe = "Safe"
     case safeModerateHazard = "Safe - Moderate hazard"
+    case moderateHazard = "Moderate hazard"
+    case moderateHazardHighHazard = "Moderate hazard - High hazard"
+    case highHazard = "High hazard"
 }
 
 // MARK: - IntegerProperties

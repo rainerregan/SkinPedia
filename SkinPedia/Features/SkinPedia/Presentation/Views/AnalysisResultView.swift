@@ -8,57 +8,64 @@ import SwiftUI
 
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
-  
+    
     var body: some View {
         content
             .environmentObject(analysisResultViewModel)
     }
     
     var content: some View {
-        NavigationView {
-            VStack{
+        VStack(alignment: .leading){
+            if(analysisResultViewModel.analyzedProductResult.analysis != nil){
+                ScanResultSummaryCardComponent(allergentsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0), ingredientsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable?.count ?? 0))
                 
-                VStack{
-                    VStack(alignment: .leading){
-                        Text("Caution!").font(.headline).padding(.bottom, 8)
-                        Text("This product contains \(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0) allergens. Please be aware while using this product. Using this product may provoke allergies for some people. For more information, please seek professional advice.")
-                    }
-                    .padding(16)
+                // Only showing if there is allergens
+                if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
+                    HStack(alignment: .center, spacing: 16) {
+                        Image(systemName: "lightbulb").foregroundColor(Color.customRed).font(.system(size: 20, weight: .light))
+                        
+                        Text("Please be aware using this product. Using this product may provoke allergies for some people!").font(.subheadline).foregroundColor(Color.customRed)
+                    }.padding(16)
                     
-                    VStack(alignment: .leading){
-                        Text("Summary").font(.headline).padding(.bottom, 8)
-                        Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags() ?? "")
-                    }
-                    .padding(16)
-                }
-                
-                
-                List{
-                    Section {
-                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
-                            AllergenRowComponent(itemList: allergen)
-                        }
-                    } header: {
-                        Text("Allergents List").font(.headline)
-                    }
-                    
-                    Section {
-                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? [], id: \.self) { ingredient in
-                            if(ingredient.alias != nil){
-                                IngredientRowComponent(ingredient: ingredient)
+                    VStack(alignment: .leading) {
+                        Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
+                            .padding(.horizontal, 16)
+                        
+                        List{
+                            ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
+                                // TODO: Navigate to Detail Page
+                                NavigationLink(destination: SampleFormView()){
+                                    AllergenRowComponent(itemList: allergen)
+                                }
                             }
+                            
+                            //                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? [], id: \.self) { ingredient in
+                            //                                if(ingredient.alias != nil){
+                            //                                    IngredientRowComponent(ingredient: ingredient)
+                            //                                }
+                            //                        NavigationLink(destination: SampleFormView()){
+                            //                            IngredientRowComponent(ingredient: ingredient)
+                            //                        }
+                            //                    }
                         }
-                    } header: {
-                        Text("Ingredients List").font(.headline)
+                        .listStyle(.plain)
+                        
                     }
                 }
+                
+                Spacer()
+            } else {
+                ProgressView("Loading...")
+                    .padding()
             }
-            .navigationTitle("Product Analysis")
-            .navigationBarTitleDisplayMode(.large)
             
-        }.onAppear {
+        }
+        .navigationTitle("Scan Result")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
             self.analysisResultViewModel.didAppear()
         }
+        
     }
 }
 
