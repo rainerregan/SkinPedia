@@ -13,7 +13,8 @@ extension Color {
     static var lightBrown: Color = Color(hex: CustomColor.lightBrown)
     static var mediumBrown: Color = Color(hex: CustomColor.mediumBrown)
     static var darkBrown: Color = Color(hex: CustomColor.darkBrown)
-    static var black: Color = Color(hex: CustomColor.black)
+    static var customBlack: Color = Color(hex: CustomColor.black)
+    static var customYellow: Color = Color(hex: CustomColor.yellow)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(
@@ -24,6 +25,16 @@ extension Color {
             opacity: alpha
         )
     }
+    
+    static func getColorFromAllergentsCount(allergentsCount: Int) -> Color {
+        if(allergentsCount == 0){
+            return Color.green
+        } else if allergentsCount >= 1 && allergentsCount < 4{
+            return Color.customYellow
+        } else {
+            return Color.red
+        }
+    }
 }
 
 struct CustomColor {
@@ -32,4 +43,5 @@ struct CustomColor {
     static var mediumBrown: UInt = 0xCDBEA5
     static var darkBrown: UInt = 0x44413C
     static var black: UInt = 0x272727
+    static var yellow: UInt = 0xFFC107
 }
