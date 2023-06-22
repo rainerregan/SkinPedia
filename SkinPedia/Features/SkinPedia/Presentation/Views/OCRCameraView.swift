@@ -16,50 +16,46 @@ struct CameraView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     
     var body: some View {
-        NavigationView{
-            VStack {
-                // Camera preview
-                CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .ignoresSafeArea()
-                // Capture button
-                Button(action: {
-                    cameraViewModel.capturePhoto()
+        VStack {
+            // Camera preview
+            CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .ignoresSafeArea()
+            // Capture button
+            Button(action: {
+                cameraViewModel.capturePhoto()
 //                    print(cameraViewModel.capturedImage == nil)
-                    
-                }, label: {
-                    Image(systemName: "camera")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.black.opacity(0.7))
-                        .clipShape(Circle())
-                })
-                .padding()
                 
-                NavigationLink("", destination: OCRProductDetailView()
-                    .environmentObject(cameraViewModel)
-                    .environmentObject(analysisResultViewModel)
-                    .navigationBarHidden(true), isActive: $showDetailOCR)
-            }
-            .onAppear {
-                cameraViewModel.checkCameraPermission()
-                cameraViewModel.setROI(roi: ocrViewModel.roi)
-            }
-            // Debugging the camera capture
-            .onChange(of: cameraViewModel.capturedImage){
-                newImage in
-                showDetailOCR = true;
-                ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
-                
-            }.onChange(of: ocrViewModel.ingredients) {
-                newIngred in
-                let processedIngredients = newIngred.processSkincareIngredients()
-                print("Ingredients : \(processedIngredients)")
-                analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
-            }
+            }, label: {
+                Image(systemName: "camera")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .clipShape(Circle())
+            })
+            .padding()
             
+            NavigationLink("", destination: OCRProductDetailView()
+                .environmentObject(cameraViewModel)
+                .environmentObject(analysisResultViewModel)
+                .navigationBarHidden(true), isActive: $showDetailOCR)
+        }
+        .onAppear {
+            cameraViewModel.checkCameraPermission()
+            cameraViewModel.setROI(roi: ocrViewModel.roi)
+        }
+        // Debugging the camera capture
+        .onChange(of: cameraViewModel.capturedImage){
+            newImage in
+            showDetailOCR = true;
+            ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
             
+        }.onChange(of: ocrViewModel.ingredients) {
+            newIngred in
+            let processedIngredients = newIngred.processSkincareIngredients()
+            print("Ingredients : \(processedIngredients)")
+            analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
         }
     }
 }

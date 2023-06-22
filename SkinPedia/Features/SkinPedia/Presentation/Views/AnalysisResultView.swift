@@ -15,44 +15,46 @@ struct AnalysisResultView: View {
     }
     
     var content: some View {
-        NavigationView {
-            VStack(alignment: .leading){
+        VStack(alignment: .leading){
+            
+            ScanResultSummaryCardComponent(allergentsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0), ingredientsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable?.count ?? 0))
+            
+            HStack(alignment: .center, spacing: 16) {
+                Image(systemName: "lightbulb").foregroundColor(Color.customRed).font(.system(size: 20, weight: .light))
+                Text("Please be aware using this product. Using this product may provoke allergies for some people!").font(.subheadline).foregroundColor(Color.customRed)
+            }.padding(16)
+            
+            VStack(alignment: .leading) {
+                Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
+                    .padding(.horizontal, 16)
                 
-                ScanResultSummaryCardComponent(allergentsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0), ingredientsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable?.count ?? 0))
-                
-//                List{
-//                    Section {
-//                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
-//                            AllergenRowComponent(itemList: allergen)
-//                        }
-//                    } header: {
-//                        Text("Allergents List").font(.headline)
-//                    }
-//
-//                    Section {
-//                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? [], id: \.self) { ingredient in
-//                            if(ingredient.alias != nil){
-//                                IngredientRowComponent(ingredient: ingredient)
-//                            }
-//                        }
-//                    } header: {
-//                        Text("Ingredients List").font(.headline)
-//                    }
-//                }
-            }
-            .navigationTitle("Scan Result")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {}) {
-                        Label("Back", systemImage: "chevron.left")
+                List{
+                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
+                        // TODO: Navigate to Detail Page
+                        NavigationLink(destination: SampleFormView()){
+                            AllergenRowComponent(itemList: allergen)
+                        }
                     }
-
+                    
+//                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? [], id: \.self) { ingredient in
+//                                if(ingredient.alias != nil){
+//                                    IngredientRowComponent(ingredient: ingredient)
+//                                }
+//                        NavigationLink(destination: SampleFormView()){
+//                            IngredientRowComponent(ingredient: ingredient)
+//                        }
+//                    }
                 }
+                .listStyle(.plain)
+                
             }
             
-        }.onAppear {
+            Spacer()
+            
+        }
+        .navigationTitle("Scan Result")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
             self.analysisResultViewModel.didAppear()
         }
     }
