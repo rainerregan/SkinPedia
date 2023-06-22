@@ -16,7 +16,9 @@ struct SkinPediaApp: App {
         WindowGroup {
 //            SampleFormView()
 //                .environment(\.managedObjectContext, model.container.viewContext)
-            CameraView()
+//            CameraView()
+            OnboardingPageView()
+                .preferredColorScheme(.light)
         }
     }
 }
