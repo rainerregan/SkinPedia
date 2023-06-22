@@ -144,6 +144,7 @@ enum DataEnum: String, Codable {
     case fair = "Fair"
     case good = "Good"
     case limited = "Limited"
+    case robust = "Robust"
     case none = "None"
 }
 
