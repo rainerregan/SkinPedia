@@ -13,7 +13,7 @@ struct AllergenceRatioBadgeComponent: View {
     let ingredientsCount: Double
     
     var body: some View {
-        Text("\(String(format:"%.1f",allergentsCount/ingredientsCount * 100))% of Allergence")
+        Text("\(String(format:"%.1f",allergentsCount/ingredientsCount * 100))% of Allergents")
             .padding(16)
             .background(Color.getColorFromAllergentsCount(allergentsCount: Int(allergentsCount)))
             .cornerRadius(10)

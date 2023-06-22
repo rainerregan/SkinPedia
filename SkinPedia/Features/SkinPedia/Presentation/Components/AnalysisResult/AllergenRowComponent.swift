@@ -11,10 +11,22 @@ struct AllergenRowComponent: View {
     var itemList: ItemList
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(itemList.title ?? "-")
-                .font(.headline)
-            Text(itemList.alias ?? "-").font(.subheadline)
+        VStack{
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(itemList.title ?? "-")
+                        .font(.headline)
+                    Text(itemList.alias ?? "-").font(.subheadline)
+                }
+                .padding(.vertical, 8)
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+            }
+            
+            Divider()
         }
+        
+        
     }
 }
