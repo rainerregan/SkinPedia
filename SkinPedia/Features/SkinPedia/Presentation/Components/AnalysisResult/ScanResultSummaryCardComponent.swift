@@ -14,7 +14,7 @@ struct ScanResultSummaryCardComponent: View {
     var body: some View {
         HStack{
             VStack(alignment: .leading){
-                Text("Warning!").font(.title3).fontWeight(.semibold).padding(.bottom, 4)
+                Text(allergentsCount > 0 ? "Warning!" : "Good!").font(.title3).fontWeight(.semibold).padding(.bottom, 4)
                 Text("We Have Found").font(.subheadline).padding(.bottom, 4)
                 AllergenceRatioBadgeComponent(allergentsCount: allergentsCount, ingredientsCount: ingredientsCount)
                 Text("In your Skincare Product").font(.subheadline)
