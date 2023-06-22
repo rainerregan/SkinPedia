@@ -5,6 +5,7 @@
 //  Created by Rainer Regan on 20/06/23.
 //
 import SwiftUI
+import WrappingHStack
 
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
@@ -56,13 +57,22 @@ struct AnalysisResultView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Summary of Product").font(.title3).fontWeight(.medium).padding(.bottom, 4)
-                    Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[0] ?? "No data")
+                    Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[0] ?? "").font(.subheadline)
+                        .padding(.bottom, 8)
                     
-                    TagView(tags: [
+                    WrappingHStack(alignment: .leading){
                         ForEach(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[1].split(separator: ",") ?? [], id:\.self) { item in
-                            TagViewItem(title: item, isSelected: false)
+                            
+                            Text(item.trimmingCharacters(in: .whitespacesAndNewlines))
+                                .padding(.vertical, 8)
+                                .padding(.horizontal, 16)
+                                .background(Color.mediumBrown)
+                                .cornerRadius(30)
+                                .font(.footnote)
+                                
                         }
-                    ])
+                    }
+                    
                 }
                 .padding(16)
                 
