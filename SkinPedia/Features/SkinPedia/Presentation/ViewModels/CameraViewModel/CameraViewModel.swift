@@ -20,6 +20,8 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
     
     var roi : CGSize = CGSize(width: 300, height: 300)
     
+    var placeHolder : CGRect = CGRect(x: 50, y: 100, width: 200, height: 200)
+    
     
     override init() {
         super.init()
@@ -72,27 +74,58 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
 }
 
 extension CameraViewModel {
-    func cropImage(image: UIImage, cropRect: CGRect) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(cropRect.size, false, 0.0)
-        defer { UIGraphicsEndImageContext() }
-        
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return nil
-        }
-        
-        let originX = -cropRect.origin.x
-        let originY = -cropRect.origin.y
-        
-        context.translateBy(x: originX, y: originY)
-        
-        image.draw(at: .zero)
-        
-        guard let croppedImage = UIGraphicsGetImageFromCurrentImageContext() else {
-            return nil
-        }
-        
-        return croppedImage
-    }
+//    func cropImage(image: UIImage) -> UIImage? {
+//        UIGraphicsBeginImageContextWithOptions(self.placeHolder.size, false, image.scale)
+//        defer { UIGraphicsEndImageContext() }
+//        
+//        guard let context = UIGraphicsGetCurrentContext() else {
+//            return nil
+//        }
+//        
+////        var cgRect : CGRect = CGRect(x: 50, y: 200, width: 300, height: 300)
+//        
+//        let originX = -self.placeHolder.origin.x
+//        let originY = -self.placeHolder.origin.y
+//        
+//        context.translateBy(x: originX, y: originY)
+//
+////        let origin = CGPoint(x:50, y: 200)
+////        image.draw(in: CGRect(origin: origin, size: placeHolder.size))
+//        
+//        let drawRect = CGRect(x: -self.placeHolder.origin.x, y: -self.placeHolder.origin.y, width: image.size.width, height: image.size.height)
+//            image.draw(in: drawRect)
+//        
+//        guard let croppedImage = UIGraphicsGetImageFromCurrentImageContext() else {
+//            return nil
+//        }
+//        
+//        return croppedImage
+//    }
+//    
+//    func cropImage(_ inputImage: UIImage, toRect cropRect: CGRect, viewWidth: CGFloat, viewHeight: CGFloat) -> UIImage?
+//    {
+//        let imageViewScale = max(inputImage.size.width / viewWidth,
+//                                 inputImage.size.height / viewHeight)
+//
+//
+//        // Scale cropRect to handle images larger than shown-on-screen size
+//        let cropZone = CGRect(x:cropRect.origin.x * imageViewScale,
+//                              y:cropRect.origin.y * imageViewScale,
+//                              width:cropRect.size.width * imageViewScale,
+//                              height:cropRect.size.height * imageViewScale)
+//
+//
+//        // Perform cropping in Core Graphics
+//        guard let cutImageRef: CGImage = inputImage.cgImage?.cropping(to:cropZone)
+//        else {
+//            return nil
+//        }
+//
+//
+//        // Return image to UIImage
+//        let croppedImage: UIImage = UIImage(cgImage: cutImageRef)
+//        return croppedImage
+//    }
 }
 
 //extension CameraViewModel {

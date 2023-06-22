@@ -12,7 +12,7 @@ import Vision
 class OCRViewModel : ObservableObject, OCRViewModelProtocol {
     
     @Published var ingredients: String = ""
-    let roi = CGRect(x: 0.1, y: 0.1, width: 0.5, height: 0.5)
+    let roi = CGRect(x: 0.2, y: 0.5, width: 0.5, height: 0.45)
     
     func performTextRecog(capturedImage : UIImage) {
         let req = VNRecognizeTextRequest { [self] request, err  in
@@ -39,7 +39,8 @@ class OCRViewModel : ObservableObject, OCRViewModelProtocol {
         }
         
         var imageHandler = VNImageRequestHandler(cgImage: inputImage)
-        req.regionOfInterest = roi;
+        var OCR = CGRect(x : roi.origin.x + 0.25, y: roi.origin.y, width: roi.size.width, height: roi.size.height)
+        req.regionOfInterest = OCR;
 //        
         do {
             try imageHandler.perform([req])

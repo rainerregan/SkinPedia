@@ -22,7 +22,7 @@ struct OCRProductDetailView: View {
                 Image(uiImage: cameraViewModel.capturedImage!)
                     .resizable()
                     .scaledToFit()
-                    .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
+                    .frame(width: 300, height: 300)
                 Spacer()
                 
                 VStack{
@@ -38,17 +38,17 @@ struct OCRProductDetailView: View {
             }
             .onAppear{
                 
-                var img = cameraViewModel.capturedImage!
-                
-                var cgPoint = CGPoint(
-                    x: (img.size.width - cameraViewModel.roi.width) / 2,
-                    y: (img.size.height - cameraViewModel.roi.height) / 2)
-                
-                var cgRect = CGRect(origin: cgPoint, size: img.size)
-                
-                
-                
-                cameraViewModel.capturedImage = cameraViewModel.cropImage(image: img, cropRect: cgRect)
+//                var img = cameraViewModel.capturedImage!
+////
+////                var cgPoint = CGPoint(
+////                    x: (img.size.width - cameraViewModel.roi.width) / 2,
+////                    y: (img.size.height - cameraViewModel.roi.height) / 2)
+////
+////                var cgRect = CGRect(origin: cgPoint, size: img.size)
+//                
+//                
+//                
+//                cameraViewModel.capturedImage = cameraViewModel.cropImage(img, toRect: cameraViewModel.placeHolder, viewWidth: 300, viewHeight: 300)
             }
             .navigationBarItems(leading :
                 Button {
