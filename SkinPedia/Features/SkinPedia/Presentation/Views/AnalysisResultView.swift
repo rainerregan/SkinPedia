@@ -31,8 +31,9 @@ struct AnalysisResultView: View {
                     VStack(alignment: .leading) {
                         Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
                             .padding(.horizontal, 16)
+                            .padding(.bottom, 8)
                         
-                        List{
+                        VStack{
                             ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
                                 // TODO: Navigate to Detail Page
                                 NavigationLink(destination: SampleFormView()){
@@ -49,7 +50,7 @@ struct AnalysisResultView: View {
                             //                        }
                             //                    }
                         }
-                        .listStyle(.plain)
+                        .padding(.horizontal, 16)
                         
                     }
                 }
