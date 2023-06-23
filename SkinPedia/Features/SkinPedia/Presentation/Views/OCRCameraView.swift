@@ -18,7 +18,7 @@ struct CameraView: View {
     var body: some View {
         VStack {
             // Camera preview
-            CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi)
+            CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi, capturedDevice: cameraViewModel.capturedDevice!)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 .ignoresSafeArea()
             // Capture button
@@ -65,19 +65,10 @@ struct CameraPreviewView: UIViewRepresentable {
     
     let session: AVCaptureSession
     let roi : CGRect
+    let capturedDevice : AVCaptureDevice
+    
     
     func makeUIView(context: Context) -> UIView {
-//        let view = UIView(frame: .zero)
-//        let previewLayer = AVCaptureVideoPreviewLayer(session: session)
-//
-//        previewLayer.videoGravity = .resizeAspectFill
-//        view.layer.addSublayer(previewLayer)
-//
-//        DispatchQueue.main.async {
-//            previewLayer.frame = view.bounds
-//        }
-//        return view
-        
         let cameraView = UIView(frame: .zero)
                 
         // Create AVCaptureVideoPreviewLayer
@@ -85,48 +76,88 @@ struct CameraPreviewView: UIViewRepresentable {
         previewLayer.videoGravity = .resizeAspectFill
         
         
-        // Create the annotation view
-        let annotationView = UIView(frame: roi)
-        annotationView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // Customize the annotation appearance as needed
+        let pinchGesture = UIPinchGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handlePinchGesture(_:)))
+        cameraView.addGestureRecognizer(pinchGesture)
+        
+//        // Create the annotation view
+//        let annotationView = UIView(frame: roi)
+//        annotationView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // Customize the annotation appearance as needed
         
         DispatchQueue.main.async {
-            updateAnnotationViewFrame(cameraView: cameraView, annotationView: annotationView)
+//            updateAnnotationViewFrame(cameraView: cameraView, annotationView: annotationView)
             previewLayer.frame = cameraView.bounds
         }
         
         cameraView.layer.addSublayer(previewLayer)
-        cameraView.addSubview(annotationView)
+//        cameraView.addSubview(annotationView)
         
         return cameraView
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-            guard let previewLayer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer,
-                  let annotationView = uiView.subviews.first else {
+            guard let previewLayer = uiView.layer.sublayers?.first as? AVCaptureVideoPreviewLayer else {
                 return
             }
             
             previewLayer.frame = uiView.bounds
-            updateAnnotationViewFrame(cameraView: uiView, annotationView: annotationView)
+//            updateAnnotationViewFrame(cameraView: uiView, annotationView: annotationView)
         }
         
+    func makeCoordinator() -> Coordinator {
+            Coordinator(self)
+        }
     
-    // masih butuh perbaiki roinya tidak sama gede dan penempatannya tidak jelas.
-    private func updateAnnotationViewFrame(cameraView: UIView, annotationView: UIView) {
-        let previewLayerSize = cameraView.bounds.size
-        let roiSize = roi.size
+//    // masih butuh perbaiki roinya tidak sama gede dan penempatannya tidak jelas.
+//    private func updateAnnotationViewFrame(cameraView: UIView, annotationView: UIView) {
+//        let previewLayerSize = cameraView.bounds.size
+//        let roiSize = roi.size
+//
+//        let widthRatio = previewLayerSize.width / roiSize.width
+//        let heightRatio = previewLayerSize.height / roiSize.height
+//        let scale = min(widthRatio, heightRatio)
+//
+//        let scaledWidth = roiSize.width * scale
+//        let scaledHeight = roiSize.height * scale
+//        let x = (previewLayerSize.width - scaledWidth) / 2
+//        let y = (previewLayerSize.height - scaledHeight) / 2
+//
+//        annotationView.frame = CGRect(x: x, y: y, width: scaledWidth, height: scaledHeight)
+//    }
+    
+    class Coordinator : NSObject {
+        var parent : CameraPreviewView
         
-        let widthRatio = previewLayerSize.width / roiSize.width
-        let heightRatio = previewLayerSize.height / roiSize.height
-        let scale = min(widthRatio, heightRatio)
+        init(_ parent : CameraPreviewView) {
+            self.parent = parent
+        }
         
-        let scaledWidth = roiSize.width * scale
-        let scaledHeight = roiSize.height * scale
-        let x = (previewLayerSize.width - scaledWidth) / 2
-        let y = (previewLayerSize.height - scaledHeight) / 2
-        
-        annotationView.frame = CGRect(x: x, y: y, width: scaledWidth, height: scaledHeight)
+        @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
+            let captureDevice = parent.capturedDevice
+            
+            if gesture.state == .changed {
+                let maxZoomFactor = captureDevice.activeFormat.videoMaxZoomFactor
+                let pinchVelocityDividerFactor: CGFloat = 10.0
+                
+                // Calculate the desired zoom factor based on the gesture's scale
+                var zoomFactor = captureDevice.videoZoomFactor + atan2(gesture.velocity, pinchVelocityDividerFactor)
+                
+                // Clamp the zoom factor to the valid range
+                zoomFactor = max(1.0, min(zoomFactor, maxZoomFactor))
+                
+                do {
+                    try captureDevice.lockForConfiguration()
+                    
+                    // Set the zoom factor on the capture device
+                    captureDevice.videoZoomFactor = zoomFactor
+                    
+                    captureDevice.unlockForConfiguration()
+                } catch {
+                    print("Error adjusting zoom factor: \(error.localizedDescription)")
+                }
+            }
+        }
     }
+        
 }
 
 

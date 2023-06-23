@@ -14,7 +14,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
     let session = AVCaptureSession()
     private let photoOutput = AVCapturePhotoOutput()
     @Published var capturedImage : UIImage?
-    
+    var capturedDevice : AVCaptureDevice? = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
     var roi : CGRect?
     
     
@@ -32,6 +32,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
             if granted {
                 // Start the camera session
                 self.session.startRunning()
+            
             }
         }
     }
@@ -42,7 +43,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         
         session.beginConfiguration()
 
-        guard let videoCaptureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
+        guard let videoCaptureDevice = self.capturedDevice else { return }
         guard let videoInput = try? AVCaptureDeviceInput(device: videoCaptureDevice) else { return }
 
         if session.canAddInput(videoInput) {
