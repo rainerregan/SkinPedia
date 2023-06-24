@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SkinPediaApp: App {
     
-    @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
+    
     
     var body: some Scene {
         WindowGroup {

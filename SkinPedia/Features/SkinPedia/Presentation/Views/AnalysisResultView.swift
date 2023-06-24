@@ -89,6 +89,7 @@ struct AnalysisResultView: View {
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 self.analysisResultViewModel.didAppear()
+                
             }
         }
         
