@@ -18,6 +18,10 @@ extension Color {
     static var customBlack: Color = Color(hex: CustomColor.black)
     static var customYellow: Color = Color(hex: CustomColor.yellow)
     static var customRed: Color = Color(hex: CustomColor.red)
+    static var redDanger: Color = Color(hex: CustomColor.redDanger)
+    static var customLightGray : Color = Color(hex: CustomColor.lightGray)
+    static var customDarkGray : Color = Color(hex: CustomColor.darkGray)
+    static var customMediumGray : Color = Color(hex: CustomColor.mediumGray)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(
@@ -49,5 +53,8 @@ struct CustomColor {
     static var yellow: UInt = 0xFFC107
     static var red: UInt = 0x8C1818
     static var brown: UInt = 0x6F5240
-
+    static var redDanger : UInt = 0xBA0A00
+    static var lightGray : UInt = 0xF5F8F9
+    static var darkGray : UInt = 0x9A9A9A
+    static var mediumGray : UInt = 0xCACACA
 }

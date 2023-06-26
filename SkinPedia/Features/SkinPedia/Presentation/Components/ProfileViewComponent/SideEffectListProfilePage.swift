@@ -17,8 +17,11 @@ struct SideEffectListProfilePage: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 15)
+                .foregroundColor(.redDanger)
             
             Text(label)
+                .font(.body)
+                .fontWeight(.semibold)
         }
     }
 }
