@@ -17,19 +17,25 @@ struct profilePage1: View {
         "Itching",
         "Skin Rashes"
     ]
+    @State var goToPage2 = false
     
     var body: some View {
-        ProfileView{
+        ProfileView(alignment: .leading){
             Text("Did your skincare ever give you some side effects?")
                 .font(.title3)
                 .fontWeight(.semibold)
+                .padding(.bottom, 10)
             
             Text("Skincare products may cause side effects, such as:")
                 .padding(.bottom, 15)
             
-            List(sideEffects, id : \.self) {
+//            List(sideEffects, id : \.self) {
+//                se in
+//                    SideEffectListProfilePage(label: se)
+//            }
+            ForEach(sideEffects, id : \.self) {
                 se in
-                    SideEffectListProfilePage(label: se)
+                SideEffectListProfilePage(label: se)
             }
             .padding(.bottom, 15)
             
@@ -52,24 +58,38 @@ struct profilePage1: View {
             
             
             
-            Button {
-            
-            
-            
-            } label : {
-                Text("Next")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-                    .padding(EdgeInsets(top: 14, leading: 157, bottom: 14, trailing: 157))
-                    .background(Color.customBrown)
-                    .cornerRadius(12)
+            HStack{
+                Spacer()
+                Button {
+                
+                    goToPage2 = true
+                
+                } label : {
+                    Text("Next")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: 14, leading: 157, bottom: 14, trailing: 157))
+                        .background(Color.customBrown)
+                        .cornerRadius(12)
+                }
+                
+                Spacer()
             }
             .padding(.bottom, 84)
+            .background{
+                NavigationLink("", destination: ProfilePage2().navigationBarHidden(true), isActive: $goToPage2)
+            }
+           
         }
     }
 }
 
+struct MyPreviewProvider_Previews: PreviewProvider {
+    static var previews: some View {
+        profilePage1()
+    }
+}
 
 
 

@@ -22,6 +22,7 @@ struct SideEffectListProfilePage: View {
             Text(label)
                 .font(.body)
                 .fontWeight(.semibold)
+                .foregroundColor(.redDanger)
         }
     }
 }

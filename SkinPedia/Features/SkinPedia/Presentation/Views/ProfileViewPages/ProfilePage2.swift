@@ -12,7 +12,7 @@ struct ProfilePage2: View {
     @State var SkinCareName : String = ""
     @State var ableToContinue : Bool = false
     var body: some View {
-        ProfileView{
+        ProfileView(alignment: .leading){
             Text("What was that product?")
                 .font(.title3)
                 .fontWeight(.semibold)

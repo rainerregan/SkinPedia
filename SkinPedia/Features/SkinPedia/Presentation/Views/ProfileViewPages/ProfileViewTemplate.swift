@@ -10,19 +10,30 @@ import SwiftUI
 struct ProfileView<CustomContent : View>: View {
     
     var customContent : () -> CustomContent
+    var vStackAlign : HorizontalAlignment
+    @Environment(\.presentationMode) var presentationMode
     
-    init(@ViewBuilder customContent: @escaping () -> CustomContent) {
+    init(alignment : HorizontalAlignment, @ViewBuilder customContent: @escaping () -> CustomContent) {
         self.customContent = customContent
+        self.vStackAlign = alignment
     }
     
     var body: some View {
         NavigationView {
-            VStack{
+            VStack(alignment: vStackAlign){
                 
                 customContent()
+                    .padding(.horizontal, 16)
                 
-            }.navigationBarTitle("Profiling")
-                .accentColor(.customBrown)
+            }
+            .navigationBarTitle("Profiling", displayMode: .inline)
+            .navigationBarItems(leading:
+                                    Button {
+                presentationMode.wrappedValue.dismiss()
+            } label: {
+                Text("Back")
+                    .foregroundColor(.customBrown)
+            })
         }
     }
 }
