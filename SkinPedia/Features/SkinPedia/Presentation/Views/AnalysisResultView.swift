@@ -66,11 +66,9 @@ struct AnalysisResultView: View {
                                     .padding(.bottom, 8)
                                 
                                 VStack{
+                                    // For each allergent
                                     ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
-                                        // TODO: Navigate to Detail Page
-                                        NavigationLink(destination: SampleFormView()){
-                                            AllergenRowComponent(itemList: allergen)
-                                        }
+                                        AllergenRowComponent(ingredientTableArray: analysisResultViewModel.filterIngredientByAllergent(allergent: allergen))
                                     }
                                 }
                                 .padding(.horizontal, 16)

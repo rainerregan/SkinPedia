@@ -36,6 +36,12 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water, linalool")
     
     
+    // Memfilter data ingredient berdasarkan allergen yang di pass. Mengecek alias
+    func filterIngredientByAllergent(allergent: ItemList) -> [IngredientsTable] {
+        var filteredIngredient = analyzedProductResult.analysis?.ingredientsTable?.filter({$0.alias == allergent.alias})
+        return filteredIngredient ?? []
+    }
+    
     // MARK: - Private
     private func getProductAnalysis() async {
         let productAnalysisResult = await GetProductAnalysisUseCase().call(productAnalysisRequest: ProductAnalysisRequest(ingredients: toBeAnalyzedRequest.ingredients))

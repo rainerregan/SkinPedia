@@ -8,25 +8,26 @@
 import SwiftUI
 
 struct AllergenRowComponent: View {
-    var itemList: ItemList
+    var ingredientTableArray: [IngredientsTable]
     
     var body: some View {
-        VStack{
-            HStack {
+        VStack {
+            DisclosureGroup{
                 VStack(alignment: .leading) {
-                    Text(itemList.title ?? "-")
-                        .font(.headline)
-                    Text(itemList.alias ?? "-").font(.subheadline)
+                    Text(ingredientTableArray[0].introtext == "" ? "No description available" : (ingredientTableArray[0].introtext ?? ""))
                 }
-                .padding(.vertical, 8)
-                Spacer()
-                
-                Image(systemName: "chevron.right")
+                .padding(.vertical, 16)
+            } label: {
+                VStack(alignment: .leading){
+                    Text(ingredientTableArray[0].title ?? "-").font(.body).fontWeight(.semibold)
+                    Text(ingredientTableArray[0].categories ?? "-").font(.subheadline)
+                }
             }
-            
-            Divider()
+            .padding()
+            .background(Color.lightBrown.opacity(0.3))
+            .foregroundColor(.darkBrown)
+            .cornerRadius(20)
         }
-        
         
     }
 }
