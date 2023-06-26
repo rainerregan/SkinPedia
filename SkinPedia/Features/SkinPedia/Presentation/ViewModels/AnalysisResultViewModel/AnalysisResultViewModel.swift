@@ -7,13 +7,34 @@
 
 import Foundation
 import Combine
+import SwiftUI
+import CoreData
 
 protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, AnalysisResultViewModelOutput {}
 
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
+    @Published var toBeAnalyzedProductName : String = "";
+    @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
+    
+    func saveToCoreData() async {
+        lazy var moc = model.container.viewContext
+        let tobeSaved : SavedIngredient = SavedIngredient(context: moc)
+        
+        tobeSaved.uuid = UUID(uuidString: toBeAnalyzedRequest.id)
+        tobeSaved.ingredient = tobeSaved.ingredient
+        tobeSaved.name = tobeSaved.name
+        
+        do {
+            try moc.save()
+        } catch let err {
+            print(err.localizedDescription)
+        }
+    }
+    
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
     @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
+    
     
     // MARK: - Private
     private func getProductAnalysis() async {
@@ -34,9 +55,11 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
 }
 
 extension AnalysisResultViewModel {
+    
     func didAppear() {
         Task {
             await onLoad()
         }
     }
 }
+
