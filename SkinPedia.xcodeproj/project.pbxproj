@@ -30,6 +30,8 @@
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
 		AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */; };
 		AC0CF1BF2A499FB900126875 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BE2A499FB900126875 /* MainView.swift */; };
+		AC0CF1C12A49A67F00126875 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1C02A49A67F00126875 /* ProfileView.swift */; };
+		AC0CF1C42A49A98100126875 /* SideEffectListProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */; };
 		AC6CC7F92A41DE05007BF6FA /* OCRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */; };
 		AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */; };
 		AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */; };
@@ -69,6 +71,8 @@
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPopUp.swift; sourceTree = "<group>"; };
 		AC0CF1BE2A499FB900126875 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AC0CF1C02A49A67F00126875 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectListProfilePage.swift; sourceTree = "<group>"; };
 		AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRCameraView.swift; sourceTree = "<group>"; };
 		AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewProtocol.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				AC6CC8082A421986007BF6FA /* OCRProductDetailView.swift */,
 				8316F6E72A442E5200E529AE /* OnboardingPageView.swift */,
 				AC0CF1BE2A499FB900126875 /* MainView.swift */,
+				AC0CF1C02A49A67F00126875 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		8316F6DB2A419A4200E529AE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AC0CF1C22A49A96000126875 /* ProfileViewComponent */,
 				8316F6EB2A443C8000E529AE /* Common */,
 				8316F6DC2A419A4F00E529AE /* AnalysisResult */,
 			);
@@ -224,6 +230,14 @@
 				839690522A3C5D7700E3D262 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC0CF1C22A49A96000126875 /* ProfileViewComponent */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */,
+			);
+			path = ProfileViewComponent;
 			sourceTree = "<group>";
 		};
 		AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */ = {
@@ -453,6 +467,7 @@
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8316F6E62A43127500E529AE /* AllergenRowComponent.swift in Sources */,
 				8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */,
+				AC0CF1C42A49A98100126875 /* SideEffectListProfilePage.swift in Sources */,
 				AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */,
 				8316F6E22A41B5BB00E529AE /* IngredientRowComponent.swift in Sources */,
 				8316F6E42A42E60800E529AE /* StringUtils.swift in Sources */,
@@ -473,6 +488,7 @@
 				AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */,
 				AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
+				AC0CF1C12A49A67F00126875 /* ProfileView.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
 				8316F6D42A4159F200E529AE /* AnalysisResultViewModelOutput.swift in Sources */,
 				8316F6ED2A443C9700E529AE /* CircularProgressView.swift in Sources */,
