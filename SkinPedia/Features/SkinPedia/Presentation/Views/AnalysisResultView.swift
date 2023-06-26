@@ -24,45 +24,18 @@ struct AnalysisResultView: View {
                 ScrollView{
                     VStack {
                         // Allergent Result Summary
-                        VStack(alignment: .center) {
-                            Text("Warning!").font(.title2).fontWeight(.semibold)
-                            Text("We have found").font(.body)
-                            
-                            ZStack{
-                                Circle()
-                                    .fill(.yellow)
-                                    .frame(width: 150, height: 150)
-                                VStack{
-                                    Text("8").font(.title).fontWeight(.semibold)
-                                    Text("Allergents")
-                                }
-                            }
-                            
-                            Text("From the total ingredients")
-                        }
-                        .padding(.vertical, 32)
+                        ScanResultSummaryCardComponent(allergentsCount: analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0)
                         
                         // Only showing if there is allergens
                         if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
                             
                             // Caution Card
-                            HStack(alignment: .center, spacing: 16) {
-                                Image(systemName: "lightbulb.fill").font(.system(size: 20, weight: .light))
-                                
-                                Text("Please be aware using this product. Using this product may provoke allergies for some people!")
-                                    .font(.subheadline)
-                            }
-                            .padding(16)
-                            .background(Color.customRed)
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            
-                            Spacer().frame(height: 32)
+                            CautionCard()
+                                .padding(.vertical, 16)
                             
                             // List of Allergents
                             VStack(alignment: .leading) {
                                 Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
-                                    .padding(.horizontal, 16)
                                     .padding(.bottom, 8)
                                 
                                 VStack{
@@ -71,12 +44,12 @@ struct AnalysisResultView: View {
                                         AllergenRowComponent(ingredientTableArray: analysisResultViewModel.filterIngredientByAllergent(allergent: allergen))
                                     }
                                 }
-                                .padding(.horizontal, 16)
                                 
                             }
                         }
                     }
                 }
+                .padding(.horizontal, 16)
                 
                 Spacer()
                 
