@@ -16,83 +16,82 @@ struct AnalysisResultView: View {
     }
     
     var content: some View {
-        ScrollView{
-            VStack(alignment: .leading){
-                if(analysisResultViewModel.analyzedProductResult.analysis != nil){
-                    ScanResultSummaryCardComponent(allergentsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0), ingredientsCount: Double(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable?.count ?? 0))
-                    
-                    // Only showing if there is allergens
-                    if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
-                        HStack(alignment: .center, spacing: 16) {
-                            Image(systemName: "lightbulb").foregroundColor(Color.customRed).font(.system(size: 20, weight: .light))
-                            
-                            Text("Please be aware using this product. Using this product may provoke allergies for some people!").font(.subheadline).foregroundColor(Color.customRed)
-                        }.padding(16)
+        
+        VStack(alignment: .center){
+            
+            // If Analysis is exists
+            if(analysisResultViewModel.analyzedProductResult.analysis != nil){
+                ScrollView{
+                    VStack {
+                        // Allergent Result Summary
+                        ScanResultSummaryCardComponent(allergentsCount: analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0)
                         
-                        VStack(alignment: .leading) {
-                            Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
-                                .padding(.horizontal, 16)
-                                .padding(.bottom, 8)
+                        // Only showing if there is allergens
+                        if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
                             
-                            VStack{
-                                ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
-                                    // TODO: Navigate to Detail Page
-                                    NavigationLink(destination: SampleFormView()){
-                                        AllergenRowComponent(itemList: allergen)
+                            // Caution Card
+                            CautionCard()
+                                .padding(.vertical, 16)
+                            
+                            // List of Allergents
+                            VStack(alignment: .leading) {
+                                Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
+                                    .padding(.bottom, 8)
+                                
+                                VStack{
+                                    // For each allergent
+                                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
+                                        AllergenRowComponent(ingredientTableArray: analysisResultViewModel.filterIngredientByAllergent(allergent: allergen))
                                     }
                                 }
                                 
-                                //                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.ingredientsTable ?? [], id: \.self) { ingredient in
-                                //                                if(ingredient.alias != nil){
-                                //                                    IngredientRowComponent(ingredient: ingredient)
-                                //                                }
-                                //                        NavigationLink(destination: SampleFormView()){
-                                //                            IngredientRowComponent(ingredient: ingredient)
-                                //                        }
-                                //                    }
-                            }
-                            .padding(.horizontal, 16)
-                            
-                        }
-                    }
-                    
-                    
-                    VStack(alignment: .leading) {
-                        Text("Summary of Product").font(.title3).fontWeight(.medium).padding(.bottom, 4)
-                        Text(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[0] ?? "").font(.subheadline)
-                            .padding(.bottom, 8)
-                        
-                        WrappingHStack(alignment: .leading){
-                            ForEach(analysisResultViewModel.analyzedProductResult.analysis?.text?.trimHTMLTags()?.split(separator: ":")[1].split(separator: ",") ?? [], id:\.self) { item in
-                                
-                                Text(item.trimmingCharacters(in: .whitespacesAndNewlines))
-                                    .padding(.vertical, 8)
-                                    .padding(.horizontal, 16)
-                                    .background(Color.mediumBrown)
-                                    .cornerRadius(30)
-                                    .font(.footnote)
-                                    
                             }
                         }
-                        
                     }
-                    .padding(16)
+                }
+                .padding(.horizontal, 16)
+                
+                Spacer()
+                
+                // Bottom Buttons
+                VStack{
+                    NavigationLink(destination: CameraView()) {
+                        Text("Scan Again")
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                    }
+                    .foregroundColor(.white)
+                    .background(Color.darkBrown)
+                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
-                    Spacer()
-                } else {
+                    NavigationLink(destination: CameraView()) {
+                        Text("Done")
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                    }
+                    .foregroundColor(.darkBrown)
+                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                }
+                .padding(.horizontal, 16)
+                
+            } else {
+                VStack{
                     ProgressView("Loading...")
                         .padding()
                 }
-                
             }
-            .navigationTitle("Scan Result")
-            .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                self.analysisResultViewModel.didAppear()
-                
-            }
+            
         }
-        
+        .navigationTitle("Scan Result")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            self.analysisResultViewModel.didAppear()
+            
+        }
         
     }
 }
