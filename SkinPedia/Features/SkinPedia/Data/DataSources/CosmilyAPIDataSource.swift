@@ -6,8 +6,25 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
+    
+    let model : coreDataManager = coreDataManager(modelName: "SkinPediaModel")
+    
+    func saveToCoreData(fetchResult : String) async {
+        lazy var moc = model.container.viewContext
+        
+        let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)
+        
+        toBeSavedResult.resultString = fetchResult
+        
+        do {
+            try moc.save()
+        } catch let err {
+            print(err.localizedDescription)
+        }
+    }
     
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError> {
         
@@ -28,7 +45,12 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
             
-            print(String(decoding: data ?? Data(), as: UTF8.self))
+            print(String(decoding: data , as: UTF8.self))
+            
+            let fetchResult : String = String(decoding: data , as: UTF8.self)
+            
+            //Kalo misal leg, bearti ini di UI detachedkan vin
+            await saveToCoreData(fetchResult: fetchResult)
             
             let decoder = JSONDecoder()
             let result = try decoder.decode(ProductAnalysisResult.self, from: data)

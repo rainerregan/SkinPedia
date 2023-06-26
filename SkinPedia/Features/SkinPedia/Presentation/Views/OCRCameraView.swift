@@ -91,10 +91,6 @@ struct CameraView: View {
                                 }
                                 
                                 Button{
-                                    Task.detached{
-                                        await analysisResultViewModel.saveToCoreData()
-                                    }
-                                    
                                     showDetailOCR = true;
                                     ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
                                     
