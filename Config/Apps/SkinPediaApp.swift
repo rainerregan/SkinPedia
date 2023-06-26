@@ -14,7 +14,7 @@ struct SkinPediaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            OnboardingPageView().preferredColorScheme(.light)
+            MainView().preferredColorScheme(.light)
         }
     }
 }

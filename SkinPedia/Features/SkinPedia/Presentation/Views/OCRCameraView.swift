@@ -30,8 +30,6 @@ struct CameraView: View {
                 } else {
                     CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi, capturedDevice: cameraViewModel.capturedDevice!)
                         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .ignoresSafeArea()
-                        .scaledToFit()
                 }
                     
                 // Capture button

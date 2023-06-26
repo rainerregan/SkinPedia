@@ -7,34 +7,34 @@
 
 import SwiftUI
 
-struct MainProfileView: View {
+struct MainView: View {
     
     @State var seletedView : Int = 0;
     
     var body: some View {
         TabView(selection : $seletedView){
-            profile
+            
+            CameraView()
                 .tabItem{
                     Label("Scan", systemImage: "viewfinder")
-                    
                 }
                 .tag(0)
             
-            
+            profile
+                .tabItem{
+                    Label("Profile", systemImage: "person.fill")
+                    
+                }
+                .tag(1)
         }
     }
     
     var profile : some View {
-        VStack
-        {
+        VStack{
             
         }
     }
     
 }
 
-struct MainProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainProfileView()
-    }
-}
+
