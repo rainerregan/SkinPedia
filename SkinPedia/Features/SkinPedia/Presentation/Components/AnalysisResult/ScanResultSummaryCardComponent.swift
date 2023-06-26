@@ -8,29 +8,31 @@
 import SwiftUI
 
 struct ScanResultSummaryCardComponent: View {
-    let allergentsCount: Double
-    let ingredientsCount: Double
+    let allergentsCount: Int
     
     var body: some View {
-        HStack{
-            VStack(alignment: .leading){
-                Text(allergentsCount > 0 ? "Warning!" : "Good!").font(.title3).fontWeight(.semibold).padding(.bottom, 4)
-                Text("We Have Found").font(.subheadline).padding(.bottom, 4)
-                AllergenceRatioBadgeComponent(allergentsCount: allergentsCount, ingredientsCount: ingredientsCount)
-                Text("In your Skincare Product").font(.subheadline)
-            }
-            Spacer()
+        VStack(alignment: .center) {
+            Text("Warning!").font(.title2).fontWeight(.semibold)
+            Text("We have found").font(.body)
             
-            CircularProgressView(allergentsCount: allergentsCount, ingredientsCount: ingredientsCount)
-                .frame(width: 100)
+            ZStack{
+                Circle()
+                    .fill(.yellow)
+                    .frame(width: 150, height: 150)
+                VStack{
+                    Text("\(allergentsCount)").font(.title).fontWeight(.semibold)
+                    Text("Allergents")
+                }
+            }
+            
+            Text("From the total ingredients")
         }
-        .padding(16)
-        .background(Color.lightBrown.opacity(0.3))
+        .padding(.vertical, 16)
     }
 }
 
 struct ScanResultSummaryCardComponent_Previews: PreviewProvider {
     static var previews: some View {
-        ScanResultSummaryCardComponent(allergentsCount: 10, ingredientsCount: 20)
+        ScanResultSummaryCardComponent(allergentsCount: 10)
     }
 }

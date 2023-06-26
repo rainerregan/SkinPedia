@@ -12,7 +12,6 @@ import SwiftUI
 extension Color {
     static var cream: Color = Color(hex: CustomColor.cream)
     static var customBrown : Color = Color(hex: CustomColor.brown)
-    static var customRed : Color = Color(hex: <#T##UInt#>)
     static var lightBrown: Color = Color(hex: CustomColor.lightBrown)
     static var mediumBrown: Color = Color(hex: CustomColor.mediumBrown)
     static var darkBrown: Color = Color(hex: CustomColor.darkBrown)
@@ -50,4 +49,5 @@ struct CustomColor {
     static var yellow: UInt = 0xFFC107
     static var red: UInt = 0x8C1818
     static var brown: UInt = 0x6F5240
+
 }

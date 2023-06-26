@@ -28,6 +28,7 @@
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
+		83A8BEC32A49AE4100522194 /* CautionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A8BEC22A49AE4100522194 /* CautionCard.swift */; };
 		AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */; };
 		AC0CF1BF2A499FB900126875 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BE2A499FB900126875 /* MainView.swift */; };
 		AC0CF1C12A49A67F00126875 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1C02A49A67F00126875 /* ProfileView.swift */; };
@@ -69,6 +70,7 @@
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		83A8BEC22A49AE4100522194 /* CautionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CautionCard.swift; sourceTree = "<group>"; };
 		AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPopUp.swift; sourceTree = "<group>"; };
 		AC0CF1BE2A499FB900126875 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AC0CF1C02A49A67F00126875 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				8316F6E52A43127500E529AE /* AllergenRowComponent.swift */,
 				8316F6EE2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift */,
 				8316F6F42A4442FC00E529AE /* ScanResultSummaryCardComponent.swift */,
+				83A8BEC22A49AE4100522194 /* CautionCard.swift */,
 			);
 			path = AnalysisResult;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */,
 				AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */,
 				AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */,
+				83A8BEC32A49AE4100522194 /* CautionCard.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
 				AC0CF1C12A49A67F00126875 /* ProfileView.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
@@ -624,7 +628,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 382VG5FRJK;
+				DEVELOPMENT_TEAM = 8B7DH7AN2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -654,7 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 382VG5FRJK;
+				DEVELOPMENT_TEAM = 8B7DH7AN2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
