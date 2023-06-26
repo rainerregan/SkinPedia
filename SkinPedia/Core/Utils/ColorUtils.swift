@@ -45,5 +45,5 @@ struct CustomColor {
     static var darkBrown: UInt = 0x44413C
     static var black: UInt = 0x272727
     static var yellow: UInt = 0xFFC107
-    static var red: UInt = 0x8C1818
+    static var red: UInt = 0xDE4E45
 }

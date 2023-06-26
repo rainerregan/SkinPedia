@@ -33,7 +33,7 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
-    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
+    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water, linalool")
     
     
     // MARK: - Private
