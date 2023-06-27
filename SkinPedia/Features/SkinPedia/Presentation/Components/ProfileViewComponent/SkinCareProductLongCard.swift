@@ -22,7 +22,7 @@ struct SkinCareProductLongCard: View {
         self.productName = productName
         
         switch productAnalysisResult.analysis?.harmful?.allergen?.count ?? 0 {
-        case 0...1 :
+        case 0 :
             self.allergenColor = .green
             self.badgeTextColor = .white
             self.listStateIcon = Image(systemName: "leaf.circle")
@@ -39,7 +39,6 @@ struct SkinCareProductLongCard: View {
             self.badgeTextColor = .white
             self.listStateIcon = Image(systemName: "exclamationmark.triangle.fill")
             break
-            
         default:
             self.allergenColor = .gray
             self.badgeTextColor = .darkBrown
