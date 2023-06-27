@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileView<CustomContent : View>: View {
+struct ProfilingView<CustomContent : View>: View {
     
     var customContent : () -> CustomContent
     var vStackAlign : HorizontalAlignment

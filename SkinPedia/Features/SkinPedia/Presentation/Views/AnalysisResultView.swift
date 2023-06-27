@@ -55,7 +55,8 @@ struct AnalysisResultView: View {
                 
                 // Bottom Buttons
                 VStack{
-                    NavigationLink(destination: CameraView()) {
+                    NavigationLink(destination: CameraView()
+                        .navigationBarHidden(true)) {
                         Text("Scan Again")
                             .font(.headline)
                             .padding()
@@ -66,7 +67,8 @@ struct AnalysisResultView: View {
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
-                    NavigationLink(destination: CameraView()) {
+                    NavigationLink(destination: CameraView()
+                        .navigationBarHidden(true)) {
                         Text("Done")
                             .font(.headline)
                             .padding()
