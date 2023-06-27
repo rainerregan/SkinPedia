@@ -47,7 +47,7 @@ struct ProfilePageView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width, height: 228)
                 .padding(.top, 35)
-                .background(Color.lightestBrown)
+                .background(Color.lightestBrown.opacity(0.4))
                 .background{
                     NavigationLink("", destination: profilingPage1(), isActive: $profileViewModel.showProfiling)
                 }
@@ -70,6 +70,15 @@ struct ProfilePageView: View {
                                 .foregroundColor(Color.customBrown)
                         }
                     }
+                    
+                    // HistoryList
+                    VStack {
+                        ForEach(profileViewModel.fetchHistory()) { history in
+                            SkinCareProductLongCard(productAnalysisResult: history, productName: "History")
+                        }
+                    }
+                    
+                    
                 }.padding(.top, 20)
                     .padding(.horizontal, 16)
                 Spacer()

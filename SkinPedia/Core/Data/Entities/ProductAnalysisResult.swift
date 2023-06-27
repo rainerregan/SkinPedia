@@ -6,7 +6,8 @@
 import Foundation
 
 // MARK: - ProductAnalysisResult
-struct ProductAnalysisResult: Codable {
+struct ProductAnalysisResult: Codable, Identifiable {
+    let id: String = UUID().uuidString
     var analysis: Analysis?
 }
 

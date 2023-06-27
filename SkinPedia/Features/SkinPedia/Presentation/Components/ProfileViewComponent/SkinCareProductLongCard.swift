@@ -9,36 +9,40 @@ import SwiftUI
 
 
 struct SkinCareProductLongCard: View {
-    var StringProductName : String
-    var dateScanned : String
+    var productName: String?
+    var productAnalysisResult : ProductAnalysisResult
+    var dateScanned : String?
     var allergenColor : Color
+    var badgeTextColor : Color
     var listStateIcon : Image
-    var allergenCount : Int
     
-    init(StringProductName: String, dateScanned: Date, totalAllergen: Int) {
-        self.allergenCount = totalAllergen
-        self.StringProductName = StringProductName
+    init(productAnalysisResult: ProductAnalysisResult, productName: String) {
+        self.productAnalysisResult = productAnalysisResult
+//        self.dateScanned = dateScanned.formatted(date: .abbreviated, time: .omitted)
+        self.productName = productName
         
-        self.dateScanned = dateScanned.formatted(date: .abbreviated, time: .omitted)
-        
-        switch totalAllergen {
+        switch productAnalysisResult.analysis?.harmful?.allergen?.count ?? 0 {
         case 0...1 :
             self.allergenColor = .green
+            self.badgeTextColor = .white
             self.listStateIcon = Image(systemName: "leaf.circle")
             break
             
         case 1...5 :
             self.allergenColor = .yellow
+            self.badgeTextColor = .darkBrown
             self.listStateIcon = Image(systemName: "exclamationmark.triangle.fill")
             break
             
         case let x where x > 5 :
             self.allergenColor = .red
+            self.badgeTextColor = .white
             self.listStateIcon = Image(systemName: "exclamationmark.triangle.fill")
             break
             
         default:
             self.allergenColor = .gray
+            self.badgeTextColor = .darkBrown
             self.listStateIcon = Image(systemName: "questionmark.diamond")
             break
         }
@@ -46,53 +50,44 @@ struct SkinCareProductLongCard: View {
     
     var body: some View {
         VStack (alignment: .leading){
-            Text(StringProductName)
+            Text(productName ?? "")
                 .font(.title3)
                 .fontWeight(.semibold)
-                .padding(.leading, 23)
-                .padding(.top, 9)
-            Text(dateScanned)
-                .font(.system(size: 12))
+            Text("Date")
+                .font(.footnote)
                 .foregroundColor(.textGray)
-                .padding(.leading, 23)
             
             HStack{
-                HStack{
-                    listStateIcon
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 16)
-                        .padding(.leading, 10)
-                        .padding(.vertical, 5)
-                    Text("This product contains \(allergenCount) allergents!")
-                        .font(.subheadline)
-                        .padding(.trailing, 7)
-                    
-                }
-                .background(allergenColor)
-                .cornerRadius(12)
-                .padding(.top, 7)
-                
+                listStateIcon
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 16)
+                    .foregroundColor(badgeTextColor)
+                Text("This product contains \(productAnalysisResult.analysis?.harmful?.allergen?.count ?? 0) allergents!")
+                    .font(.subheadline)
+                    .foregroundColor(badgeTextColor)
             }
-            .padding(.leading, 23)
+            .padding(8)
+            .background(allergenColor)
+            .cornerRadius(10)
+            
+            Spacer().frame(height: 16)
             
             HStack{
                 Text("Detail Information")
+                    .font(.subheadline)
                 Spacer()
                 Image(systemName: "chevron.right.circle")
             }
-            .padding(.leading, 23)
-            .padding(.trailing, 16)
-            
-            Spacer()
-        }.frame(width: 358, height: 138, alignment: .leading)
-            .background(Color.lightestBrown)
-            .cornerRadius(18.24)
+        }
+        .padding(16)
+        .background(Color.lightestBrown.opacity(0.4))
+        .cornerRadius(10)
     }
 }
 
-struct SkinCareProductLongCard_Previews: PreviewProvider {
-    static var previews: some View {
-        SkinCareProductLongCard(StringProductName: "skincare #3", dateScanned: Date(), totalAllergen: 6)
-    }
-}
+//struct SkinCareProductLongCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SkinCareProductLongCard(StringProductName: "skincare #3", dateScanned: Date(), totalAllergen: 6)
+//    }
+//}
