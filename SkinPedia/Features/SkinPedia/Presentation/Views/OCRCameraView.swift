@@ -17,134 +17,137 @@ struct CameraView: View {
     @State var isShowPopUp : Bool = false;
     
     var body: some View {
-        ZStack{
-            VStack {
-                // Camera preview
-                if cameraViewModel.capturedImage != nil {
-                    if isShowPopUp {
-                        Image(uiImage: cameraViewModel.capturedImage!)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
+        NavigationView {
+            ZStack{
+                VStack {
+                    // Camera preview
+                    if cameraViewModel.capturedImage != nil {
+                        if isShowPopUp {
+                            Image(uiImage: cameraViewModel.capturedImage!)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
+                        }
+                    } else {
+                        CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi, capturedDevice: cameraViewModel.capturedDevice!)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     }
-                } else {
-                    CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi, capturedDevice: cameraViewModel.capturedDevice!)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .ignoresSafeArea()
-                        .scaledToFit()
-                }
+                        
+                    // Capture button
+                    Button(action: {
+                        cameraViewModel.capturePhoto()
+                        isShowPopUp = true
+        //                    print(cameraViewModel.capturedImage == nil)
+                        
+                    }, label: {
+                        Image(systemName: "camera")
+                            .font(.largeTitle)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    })
+                    .padding()
                     
-                // Capture button
-                Button(action: {
-                    cameraViewModel.capturePhoto()
-                    isShowPopUp = true
-    //                    print(cameraViewModel.capturedImage == nil)
                     
-                }, label: {
-                    Image(systemName: "camera")
-                        .font(.largeTitle)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.black.opacity(0.7))
-                        .clipShape(Circle())
-                })
-                .padding()
+                }.ignoresSafeArea(.keyboard)
                 
+                if isShowPopUp {
+                    PopupView(isShowingPopup: $isShowPopUp) {
+                        VStack {
+                            VStack(alignment: .center){
+                                Text("Add Name")
+                                    .font(.system(size: 17, weight: .semibold))
+                                
+                                Text("Enter a name for this scanned product")
+                                    .font(.system(size : 13, weight: .regular))
+                                
+                                TextField("SkinScan #1", text: $analysisResultViewModel.toBeAnalyzedProductName)
+                                    .frame(minWidth: .zero, maxWidth: .infinity, minHeight : 30, idealHeight : 30.33, maxHeight : 31)
+                                    .padding(.horizontal, 11)
+                                    .background(.white)
+                                    .cornerRadius(7)
+                                    .padding(.horizontal, 11)
+                                
+                                Spacer()
+                                
+                                HStack(spacing: 0){
+                                    Button{
+                                        print("cancel clicked")
+                                        isShowPopUp = false
+                                        print(isShowPopUp)
+                                        cameraViewModel.capturedImage = nil;
+                                        
+                                    } label: {
+                                        Text("Cancel")
+                                            .font(.system(size: 17, weight: .semibold))
+                                        
+                                            .padding(.horizontal, 40)
+                                            .padding(.vertical,
+                                                     11)
+                                            .frame(width: 270/2)
+                                            .border(.gray.opacity(0.36), width: 0.33)
+                                    }
+                                    
+                                    Button{
+                                        ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
+                                        print("Show detail is clicked")
+                                        showDetailOCR = true;
+                                        print("showDetailocr", showDetailOCR)
+                                        
+                                    } label: {
+                                        Text("Save")
+                                            .font(.system(size: 17, weight: .semibold))
+                                            .padding(.horizontal, 40)
+                                            .padding(.vertical,
+                                                     11)
+                                            .frame(width: 270/2)
+                                            .border(.gray.opacity(0.36), width: 0.33)
+                                        
+                                    }
+                                }.padding(.horizontal, 0)
+                                    
+                            }
+                            .padding(.top, 22)
+                            
+                            
+                        }
+                        .background(Color(red: 245, green: 248, blue: 249))
+                        .frame(width:270, height: 174)
+                        .cornerRadius(14)
+                        .transition(.scale)
+                        
+                    }
+                    
+                    
+                }
                 NavigationLink("", destination: OCRProductDetailView()
                     .environmentObject(cameraViewModel)
                     .environmentObject(analysisResultViewModel)
                     .navigationBarHidden(true), isActive: $showDetailOCR)
-            }.ignoresSafeArea(.keyboard)
-            
-            if isShowPopUp {
-                PopupView(isShowingPopup: $isShowPopUp) {
-                    VStack {
-                        VStack(alignment: .center){
-                            Text("Add Name")
-                                .font(.system(size: 17, weight: .semibold))
-                            
-                            Text("Enter a name for this scanned product")
-                                .font(.system(size : 13, weight: .regular))
-                            
-                            TextField("SkinScan #1", text: $analysisResultViewModel.toBeAnalyzedProductName)
-                                .frame(minWidth: .zero, maxWidth: .infinity, minHeight : 30, idealHeight : 30.33, maxHeight : 31)
-                                .padding(.horizontal, 11)
-                                .background(.white)
-                                .cornerRadius(7)
-                                .padding(.horizontal, 11)
-                            
-                            Spacer()
-                            
-                            HStack(spacing: 0){
-                                Button{
-                                    isShowPopUp = false
-                                    cameraViewModel.capturedImage = nil;
-                                } label: {
-                                    Text("Cancel")
-                                        .font(.system(size: 17, weight: .semibold))
-                                    
-                                        .padding(.horizontal, 40)
-                                        .padding(.vertical,
-                                                 11)
-                                        .frame(width: 270/2)
-                                        .border(.gray.opacity(0.36), width: 0.33)
-                                }
-                                
-                                Button{
-                                    Task.detached{
-                                        await analysisResultViewModel.saveToCoreData()
-                                    }
-                                    
-                                    showDetailOCR = true;
-                                    ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
-                                    
-                                } label: {
-                                    Text("Save")
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .padding(.horizontal, 40)
-                                        .padding(.vertical,
-                                                 11)
-                                        .frame(width: 270/2)
-                                        .border(.gray.opacity(0.36), width: 0.33)
-                                    
-                                }
-                            }.padding(.horizontal, 0)
-                                
-                        }
-                        .padding(.top, 22)
-                        
-                        
-                    }
-                    .background(Color(red: 245, green: 248, blue: 249))
-                    .frame(width:270, height: 174)
-                    .cornerRadius(14)
-                    .transition(.scale)
-                    
-                }
-                
-                
             }
             
-        }
-        
-        .onAppear {
-            cameraViewModel.checkCameraPermission()
-            cameraViewModel.setROI(roi: ocrViewModel.roi)
-        }
-        .onChange(of: cameraViewModel.capturedImage){
-            newImage in
-            isShowPopUp = true
-        }
-        .onChange(of: ocrViewModel.ingredients) {
-            newIngred in
-            let processedIngredients = newIngred.processSkincareIngredients()
-            print("Ingredients : \(processedIngredients)")
-            analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
-        }
-        .onDisappear{
-            isShowPopUp = false;
-        }
+            .onAppear {
+                cameraViewModel.checkCameraPermission()
+                cameraViewModel.setROI(roi: ocrViewModel.roi)
+            }
+            .onChange(of: cameraViewModel.capturedImage){
+                newImage in
+                if newImage != nil {
+                    isShowPopUp = true
+                }
+            }
+            .onChange(of: ocrViewModel.ingredients) {
+                newIngred in
+                let processedIngredients = newIngred.processSkincareIngredients()
+                print("Ingredients : \(processedIngredients)")
+                analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
+            }
+            .onDisappear{
+                isShowPopUp = false;
+            }
         .ignoresSafeArea(.keyboard)
+        }
         
     }
 }

@@ -30,6 +30,13 @@
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
 		83A8BEC32A49AE4100522194 /* CautionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A8BEC22A49AE4100522194 /* CautionCard.swift */; };
 		AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */; };
+		AC0CF1BF2A499FB900126875 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1BE2A499FB900126875 /* MainView.swift */; };
+		AC0CF1C12A49A67F00126875 /* ProfilingViewTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1C02A49A67F00126875 /* ProfilingViewTemplate.swift */; };
+		AC0CF1C42A49A98100126875 /* SideEffectListProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */; };
+		AC1A987B2A49CC6D00BE3FAA /* ProfilingPage1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A987A2A49CC6D00BE3FAA /* ProfilingPage1.swift */; };
+		AC1A987D2A49CCBA00BE3FAA /* ProfilingPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */; };
+		AC1A98802A4AD56F00BE3FAA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A987F2A4AD56F00BE3FAA /* ProfileViewModel.swift */; };
+		AC1A98822A4AD59B00BE3FAA /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A98812A4AD59B00BE3FAA /* ProfilePageView.swift */; };
 		AC6CC7F92A41DE05007BF6FA /* OCRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */; };
 		AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */; };
 		AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */; };
@@ -43,6 +50,7 @@
 		AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */; };
 		AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */; };
 		AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */; };
+		ACBD1FFD2A4AE310008BF2B8 /* SkinCareProductLongCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +77,13 @@
 		839690522A3C5D7700E3D262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		83A8BEC22A49AE4100522194 /* CautionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CautionCard.swift; sourceTree = "<group>"; };
 		AC0CF1BA2A46AC8600126875 /* FloatingPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPopUp.swift; sourceTree = "<group>"; };
+		AC0CF1BE2A499FB900126875 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AC0CF1C02A49A67F00126875 /* ProfilingViewTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingViewTemplate.swift; sourceTree = "<group>"; };
+		AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideEffectListProfilePage.swift; sourceTree = "<group>"; };
+		AC1A987A2A49CC6D00BE3FAA /* ProfilingPage1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingPage1.swift; sourceTree = "<group>"; };
+		AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingPage2.swift; sourceTree = "<group>"; };
+		AC1A987F2A4AD56F00BE3FAA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		AC1A98812A4AD59B00BE3FAA /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRCameraView.swift; sourceTree = "<group>"; };
 		AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewProtocol.swift; sourceTree = "<group>"; };
@@ -82,6 +97,7 @@
 		AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepository.swift; sourceTree = "<group>"; };
 		AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepositoryProtocol.swift; sourceTree = "<group>"; };
+		ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareProductLongCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +139,7 @@
 		8316F6CF2A41598400E529AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				AC1A987E2A4AD55800BE3FAA /* ProfilePageViewModel */,
 				AC6CC8032A41E1DD007BF6FA /* CameraViewModel */,
 				AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */,
 				8316F6D02A4159B100E529AE /* AnalysisResultViewModel */,
@@ -144,11 +161,14 @@
 		8316F6D72A415C5E00E529AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */,
 				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 				8316F6DD2A419B6200E529AE /* SampleFormView.swift */,
 				AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */,
 				AC6CC8082A421986007BF6FA /* OCRProductDetailView.swift */,
 				8316F6E72A442E5200E529AE /* OnboardingPageView.swift */,
+				AC0CF1BE2A499FB900126875 /* MainView.swift */,
+				AC1A98812A4AD59B00BE3FAA /* ProfilePageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +184,7 @@
 		8316F6DB2A419A4200E529AE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AC0CF1C22A49A96000126875 /* ProfileViewComponent */,
 				8316F6EB2A443C8000E529AE /* Common */,
 				8316F6DC2A419A4F00E529AE /* AnalysisResult */,
 			);
@@ -224,6 +245,33 @@
 				839690522A3C5D7700E3D262 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC0CF1C22A49A96000126875 /* ProfileViewComponent */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */,
+				ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */,
+			);
+			path = ProfileViewComponent;
+			sourceTree = "<group>";
+		};
+		AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CF1C02A49A67F00126875 /* ProfilingViewTemplate.swift */,
+				AC1A987A2A49CC6D00BE3FAA /* ProfilingPage1.swift */,
+				AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */,
+			);
+			path = ProfilingViewPages;
+			sourceTree = "<group>";
+		};
+		AC1A987E2A4AD55800BE3FAA /* ProfilePageViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A987F2A4AD56F00BE3FAA /* ProfileViewModel.swift */,
+			);
+			path = ProfilePageViewModel;
 			sourceTree = "<group>";
 		};
 		AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */ = {
@@ -452,8 +500,11 @@
 				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8316F6E62A43127500E529AE /* AllergenRowComponent.swift in Sources */,
+				AC1A987D2A49CCBA00BE3FAA /* ProfilingPage2.swift in Sources */,
 				8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */,
+				AC0CF1C42A49A98100126875 /* SideEffectListProfilePage.swift in Sources */,
 				AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */,
+				AC1A98822A4AD59B00BE3FAA /* ProfilePageView.swift in Sources */,
 				8316F6E22A41B5BB00E529AE /* IngredientRowComponent.swift in Sources */,
 				8316F6E42A42E60800E529AE /* StringUtils.swift in Sources */,
 				8316F6D92A41879700E529AE /* AnalysisResultView.swift in Sources */,
@@ -463,21 +514,26 @@
 				AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */,
 				8316F6D62A415A2100E529AE /* AnalysisResultViewModelInput.swift in Sources */,
 				AC82D6932A3C6EBB00CC80F0 /* SkinPediaModel.xcdatamodeld in Sources */,
+				AC1A987B2A49CC6D00BE3FAA /* ProfilingPage1.swift in Sources */,
 				8316F6EF2A4440A800E529AE /* AllergenceRatioBadgeComponent.swift in Sources */,
 				8316F6EA2A44337D00E529AE /* ColorUtils.swift in Sources */,
 				8316F6E82A442E5200E529AE /* OnboardingPageView.swift in Sources */,
 				8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */,
+				AC0CF1BF2A499FB900126875 /* MainView.swift in Sources */,
+				ACBD1FFD2A4AE310008BF2B8 /* SkinCareProductLongCard.swift in Sources */,
 				AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */,
 				AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */,
 				AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */,
 				AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */,
 				83A8BEC32A49AE4100522194 /* CautionCard.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
+				AC0CF1C12A49A67F00126875 /* ProfilingViewTemplate.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
 				8316F6D42A4159F200E529AE /* AnalysisResultViewModelOutput.swift in Sources */,
 				8316F6ED2A443C9700E529AE /* CircularProgressView.swift in Sources */,
 				AC6CC8072A41E2C7007BF6FA /* OCRViewModelProtocol.swift in Sources */,
 				8316F6C62A4149C000E529AE /* ProductAnalysisRequest.swift in Sources */,
+				AC1A98802A4AD56F00BE3FAA /* ProfileViewModel.swift in Sources */,
 				AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */,
 				8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */,
 			);

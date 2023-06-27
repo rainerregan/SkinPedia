@@ -23,7 +23,7 @@ struct OnboardingPageView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: CameraView()) {
+                NavigationLink(destination: MainView().navigationBarHidden(true)) {
                     Text("Let's Start")
                         .font(.headline)
                         .padding()
