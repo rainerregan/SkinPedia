@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct profilePage1: View {
+struct profilingPage1: View {
     
     var sideEffects : [String] =
     [
@@ -20,7 +20,7 @@ struct profilePage1: View {
     @State var goToPage2 = false
     
     var body: some View {
-        ProfileView(alignment: .leading){
+        ProfilingView(alignment: .leading){
             Text("Did your skincare ever give you some side effects?")
                 .font(.title3)
                 .fontWeight(.semibold)
@@ -78,7 +78,7 @@ struct profilePage1: View {
             }
             .padding(.bottom, 84)
             .background{
-                NavigationLink("", destination: ProfilePage2().navigationBarHidden(true), isActive: $goToPage2)
+                NavigationLink("", destination: ProfilingPage2().navigationBarHidden(true), isActive: $goToPage2)
             }
            
         }
@@ -87,7 +87,7 @@ struct profilePage1: View {
 
 struct MyPreviewProvider_Previews: PreviewProvider {
     static var previews: some View {
-        profilePage1()
+        profilingPage1()
     }
 }
 

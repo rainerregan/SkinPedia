@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ProfilePage2: View {
+struct ProfilingPage2: View {
     @State var querrySearchNameList : [String]?
     @State var SkinCareName : String = ""
     @State var ableToContinue : Bool = false
     @State var selectedProduct : [NSObject] = [];
     
     var body: some View {
-        ProfileView(alignment: .leading){
+        ProfilingView(alignment: .leading){
             Text("What was that product?")
                 .font(.title3)
                 .fontWeight(.semibold)
@@ -96,6 +96,6 @@ struct ProfilePage2: View {
 
 struct ProfilePage2_Previews: PreviewProvider {
     static var previews: some View {
-        ProfilePage2()
+        ProfilingPage2()
     }
 }

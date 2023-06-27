@@ -10,7 +10,7 @@ import SwiftUI
 
 
 extension Color {
-    static var cream: Color = Color(hex: CustomColor.cream)
+    static public var cream: Color = Color(hex: CustomColor.cream)
     static var customBrown : Color = Color(hex: CustomColor.brown)
     static var lightBrown: Color = Color(hex: CustomColor.lightBrown)
     static var mediumBrown: Color = Color(hex: CustomColor.mediumBrown)
@@ -22,6 +22,7 @@ extension Color {
     static var customLightGray : Color = Color(hex: CustomColor.lightGray)
     static var customDarkGray : Color = Color(hex: CustomColor.darkGray)
     static var customMediumGray : Color = Color(hex: CustomColor.mediumGray)
+    static var lightestBrown : Color = Color(hex: CustomColor.ligthestBrown)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(
@@ -57,4 +58,5 @@ struct CustomColor {
     static var lightGray : UInt = 0xF5F8F9
     static var darkGray : UInt = 0x9A9A9A
     static var mediumGray : UInt = 0xCACACA
+    static var ligthestBrown : UInt = 0xF5ECDB
 }
