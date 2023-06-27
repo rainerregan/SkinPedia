@@ -20,6 +20,11 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
     @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water, linalool")
     
+    
+    init(result: ProductAnalysisResult? = nil) {
+        self.analyzedProductResult = result ?? ProductAnalysisResult(analysis: nil)
+    }
+    
     // Memfilter data ingredient berdasarkan allergen yang di pass. Mengecek alias
     func filterIngredientByAllergent(allergent: ItemList) -> [IngredientsTable] {
         var filteredIngredient = analyzedProductResult.analysis?.ingredientsTable?.filter({$0.alias == allergent.alias})
