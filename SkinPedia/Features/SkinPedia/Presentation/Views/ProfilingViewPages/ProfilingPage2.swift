@@ -26,6 +26,7 @@ struct ProfilingPage2: View {
             VStack(spacing: 0){
                 VStack(alignment: .leading, spacing: 0){
                     Text("Skincare Product")
+                        .font(.subheadline)
                         .foregroundColor(.customDarkGray)
                         .padding(.bottom, 4)
                         .padding(.horizontal, 16)
@@ -78,14 +79,17 @@ struct ProfilingPage2: View {
             Button{
                 
             } label: {
-                Text("Continue")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor((selectedProduct.isEmpty) ? Color.darkBrown : .white)
-                    .padding(EdgeInsets(top: 14, leading: 157, bottom: 14, trailing: 157))
-                    .background((selectedProduct.isEmpty) ? Color.customMediumGray.opacity(0.8) :  Color.customBrown)
-                    .cornerRadius(12)
+                VStack{
+                    Text("Continue")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor((selectedProduct.isEmpty) ? Color.darkBrown : .white)
+                        .padding(.vertical, 14)
                     
+                }
+                .frame(width: 358)
+                .background((selectedProduct.isEmpty) ? Color.customMediumGray.opacity(0.8) :  Color.customBrown)
+                .cornerRadius(12)
                     
             }
             .disabled(selectedProduct.isEmpty)

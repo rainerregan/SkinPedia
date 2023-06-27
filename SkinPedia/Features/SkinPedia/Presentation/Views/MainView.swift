@@ -20,7 +20,7 @@ struct MainView: View {
                 }
                 .tag(0)
             
-            profile
+            ProfilePageView()
                 .tabItem{
                     Label("Profile", systemImage: "person.fill")
                     

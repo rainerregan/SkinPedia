@@ -43,13 +43,37 @@ struct ProfilePageView: View {
                             .background(Color.customBrown)
                             .cornerRadius(12)
                     }
-                    
+                    Spacer()
                 }
+                .frame(width: UIScreen.main.bounds.width, height: 228)
                 .padding(.top, 35)
                 .background(Color.lightestBrown)
+                .background{
+                    NavigationLink("", destination: profilingPage1(), isActive: $profileViewModel.showProfiling)
+                }
+                .padding()
                 
+                VStack {
+                    HStack {
+                        Text("Your Recent Results")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        
+                        Spacer()
+                        
+                        Button{
+                            
+                        } label: {
+                            Text("See More")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .foregroundColor(Color.customBrown)
+                        }
+                    }
+                }.padding(.top, 20)
+                    .padding(.horizontal, 16)
+                Spacer()
                 
-                NavigationLink("", destination: profilingPage1(), isActive: $profileViewModel.showProfiling)
             }
             .navigationTitle("Profile")
                 .navigationBarTitleDisplayMode(.inline)

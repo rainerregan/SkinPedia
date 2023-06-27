@@ -50,6 +50,7 @@
 		AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */; };
 		AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */; };
 		AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */; };
+		ACBD1FFD2A4AE310008BF2B8 /* SkinCareProductLongCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		AC82D6982A3CCBFF00CC80F0 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepository.swift; sourceTree = "<group>"; };
 		AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepositoryProtocol.swift; sourceTree = "<group>"; };
+		ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareProductLongCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				AC0CF1C32A49A98000126875 /* SideEffectListProfilePage.swift */,
+				ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */,
 			);
 			path = ProfileViewComponent;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				8316F6E82A442E5200E529AE /* OnboardingPageView.swift in Sources */,
 				8316F6CE2A4155DA00E529AE /* GetProductAnalysisUseCase.swift in Sources */,
 				AC0CF1BF2A499FB900126875 /* MainView.swift in Sources */,
+				ACBD1FFD2A4AE310008BF2B8 /* SkinCareProductLongCard.swift in Sources */,
 				AC76C40A2A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift in Sources */,
 				AC76C4032A4067250009EDFE /* CosmilyAPIDataSource.swift in Sources */,
 				AC0CF1BB2A46AC8600126875 /* FloatingPopUp.swift in Sources */,
