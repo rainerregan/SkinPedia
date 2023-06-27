@@ -16,10 +16,13 @@ struct SkinCareProductLongCard: View {
     var badgeTextColor : Color
     var listStateIcon : Image
     
+    @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    
     init(productAnalysisResult: ProductAnalysisResult, productName: String) {
         self.productAnalysisResult = productAnalysisResult
 //        self.dateScanned = dateScanned.formatted(date: .abbreviated, time: .omitted)
         self.productName = productName
+        
         
         switch productAnalysisResult.analysis?.harmful?.allergen?.count ?? 0 {
         case 0 :
