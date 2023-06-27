@@ -72,12 +72,16 @@ struct SkinCareProductLongCard: View {
             
             Spacer().frame(height: 16)
             
-            HStack{
-                Text("Detail Information")
-                    .font(.subheadline)
-                Spacer()
-                Image(systemName: "chevron.right.circle")
+            NavigationLink(destination: AnalysisResultView()){
+                HStack{
+                    Text("Detail Information")
+                        .font(.subheadline)
+                    Spacer()
+                    Image(systemName: "chevron.right.circle")
+                }
             }
+            
+            
         }
         .padding(16)
         .background(Color.lightestBrown.opacity(0.4))
