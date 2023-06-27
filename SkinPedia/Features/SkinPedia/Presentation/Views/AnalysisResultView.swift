@@ -91,8 +91,9 @@ struct AnalysisResultView: View {
         .navigationTitle("Scan Result")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            self.analysisResultViewModel.didAppear()
-            
+            if(analysisResultViewModel.analyzedProductResult.analysis == nil){
+                self.analysisResultViewModel.didAppear()
+            }
         }
         
     }
