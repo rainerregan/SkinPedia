@@ -65,13 +65,17 @@ struct profilingPage1: View {
                     goToPage2 = true
                 
                 } label : {
-                    Text("Next")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 14, leading: 157, bottom: 14, trailing: 157))
-                        .background(Color.customBrown)
-                        .cornerRadius(12)
+                    VStack {
+                        Text("Next")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 14)
+                    }
+                    .frame(width: 358)
+                    .background(Color.customBrown)
+                    .cornerRadius(12)
+                    
                 }
                 
                 Spacer()

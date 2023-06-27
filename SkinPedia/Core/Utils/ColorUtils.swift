@@ -23,6 +23,7 @@ extension Color {
     static var customDarkGray : Color = Color(hex: CustomColor.darkGray)
     static var customMediumGray : Color = Color(hex: CustomColor.mediumGray)
     static var lightestBrown : Color = Color(hex: CustomColor.ligthestBrown)
+    static var textGray : Color = Color(hex: CustomColor.textGray)
     
     init(hex: UInt, alpha: Double = 1) {
         self.init(
@@ -59,4 +60,5 @@ struct CustomColor {
     static var darkGray : UInt = 0x9A9A9A
     static var mediumGray : UInt = 0xCACACA
     static var ligthestBrown : UInt = 0xF5ECDB
+    static var textGray : UInt = 0x828282
 }
