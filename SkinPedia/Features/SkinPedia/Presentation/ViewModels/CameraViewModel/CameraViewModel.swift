@@ -9,6 +9,8 @@ import AVFoundation
 import SwiftUI
 
 class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, CameraViewProtocol {
+    
+    
     let camWidth : CGFloat = 300.0
     let camHeight : CGFloat = 400.0
     let session = AVCaptureSession()
@@ -21,6 +23,10 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
     override init() {
         super.init()
         setupCamera()
+    }
+    
+    func saveToCoreData(name : String) async {
+        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name);
     }
     
     func setROI(roi : CGRect) {

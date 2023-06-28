@@ -51,7 +51,7 @@ struct ProfilePageView: View {
                     .padding(.top, 35)
                     .background(Color.lightestBrown.opacity(0.4))
                     .background{
-                        NavigationLink("", destination: profilingPage1(), isActive: $profileViewModel.showProfiling)
+                        NavigationLink("", destination: ProfilingInformationView(), isActive: $profileViewModel.showProfiling)
                     }
                     .padding()
                     

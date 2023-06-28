@@ -10,4 +10,5 @@ import Foundation
 protocol CameraViewProtocol {
     func setupCamera();
     func checkCameraPermission();
+    func saveToCoreData(name : String) async;
 }

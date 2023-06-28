@@ -16,7 +16,7 @@ struct SideEffectListProfilePage: View {
             Image(systemName: "exclamationmark.triangle.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 15)
+                .frame(width: 16, height: 16)
                 .foregroundColor(.redDanger)
             
             Text(label)

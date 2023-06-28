@@ -11,13 +11,20 @@ import SwiftUI
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
     
     let model : coreDataManager = coreDataManager(modelName: "SkinPediaModel")
+    let fetchResult : String? = nil
     
-    func saveToCoreData(fetchResult : String) async {
+    func saveToCoreData(name : String) async {
         lazy var moc = model.container.viewContext
         
         let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)
         
-        toBeSavedResult.resultString = fetchResult
+        if let fResult = self.fetchResult {
+            toBeSavedResult.resultString = fResult
+            toBeSavedResult.scanName = name
+            toBeSavedResult.date = Date()
+        }
+        
+        
         
         do {
             try moc.save()
@@ -35,6 +42,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         
         let requestBody : [String:String] = ["ingredients" : productAnalysisRequest.ingredients]
 
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -48,9 +56,6 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
             print(String(decoding: data , as: UTF8.self))
             
             let fetchResult : String = String(decoding: data , as: UTF8.self)
-            
-            //Kalo misal leg, bearti ini di UI detachedkan vin
-            await saveToCoreData(fetchResult: fetchResult)
             
             let decoder = JSONDecoder()
             let result = try decoder.decode(ProductAnalysisResult.self, from: data)
