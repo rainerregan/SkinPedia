@@ -42,6 +42,8 @@ struct ProfilingFormView: View {
                                     .debounce(for: .seconds(2), scheduler: DispatchQueue.main)
                             ) {
                                 guard !$0.isEmpty else { return }
+                                
+                                // Nunggu 2 detik kemudian nembak API
                                 print(">> searching for: \($0)")
                                 profilingViewModel.getProductDetails()
                             }
@@ -61,6 +63,7 @@ struct ProfilingFormView: View {
                     }
                     .padding(.trailing, 16)
                     
+                    // TODO: Benerin Tampilan LIST
                     ScrollView{
                         VStack{
                             ForEach(profilingViewModel.productDetailsResult, id:\.self){ result in
