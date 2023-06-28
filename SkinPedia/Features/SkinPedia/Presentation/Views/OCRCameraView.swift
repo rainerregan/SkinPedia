@@ -132,7 +132,6 @@ struct CameraView: View {
             
             .onAppear {
                 cameraViewModel.checkCameraPermission()
-                cameraViewModel.setROI(roi: ocrViewModel.roi)
             }
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in

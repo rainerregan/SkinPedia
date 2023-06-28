@@ -17,7 +17,6 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
     private let photoOutput = AVCapturePhotoOutput()
     @Published var capturedImage : UIImage?
     var capturedDevice : AVCaptureDevice? = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
-    var roi : CGRect?
     
     
     override init() {
@@ -29,9 +28,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name);
     }
     
-    func setROI(roi : CGRect) {
-        self.roi = roi
-    }
+    
 
     func checkCameraPermission() {
         AVCaptureDevice.requestAccess(for: .video) { granted in

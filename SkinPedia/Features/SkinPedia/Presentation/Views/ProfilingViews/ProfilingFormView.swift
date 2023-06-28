@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ProfilingFormView: View {
     
-    @ObservedObject var profilingViewModel = ProfilingViewModel()
+    @StateObject var profilingViewModel = ProfilingViewModel()
+    @EnvironmentObject var productAnalysistViewModel : AnalysisResultViewModel
+    
     
     var body: some View {
         VStack(alignment: .leading){
@@ -24,12 +26,19 @@ struct ProfilingFormView: View {
             
             VStack(spacing: 0){
                 VStack(alignment: .leading, spacing: 0){
-                    Text("Skincare Product")
-                        .font(.subheadline)
-                        .foregroundColor(.customDarkGray)
-                        .padding(.bottom, 4)
-                        .padding(.horizontal, 16)
-                        .padding(.top, 10)
+                    
+                    HStack(spacing: 0) {
+                        Text("Skincare Product")
+                            .font(.subheadline)
+                            .foregroundColor(.customDarkGray)
+                            .padding(.bottom, 4)
+                            .padding(.leading, 16)
+                            .padding(.top, 10)
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.customLightGray)
+                    
                     
                     HStack{
                         TextField("Input Skincare Name", text: $profilingViewModel.textFieldString)
@@ -39,13 +48,15 @@ struct ProfilingFormView: View {
                             .padding(.bottom, 10)
                             .onReceive(
                                 profilingViewModel.$textFieldString
-                                    .debounce(for: .seconds(2), scheduler: DispatchQueue.main)
                             ) {
-                                guard !$0.isEmpty else { return }
+                                guard !$0.isEmpty else {
+                                    profilingViewModel.productDetailsResult.removeAll(keepingCapacity: false)
+                                    return }
                                 
                                 // Nunggu 2 detik kemudian nembak API
                                 print(">> searching for: \($0)")
                                 profilingViewModel.getProductDetails()
+                                profilingViewModel.searchQuerryIsShown = true
                             }
                         
                         Spacer()
@@ -53,48 +64,108 @@ struct ProfilingFormView: View {
                         Button {
                             profilingViewModel.textFieldString = ""
                             print("Clicked")
+                            profilingViewModel.searchQuerryIsShown = false;
                         } label: {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(profilingViewModel.textFieldString == "" ? .clear : .black)
                         }
                         
                         .disabled((profilingViewModel.textFieldString == ""))
-                        
+                        .padding(.trailing, 16)                
                     }
-                    .padding(.trailing, 16)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.customLightGray)
+                    
                     
                     // TODO: Benerin Tampilan LIST
                     ScrollView{
-                        VStack{
+                        VStack(alignment: .leading){
                             ForEach(profilingViewModel.productDetailsResult, id:\.self){ result in
                                 Text(result.productName ?? "")
+                                    .font(.body)
+                                    .fontWeight(.regular)
+                                    .padding(.horizontal)
+                                    .onTapGesture {
+                                        profilingViewModel.SelectedProductResult.append(result)
+                                        profilingViewModel.textFieldString = ""
+                                        profilingViewModel.searchQuerryIsShown = false
+                                    }
+                                Divider()
+                                    .padding(.horizontal)
+                                
                             }
                         }
                     }
-                    
-                    
+                    .background(Color.white)
+                    .frame(height: (profilingViewModel.searchQuerryIsShown ? 156 : 0))
                     
                 }
-                .background(Color.customLightGray)
-            }.clipShape(
+            }
+            .clipShape(
                 RoundedRectangle(cornerRadius: 12)
             )
             
+            ScrollView{
+                ForEach(Array(profilingViewModel.SelectedProductResult.enumerated()), id : \.element) {
+                    index, selected in
+                    HStack {
+                        Text(selected.productName!)
+                            .font(.subheadline)
+                        Spacer()
+                        Button {
+                            profilingViewModel.SelectedProductResult.remove(at: index)
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.black)
+                        }
+                    }
+                    .padding(.vertical, 15)
+                    .padding(.horizontal, 15)
+                    .background(Color.lightestYellow)
+                    .cornerRadius(12)
+                }
+            }
+            
             Spacer()
             
-            NavigationLink(destination: ProfilingFormView()) {
-                Text("Next")
+            Button{
+                
+                var ingredients : String = ""
+                
+                for product in profilingViewModel.SelectedProductResult {
+                    ingredients  = "\(ingredients), \(product.ingredients ?? "" )"
+                }
+                
+                productAnalysistViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: ingredients)
+                
+                profilingViewModel.toAnalysisResult = true
+            } label : {
+                Text("Continue")
                     .padding(16)
                     .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .background((profilingViewModel.SelectedProductResult.isEmpty) ? Color.customMediumGray : Color.customBrown)
+                    .cornerRadius(10)
+                    .disabled((profilingViewModel.SelectedProductResult.isEmpty) ? true : false)
             }
-            .frame(maxWidth: .infinity)
-            .background(Color.customBrown)
-            .cornerRadius(10)
+//            NavigationLink(destination: ProfilingFormView()) {
+//                Text("Continue")
+//                    .padding(16)
+//                    .foregroundColor(.white)
+//            }
+//            .frame(maxWidth: .infinity)
+//            .background((profilingViewModel.SelectedProductResult.isEmpty) ? Color.customMediumGray : Color.customBrown)
+//            .cornerRadius(10)
+//            .disabled((profilingViewModel.SelectedProductResult.isEmpty) ? true : false)
             
+        }
+        .background{
+            NavigationLink("", destination: AnalysisResultView(analysisResultViewModel: self.productAnalysistViewModel), isActive: $profilingViewModel.toAnalysisResult)
         }
         .navigationTitle("Profiling")
         .padding(16)
         .frame(maxWidth: .infinity)
+        .ignoresSafeArea(.keyboard)
     }
 }
 

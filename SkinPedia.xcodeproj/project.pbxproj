@@ -183,8 +183,8 @@
 		8316F6D72A415C5E00E529AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACBD200D2A4C69B5008BF2B8 /* Deprecated */,
 				832FD2EC2A4C1C1200CA7425 /* ProfilingViews */,
-				AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */,
 				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 				8316F6DD2A419B6200E529AE /* SampleFormView.swift */,
 				AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */,
@@ -464,6 +464,14 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
+		ACBD200D2A4C69B5008BF2B8 /* Deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */,
+			);
+			path = Deprecated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -718,7 +726,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 8B7DH7AN2U;
+				DEVELOPMENT_TEAM = 382VG5FRJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SkinPedia/Info.plist;
@@ -749,7 +757,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 8B7DH7AN2U;
+				DEVELOPMENT_TEAM = 382VG5FRJK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SkinPedia/Info.plist;

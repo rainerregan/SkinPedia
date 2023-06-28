@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfilingInformationView: View {
     
+    @StateObject var productAnalysistViewModel : AnalysisResultViewModel = AnalysisResultViewModel()
+    
     var sideEffects : [String] = [
         "Allergic Reactions",
         "Redness",
@@ -39,7 +41,8 @@ struct ProfilingInformationView: View {
             
             Spacer()
             
-            NavigationLink(destination: ProfilingFormView()) {
+            NavigationLink(destination: ProfilingFormView()
+                .environmentObject(productAnalysistViewModel)) {
                 Text("Next")
                     .padding(16)
                     .frame(maxWidth: .infinity)
