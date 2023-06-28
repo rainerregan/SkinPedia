@@ -8,23 +8,22 @@
 import Foundation
 
 struct SkinPediaRepository : SkinPediaRepositoryProtocol {
+
     private var apiCosmilyDataSource : CosmilyAPIDataSource = CosmilyAPIDataSource();
-    private var rainerAPIDataSource : RainersAPIDataSource = RainersAPIDataSource();
+    private var productDetailDataSource : ProductDetailDataSource = ProductDetailDataSource();
     
     func saveToCoreData(name: String) async {
         await apiCosmilyDataSource.saveToCoreData(name: name)
     }
     
-    func getQuerryData(querryRequest: RainerApiRequest) async -> Result<RainersAPIResult, RainersAPIError> {
-        switch await rainerAPIDataSource.getQuerryData(querryRequest: querryRequest) {
-        case .success(let querryData) :
-            return .success(querryData)
+    func getProductDetail(query: ProductDetailRequest) async -> Result<ProductDetailResult, ProductDetailAPIError> {
+        switch await productDetailDataSource.getProductDetail(query: query) {
+        case .success(let data) :
+            return .success(data)
         case .failure(let err) :
             return .failure(err)
         }
     }
-    
-    
     
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError> {
         switch await apiCosmilyDataSource.getProductAnalysis(productAnalysisRequest: productAnalysisRequest) {

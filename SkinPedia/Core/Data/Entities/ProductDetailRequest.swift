@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct RainerApiRequest {
-    var productName: String;
+struct ProductDetailRequest {
+    var query: String;
     
-    init(productName: String) {
-        self.productName = productName
+    init(query: String) {
+        self.query = query
     }
 }

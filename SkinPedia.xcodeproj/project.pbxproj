@@ -28,6 +28,7 @@
 		832FD2EE2A4C1C2E00CA7425 /* ProfilingInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FD2ED2A4C1C2E00CA7425 /* ProfilingInformationView.swift */; };
 		832FD2F02A4C202B00CA7425 /* ProfilingFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FD2EF2A4C202B00CA7425 /* ProfilingFormView.swift */; };
 		832FD2F32A4C220000CA7425 /* ProfilingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FD2F22A4C220000CA7425 /* ProfilingViewModel.swift */; };
+		832FD2F52A4C26E700CA7425 /* GetProductDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FD2F42A4C26E700CA7425 /* GetProductDetailUseCase.swift */; };
 		8396904C2A3C5D7600E3D262 /* SkinPediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */; };
 		839690502A3C5D7700E3D262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8396904F2A3C5D7700E3D262 /* Assets.xcassets */; };
 		839690532A3C5D7700E3D262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 839690522A3C5D7700E3D262 /* Preview Assets.xcassets */; };
@@ -54,12 +55,11 @@
 		AC8D954E2A40C6C6002CB9AE /* SkinPediaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */; };
 		AC8D95502A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */; };
 		ACBD1FFD2A4AE310008BF2B8 /* SkinCareProductLongCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */; };
-		ACBD20012A4BF932008BF2B8 /* RainersAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20002A4BF932008BF2B8 /* RainersAPIRequest.swift */; };
-		ACBD20032A4BFA27008BF2B8 /* RainersAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20022A4BFA27008BF2B8 /* RainersAPIResult.swift */; };
-		ACBD20052A4BFC08008BF2B8 /* RainersAPIDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20042A4BFC08008BF2B8 /* RainersAPIDataSourceProtocol.swift */; };
-		ACBD20072A4BFDCA008BF2B8 /* RainersAPIDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20062A4BFDCA008BF2B8 /* RainersAPIDataSource.swift */; };
+		ACBD20012A4BF932008BF2B8 /* ProductDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20002A4BF932008BF2B8 /* ProductDetailRequest.swift */; };
+		ACBD20032A4BFA27008BF2B8 /* ProductDetailResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20022A4BFA27008BF2B8 /* ProductDetailResult.swift */; };
+		ACBD20052A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20042A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift */; };
+		ACBD20072A4BFDCA008BF2B8 /* ProductDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20062A4BFDCA008BF2B8 /* ProductDetailDataSource.swift */; };
 		ACBD20092A4C06C9008BF2B8 /* saveToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20082A4C06C9008BF2B8 /* saveToCoreData.swift */; };
-		ACBD200B2A4C15E1008BF2B8 /* getSearchQuerryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD200A2A4C15E1008BF2B8 /* getSearchQuerryUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +83,8 @@
 		832FD2ED2A4C1C2E00CA7425 /* ProfilingInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingInformationView.swift; sourceTree = "<group>"; };
 		832FD2EF2A4C202B00CA7425 /* ProfilingFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingFormView.swift; sourceTree = "<group>"; };
 		832FD2F22A4C220000CA7425 /* ProfilingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingViewModel.swift; sourceTree = "<group>"; };
+		832FD2F42A4C26E700CA7425 /* GetProductDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductDetailUseCase.swift; sourceTree = "<group>"; };
+		832FD2F62A4C2C9B00CA7425 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		839690482A3C5D7600E3D262 /* SkinPedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SkinPedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8396904B2A3C5D7600E3D262 /* SkinPediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaApp.swift; sourceTree = "<group>"; };
 		8396904F2A3C5D7700E3D262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,12 +112,11 @@
 		AC8D954D2A40C6C6002CB9AE /* SkinPediaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepository.swift; sourceTree = "<group>"; };
 		AC8D954F2A40C6ED002CB9AE /* SkinPediaRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinPediaRepositoryProtocol.swift; sourceTree = "<group>"; };
 		ACBD1FFC2A4AE310008BF2B8 /* SkinCareProductLongCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCareProductLongCard.swift; sourceTree = "<group>"; };
-		ACBD20002A4BF932008BF2B8 /* RainersAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainersAPIRequest.swift; sourceTree = "<group>"; };
-		ACBD20022A4BFA27008BF2B8 /* RainersAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainersAPIResult.swift; sourceTree = "<group>"; };
-		ACBD20042A4BFC08008BF2B8 /* RainersAPIDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainersAPIDataSourceProtocol.swift; sourceTree = "<group>"; };
-		ACBD20062A4BFDCA008BF2B8 /* RainersAPIDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainersAPIDataSource.swift; sourceTree = "<group>"; };
+		ACBD20002A4BF932008BF2B8 /* ProductDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRequest.swift; sourceTree = "<group>"; };
+		ACBD20022A4BFA27008BF2B8 /* ProductDetailResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailResult.swift; sourceTree = "<group>"; };
+		ACBD20042A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDataSourceProtocol.swift; sourceTree = "<group>"; };
+		ACBD20062A4BFDCA008BF2B8 /* ProductDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDataSource.swift; sourceTree = "<group>"; };
 		ACBD20082A4C06C9008BF2B8 /* saveToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveToCoreData.swift; sourceTree = "<group>"; };
-		ACBD200A2A4C15E1008BF2B8 /* getSearchQuerryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getSearchQuerryUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +152,7 @@
 			children = (
 				8316F6CD2A4155DA00E529AE /* GetProductAnalysisUseCase.swift */,
 				ACBD20082A4C06C9008BF2B8 /* saveToCoreData.swift */,
-				ACBD200A2A4C15E1008BF2B8 /* getSearchQuerryUseCase.swift */,
+				832FD2F42A4C26E700CA7425 /* GetProductDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -270,6 +271,7 @@
 		8396904A2A3C5D7600E3D262 /* SkinPedia */ = {
 			isa = PBXGroup;
 			children = (
+				832FD2F62A4C2C9B00CA7425 /* Info.plist */,
 				AC82D69A2A3CCE1300CC80F0 /* Config */,
 				AC82D6962A3CCBEA00CC80F0 /* Core */,
 				AC82D68C2A3C69BB00CC80F0 /* Features */,
@@ -335,7 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				AC76C4092A40BDCA0009EDFE /* CosmilyAPIDataSourceProtocol.swift */,
-				ACBD20042A4BFC08008BF2B8 /* RainersAPIDataSourceProtocol.swift */,
+				ACBD20042A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -362,8 +364,8 @@
 				8316F6DA2A4193A600E529AE /* Deprecated */,
 				8316F6C52A4149C000E529AE /* ProductAnalysisRequest.swift */,
 				8316F6C72A414A6800E529AE /* ProductAnalysisResult.swift */,
-				ACBD20002A4BF932008BF2B8 /* RainersAPIRequest.swift */,
-				ACBD20022A4BFA27008BF2B8 /* RainersAPIResult.swift */,
+				ACBD20002A4BF932008BF2B8 /* ProductDetailRequest.swift */,
+				ACBD20022A4BFA27008BF2B8 /* ProductDetailResult.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -372,7 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				AC76C4022A4067250009EDFE /* CosmilyAPIDataSource.swift */,
-				ACBD20062A4BFDCA008BF2B8 /* RainersAPIDataSource.swift */,
+				ACBD20062A4BFDCA008BF2B8 /* ProductDetailDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -539,13 +541,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8316F6F52A4442FC00E529AE /* ScanResultSummaryCardComponent.swift in Sources */,
+				832FD2F52A4C26E700CA7425 /* GetProductDetailUseCase.swift in Sources */,
 				AC6CC8092A421986007BF6FA /* OCRProductDetailView.swift in Sources */,
 				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
 				8316F6E62A43127500E529AE /* AllergenRowComponent.swift in Sources */,
 				AC1A987D2A49CCBA00BE3FAA /* ProfilingPage2.swift in Sources */,
 				8316F6E02A419B7C00E529AE /* SampleFormViewModel.swift in Sources */,
-				ACBD20072A4BFDCA008BF2B8 /* RainersAPIDataSource.swift in Sources */,
+				ACBD20072A4BFDCA008BF2B8 /* ProductDetailDataSource.swift in Sources */,
 				AC0CF1C42A49A98100126875 /* SideEffectListProfilePage.swift in Sources */,
 				AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */,
 				832FD2F32A4C220000CA7425 /* ProfilingViewModel.swift in Sources */,
@@ -574,10 +577,9 @@
 				ACBD20092A4C06C9008BF2B8 /* saveToCoreData.swift in Sources */,
 				AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */,
 				83A8BEC32A49AE4100522194 /* CautionCard.swift in Sources */,
-				ACBD20012A4BF932008BF2B8 /* RainersAPIRequest.swift in Sources */,
-				ACBD200B2A4C15E1008BF2B8 /* getSearchQuerryUseCase.swift in Sources */,
-				ACBD20052A4BFC08008BF2B8 /* RainersAPIDataSourceProtocol.swift in Sources */,
-				ACBD20032A4BFA27008BF2B8 /* RainersAPIResult.swift in Sources */,
+				ACBD20012A4BF932008BF2B8 /* ProductDetailRequest.swift in Sources */,
+				ACBD20052A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift in Sources */,
+				ACBD20032A4BFA27008BF2B8 /* ProductDetailResult.swift in Sources */,
 				8316F6C82A414A6800E529AE /* ProductAnalysisResult.swift in Sources */,
 				AC0CF1C12A49A67F00126875 /* ProfilingViewTemplate.swift in Sources */,
 				AC82D6992A3CCBFF00CC80F0 /* CoreDataManager.swift in Sources */,
@@ -716,9 +718,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 382VG5FRJK;
+				DEVELOPMENT_TEAM = 8B7DH7AN2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SkinPedia/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -746,9 +749,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SkinPedia/Preview Content\"";
-				DEVELOPMENT_TEAM = 382VG5FRJK;
+				DEVELOPMENT_TEAM = 8B7DH7AN2U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SkinPedia/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -42,10 +42,10 @@ struct ProfilingInformationView: View {
             NavigationLink(destination: ProfilingFormView()) {
                 Text("Next")
                     .padding(16)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.customBrown)
                     .foregroundColor(.white)
             }
-            .frame(maxWidth: .infinity)
-            .background(Color.customBrown)
             .cornerRadius(10)
             
         }

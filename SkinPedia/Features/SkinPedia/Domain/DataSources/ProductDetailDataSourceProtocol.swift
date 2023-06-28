@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum RainersAPIError : Error {
+enum ProductDetailAPIError : Error {
     case invalidURL
     case requestFailed(Error)
     case invalidResponse
     case decodingFailed(Error)
 }
 
-protocol RainersAPIDataSourceProtocol {
-    func getQuerryData(querryRequest : RainerApiRequest) async -> Result<RainersAPIResult, RainersAPIError>
+protocol ProductDetailDataSourceProtocol {
+    func getProductDetail(query : ProductDetailRequest) async -> Result<ProductDetailResult, ProductDetailAPIError>
 }

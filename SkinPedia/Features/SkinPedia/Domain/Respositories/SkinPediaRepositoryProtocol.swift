@@ -9,6 +9,6 @@ import Foundation
 
 protocol SkinPediaRepositoryProtocol {
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
-    func getQuerryData(querryRequest : RainerApiRequest) async -> Result<RainersAPIResult, RainersAPIError>
+    func getProductDetail(query : ProductDetailRequest) async -> Result<ProductDetailResult, ProductDetailAPIError>
     func saveToCoreData(name : String) async
 }

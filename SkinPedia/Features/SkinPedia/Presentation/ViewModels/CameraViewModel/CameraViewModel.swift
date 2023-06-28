@@ -35,7 +35,7 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
 
     func checkCameraPermission() {
         AVCaptureDevice.requestAccess(for: .video) { granted in
-            if granted {å
+            if granted {
                 // Start the camera session
                 self.session.startRunning()
             

@@ -37,6 +37,14 @@ struct ProfilingFormView: View {
                             .fontWeight(.semibold)
                             .padding(.horizontal, 16)
                             .padding(.bottom, 10)
+                            .onReceive(
+                                profilingViewModel.$textFieldString
+                                    .debounce(for: .seconds(2), scheduler: DispatchQueue.main)
+                            ) {
+                                guard !$0.isEmpty else { return }
+                                print(">> searching for: \($0)")
+                                profilingViewModel.getProductDetails()
+                            }
                         
                         Spacer()
                         
@@ -52,6 +60,15 @@ struct ProfilingFormView: View {
                         
                     }
                     .padding(.trailing, 16)
+                    
+                    ScrollView{
+                        VStack{
+                            ForEach(profilingViewModel.productDetailsResult, id:\.self){ result in
+                                Text(result.productName ?? "")
+                            }
+                        }
+                    }
+                    
                     
                     
                 }
