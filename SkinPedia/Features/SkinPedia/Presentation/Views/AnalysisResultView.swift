@@ -21,35 +21,54 @@ struct AnalysisResultView: View {
             
             // If Analysis is exists
             if(analysisResultViewModel.analyzedProductResult.analysis != nil){
-                ScrollView{
-                    VStack {
-                        // Allergent Result Summary
-                        ScanResultSummaryCardComponent(allergentsCount: analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0)
-                        
-                        // Only showing if there is allergens
-                        if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
+                if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0) {
+                    ScrollView{
+                        VStack {
+                            // Allergent Result Summary
+                            ScanResultSummaryCardComponent(allergentsCount: analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0)
                             
-                            // Caution Card
-                            CautionCard()
-                                .padding(.vertical, 16)
-                            
-                            // List of Allergents
-                            VStack(alignment: .leading) {
-                                Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
-                                    .padding(.bottom, 8)
+                            // Only showing if there is allergens
+                            if(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.count ?? 0 > 0){
                                 
-                                VStack{
-                                    // For each allergent
-                                    ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
-                                        AllergenRowComponent(ingredientTableArray: analysisResultViewModel.filterIngredientByAllergent(allergent: allergen))
+                                // Caution Card
+                                CautionCard()
+                                    .padding(.vertical, 16)
+                                
+                                // List of Allergents
+                                VStack(alignment: .leading) {
+                                    Text("Allergent Ingredients List").font(.title3).fontWeight(.medium)
+                                        .padding(.bottom, 8)
+                                    
+                                    VStack{
+                                        // For each allergent
+                                        ForEach(analysisResultViewModel.analyzedProductResult.analysis?.harmful?.allergen?.itemList ?? [], id: \.self) { allergen in
+                                            AllergenRowComponent(ingredientTableArray: analysisResultViewModel.filterIngredientByAllergent(allergent: allergen))
+                                        }
                                     }
+                                    
                                 }
-                                
                             }
                         }
                     }
+                    .padding(.horizontal, 16)
+                    
+                } else {
+                    VStack {
+                        Spacer()
+                        Image("illustration_no_allergen")
+                            .padding(.bottom, 8)
+                        Text("No allergents have found")
+                            .font(.headline)
+                            .padding(.bottom, 4)
+                        Text("If you experience any adverse reactions to this product, please consult a doctor for information regarding allergens and potential hormonal effects.")
+                            .multilineTextAlignment(.center)
+                            .font(.subheadline)
+                        Spacer()
+                    }
+                    .padding(16)
+                    
                 }
-                .padding(.horizontal, 16)
+                
                 
                 Spacer()
                 
@@ -63,7 +82,7 @@ struct AnalysisResultView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .foregroundColor(.white)
-                    .background(Color.darkBrown)
+                    .background(Color.customBrown)
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
@@ -74,7 +93,7 @@ struct AnalysisResultView: View {
                             .padding()
                             .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(.darkBrown)
+                    .foregroundColor(.customBrown)
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity) // Make NavigationLink full width
                 }

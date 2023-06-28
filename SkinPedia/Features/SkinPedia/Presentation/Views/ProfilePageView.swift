@@ -33,50 +33,12 @@ struct ProfilePageView: View {
                                 .fontWeight(.semibold)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 16)
-                                .background(Color.customBrown)
+                                .background(Color.customBrown.opacity(0.9))
                                 .foregroundColor(.white)
                         }
                         .cornerRadius(10)
                     }
                     .padding(.vertical, 24)
-//                    VStack {
-//                        VStack{
-//                            Text("No allergen have been found.")
-//                                .font(.title2)
-//                                .fontWeight(.semibold)
-//                                .padding(.bottom, 14)
-//
-//                            Text("Start personalizing to identify any potential allergens in your skincare product")
-//                                .font(.subheadline)
-//                                .fontWeight(.regular)
-//                                .multilineTextAlignment(.center)
-//                        }
-//                        .frame(width: 296.9)
-//                        .padding(.bottom, 21)
-//
-//
-//
-//                        Button {
-//                            profileViewModel.showProfiling = true
-//                        } label: {
-//                            Text("Start Personalization")
-//                                .font(.title3)
-//                                .fontWeight(.semibold)
-//                                .foregroundColor(.white)
-//                                .padding(.horizontal, 82.5)
-//                                .padding(.vertical, 14)
-//                                .background(Color.customBrown)
-//                                .cornerRadius(12)
-//                        }
-//                        Spacer()
-//                    }
-//                    .frame(width: UIScreen.main.bounds.width, height: 228)
-//                    .padding(.top, 35)
-//                    .background(Color.lightestBrown.opacity(0.4))
-//                    .background{
-//                        NavigationLink("", destination: ProfilingInformationView(), isActive: $profileViewModel.showProfiling)
-//                    }
-//                    .padding()
                     
                     VStack {
                         HStack {
