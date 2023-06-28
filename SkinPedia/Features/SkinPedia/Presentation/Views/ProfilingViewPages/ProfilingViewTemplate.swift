@@ -27,13 +27,6 @@ struct ProfilingView<CustomContent : View>: View {
                 
             }
             .navigationBarTitle("Profiling", displayMode: .inline)
-            .navigationBarItems(leading:
-                                    Button {
-                presentationMode.wrappedValue.dismiss()
-            } label: {
-                Text("Back")
-                    .foregroundColor(.customBrown)
-            })
         }
     }
 }

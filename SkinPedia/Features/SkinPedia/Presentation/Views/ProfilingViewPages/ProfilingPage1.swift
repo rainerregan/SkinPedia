@@ -29,10 +29,6 @@ struct profilingPage1: View {
             Text("Skincare products may cause side effects, such as:")
                 .padding(.bottom, 15)
             
-//            List(sideEffects, id : \.self) {
-//                se in
-//                    SideEffectListProfilePage(label: se)
-//            }
             ForEach(sideEffects, id : \.self) {
                 se in
                 SideEffectListProfilePage(label: se)
