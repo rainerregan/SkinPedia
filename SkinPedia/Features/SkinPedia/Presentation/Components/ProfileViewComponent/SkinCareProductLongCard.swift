@@ -51,8 +51,11 @@ struct SkinCareProductLongCard: View {
     var body: some View {
         VStack (alignment: .leading){
             Text(productName ?? "")
-                .font(.title3)
+                .font(.headline)
                 .fontWeight(.semibold)
+                .padding(.bottom, 2)
+                .foregroundColor(.customBlack)
+            
             Text("Date")
                 .font(.footnote)
                 .foregroundColor(.textGray)

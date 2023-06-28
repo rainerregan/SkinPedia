@@ -184,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				832FD2EC2A4C1C1200CA7425 /* ProfilingViews */,
-				AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */,
+				AC1A98792A49CBC500BE3FAA /* ProfilingViewPages_Deprecated */,
 				8316F6D82A41879700E529AE /* AnalysisResultView.swift */,
 				8316F6DD2A419B6200E529AE /* SampleFormView.swift */,
 				AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */,
@@ -297,14 +297,14 @@
 			path = ProfileViewComponent;
 			sourceTree = "<group>";
 		};
-		AC1A98792A49CBC500BE3FAA /* ProfilingViewPages */ = {
+		AC1A98792A49CBC500BE3FAA /* ProfilingViewPages_Deprecated */ = {
 			isa = PBXGroup;
 			children = (
 				AC0CF1C02A49A67F00126875 /* ProfilingViewTemplate.swift */,
 				AC1A987A2A49CC6D00BE3FAA /* ProfilingPage1.swift */,
 				AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */,
 			);
-			path = ProfilingViewPages;
+			path = ProfilingViewPages_Deprecated;
 			sourceTree = "<group>";
 		};
 		AC1A987E2A4AD55800BE3FAA /* ProfilePageViewModel */ = {
