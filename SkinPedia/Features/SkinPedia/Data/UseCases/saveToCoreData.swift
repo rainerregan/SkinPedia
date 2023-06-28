@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct saveToCoreDataUseCase {
+    
+    let skinPediaRepository : SkinPediaRepository = SkinPediaRepository()
+    
+    func save(name : String) async {
+        await skinPediaRepository.saveToCoreData(name: name)
+    }
+}

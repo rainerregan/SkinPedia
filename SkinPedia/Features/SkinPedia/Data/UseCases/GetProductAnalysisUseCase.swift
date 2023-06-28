@@ -14,3 +14,5 @@ struct GetProductAnalysisUseCase {
         return await skinpediaRepository.getProductAnalysis(productAnalysisRequest: productAnalysisRequest)
     }
 }
+
+

@@ -91,6 +91,9 @@ struct CameraView: View {
                                     
                                     Button{
                                         ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
+                                        Task {
+                                            await cameraViewModel.saveToCoreData(name: analysisResultViewModel.toBeAnalyzedProductName)
+                                        }
                                         print("Show detail is clicked")
                                         showDetailOCR = true;
                                         print("showDetailocr", showDetailOCR)

@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct RainersAPIResult: Codable {
+    var id : String
+    var brand : String
+    var productName : String
+    var ingredients : String
+}

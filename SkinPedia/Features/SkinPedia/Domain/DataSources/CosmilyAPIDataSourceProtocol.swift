@@ -16,4 +16,5 @@ enum CosmilyAPIError: Error {
 
 protocol CosmilyAPIDataSourceProtocol {
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
+    func saveToCoreData(name : String) async
 }

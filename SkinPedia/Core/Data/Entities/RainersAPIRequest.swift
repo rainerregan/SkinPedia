@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct RainerApiRequest : Identifiable {
-    let id: String = UUID().uuidString
+struct RainerApiRequest {
     var productName: String;
     
     init(productName: String) {
