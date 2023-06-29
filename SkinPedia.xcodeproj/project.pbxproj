@@ -60,6 +60,7 @@
 		ACBD20052A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20042A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift */; };
 		ACBD20072A4BFDCA008BF2B8 /* ProductDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20062A4BFDCA008BF2B8 /* ProductDetailDataSource.swift */; };
 		ACBD20092A4C06C9008BF2B8 /* saveToCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD20082A4C06C9008BF2B8 /* saveToCoreData.swift */; };
+		ACBD200F2A4D679E008BF2B8 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD200E2A4D679E008BF2B8 /* MainViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		ACBD20042A4BFC08008BF2B8 /* ProductDetailDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDataSourceProtocol.swift; sourceTree = "<group>"; };
 		ACBD20062A4BFDCA008BF2B8 /* ProductDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDataSource.swift; sourceTree = "<group>"; };
 		ACBD20082A4C06C9008BF2B8 /* saveToCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveToCoreData.swift; sourceTree = "<group>"; };
+		ACBD200E2A4D679E008BF2B8 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */,
 				8316F6D02A4159B100E529AE /* AnalysisResultViewModel */,
 				8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */,
+				ACBD200E2A4D679E008BF2B8 /* MainViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			files = (
 				8316F6F52A4442FC00E529AE /* ScanResultSummaryCardComponent.swift in Sources */,
 				832FD2F52A4C26E700CA7425 /* GetProductDetailUseCase.swift in Sources */,
+				ACBD200F2A4D679E008BF2B8 /* MainViewViewModel.swift in Sources */,
 				AC6CC8092A421986007BF6FA /* OCRProductDetailView.swift in Sources */,
 				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,
