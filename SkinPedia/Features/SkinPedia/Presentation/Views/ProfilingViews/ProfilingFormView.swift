@@ -160,7 +160,7 @@ struct ProfilingFormView: View {
             
         }
         .background{
-            NavigationLink("", destination: AnalysisResultView(analysisResultViewModel: self.productAnalysistViewModel), isActive: $profilingViewModel.toAnalysisResult)
+            NavigationLink("", destination: AnalysisResultView(analysisResultViewModel: self.productAnalysistViewModel, isSavingAllergen : true), isActive: $profilingViewModel.toAnalysisResult)
         }
         .navigationTitle("Profiling")
         .padding(16)

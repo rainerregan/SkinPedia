@@ -14,6 +14,7 @@ protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, Analysi
 
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     @Published var toBeAnalyzedProductName : String = "";
+    @Published var goToCameraView : Bool = false;
     @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
     
     // MARK: - Output
@@ -23,6 +24,29 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     
     init(result: ProductAnalysisResult? = nil) {
         self.analyzedProductResult = result ?? ProductAnalysisResult(analysis: nil)
+    }
+    
+    func saveToAllergenCoreData(result: ProductAnalysisResult) {
+        
+        var allergensCount : Int = result.analysis?.harmful?.allergen?.count ?? 0;
+        var allergenIngredientNames = "";
+        
+        if allergensCount > 0 {
+            var itemList : [ItemList] = result.analysis?.harmful?.allergen?.itemList ?? []
+            
+            itemList.forEach{
+                allergenIngredientNames = "\(allergenIngredientNames) \($0.alias ?? "No Name"),"
+            }
+        }
+        
+        let allergenData : Allergen = Allergen(context : model.container.viewContext)
+        allergenData.ingredientName = allergenIngredientNames
+        
+        do {
+            try model.container.viewContext.save()
+        } catch let err {
+            print("Error Saving data to CoreData, with Error \(err.localizedDescription)")
+        }
     }
     
     // Memfilter data ingredient berdasarkan allergen yang di pass. Mengecek alias

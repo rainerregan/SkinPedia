@@ -9,6 +9,8 @@ import WrappingHStack
 
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    @State var isSavingAllergen : Bool = false;
+    
     
     var body: some View {
         content
@@ -67,16 +69,34 @@ struct AnalysisResultView: View {
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
+//                    NavigationLink(destination: CameraView()
+//                        .navigationBarHidden(true)) {
+//                        Text("Done")
+//                            .font(.headline)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                    }
+//                    .foregroundColor(.darkBrown)
+//                    .cornerRadius(10)
+//                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                    
+                    Button{
+                        analysisResultViewModel.goToCameraView = true
+                        if isSavingAllergen {
+                            analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult)
+                        }
+                    } label: {
                         Text("Done")
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(.darkBrown)
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(.darkBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                }
+                .background{
+                    NavigationLink("", destination : CameraView(), isActive: $analysisResultViewModel.goToCameraView)
                 }
                 .padding(.horizontal, 16)
                 

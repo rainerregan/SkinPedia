@@ -9,4 +9,5 @@ import Foundation
 
 protocol AnalysisResultViewModelOutput {
     var analyzedProductResult: ProductAnalysisResult { get }
+    func saveToAllergenCoreData(result : ProductAnalysisResult) 
 }
