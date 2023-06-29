@@ -10,6 +10,7 @@ import WrappingHStack
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     @State var isSavingAllergen : Bool = false;
+    @EnvironmentObject var mainViewViewModel : MainViewViewModel
     
     
     var body: some View {
@@ -57,18 +58,32 @@ struct AnalysisResultView: View {
                 
                 // Bottom Buttons
                 VStack{
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
+                    
+//                    NavigationLink(destination: CameraView()
+//                        .navigationBarHidden(true)) {
+//                        Text("Scan Again")
+//                            .font(.headline)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                    }
+//                    .foregroundColor(.white)
+//                    .background(Color.darkBrown)
+//                    .cornerRadius(10)
+//                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+
+                    Button {
+                        mainViewViewModel.seletedView = 0
+                    } label: {
                         Text("Scan Again")
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .background(Color.darkBrown)
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity) // Make NavigationLink full width
+                            
                     }
-                    .foregroundColor(.white)
-                    .background(Color.darkBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
-                    
 //                    NavigationLink(destination: CameraView()
 //                        .navigationBarHidden(true)) {
 //                        Text("Done")
@@ -81,10 +96,13 @@ struct AnalysisResultView: View {
 //                    .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
                     Button{
-                        analysisResultViewModel.goToCameraView = true
+//                        analysisResultViewModel.goToCameraView = true
                         if isSavingAllergen {
                             analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult)
                         }
+                        
+                        mainViewViewModel.seletedView = 0
+                        
                     } label: {
                         Text("Done")
                             .font(.headline)
@@ -94,9 +112,6 @@ struct AnalysisResultView: View {
                             .cornerRadius(10)
                             .frame(maxWidth: .infinity)
                     }
-                }
-                .background{
-                    NavigationLink("", destination : CameraView(), isActive: $analysisResultViewModel.goToCameraView)
                 }
                 .padding(.horizontal, 16)
                 

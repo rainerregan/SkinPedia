@@ -11,6 +11,7 @@ struct ProfilePageView: View {
     
     @StateObject var profileViewModel : ProfileViewModel = ProfileViewModel()
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    @EnvironmentObject var mainViewViewModel : MainViewViewModel
     
     var body: some View {
         NavigationView {
@@ -51,7 +52,8 @@ struct ProfilePageView: View {
                     .padding(.top, 35)
                     .background(Color.lightestBrown.opacity(0.4))
                     .background{
-                        NavigationLink("", destination: ProfilingInformationView(), isActive: $profileViewModel.showProfiling)
+                        NavigationLink("", destination: ProfilingInformationView()
+                            .environmentObject(mainViewViewModel), isActive: $profileViewModel.showProfiling)
                     }
                     .padding()
                     
