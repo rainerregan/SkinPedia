@@ -28,22 +28,22 @@ class ProfileViewModel : ObservableObject {
 //    }
     
     
-//    func fetchHistory() -> [ProductAnalysisResult] {
+    func fetchHistory(coreDataResults : FetchedResults<ResultFetchAPI>) -> [ProductAnalysisResult] {
 //        let coreDataResults = fetchHistoryCoreData();
-//        let decoder = JSONDecoder()
-//
-//        var productAnalysisResultList : [ProductAnalysisResult] = []
-//
-//        do {
-//            for result in coreDataResults {
-//                let result = try decoder.decode(ProductAnalysisResult.self, from: result.resultString?.data(using: .utf8) ?? Data())
-//                productAnalysisResultList.append(result)
-//            }
-//        } catch let error {
-//            print(String(describing: ex`rror))
-//            return []
-//        }
-//
-//        return productAnalysisResultList
-//    }
+        let decoder = JSONDecoder()
+
+        var productAnalysisResultList : [ProductAnalysisResult] = []
+
+        do {
+            for result in coreDataResults {
+                let result = try decoder.decode(ProductAnalysisResult.self, from: result.resultString?.data(using: .utf8) ?? Data())
+                productAnalysisResultList.append(result)
+            }
+        } catch let error {
+            print(String(describing: error))
+            return []
+        }
+
+        return productAnalysisResultList
+    }
 }

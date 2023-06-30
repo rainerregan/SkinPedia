@@ -7,6 +7,7 @@
 
 import AVFoundation
 import SwiftUI
+import CoreData
 
 class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate, CameraViewProtocol {
     
@@ -24,8 +25,8 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         setupCamera()
     }
     
-    func saveToCoreData(name : String) async {
-        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name);
+    func saveToCoreData(name : String, moc : NSManagedObjectContext) async {
+        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name, moc : moc);
     }
     
     

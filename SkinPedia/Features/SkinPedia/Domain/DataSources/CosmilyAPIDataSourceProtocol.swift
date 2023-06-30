@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import CoreData
 enum CosmilyAPIError: Error {
     case invalidURL
     case requestFailed(Error)
@@ -16,5 +16,5 @@ enum CosmilyAPIError: Error {
 
 protocol CosmilyAPIDataSourceProtocol {
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
-    func saveToCoreData(name : String) async
+    func saveToCoreData(name : String, moc : NSManagedObjectContext) async
 }

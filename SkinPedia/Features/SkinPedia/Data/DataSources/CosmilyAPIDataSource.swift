@@ -6,15 +6,15 @@
 //
 
 import Foundation
+import CoreData
 import SwiftUI
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
     
-    @Environment(\.managedObjectContext) var moc
     let fetchResult : String? = nil
     
-    func saveToCoreData(name : String) async {
-        let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : self.moc)
+    func saveToCoreData(name : String, moc : NSManagedObjectContext) async {
+        let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)
         
         if let fResult = self.fetchResult {
             toBeSavedResult.resultString = fResult
@@ -25,7 +25,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         
         
         do {
-            try self.moc.save()
+            try moc.save()
         } catch let err {
             print(err.localizedDescription)
         }

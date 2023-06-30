@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import CoreData
 
 protocol CameraViewProtocol {
     func setupCamera();
     func checkCameraPermission();
-    func saveToCoreData(name : String) async;
+    func saveToCoreData(name : String, moc : NSManagedObjectContext) async;
 }

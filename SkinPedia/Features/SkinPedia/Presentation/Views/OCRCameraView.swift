@@ -16,6 +16,8 @@ struct CameraView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     @State var isShowPopUp : Bool = false;
     
+    @Environment(\.managedObjectContext) var moc;
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -92,7 +94,7 @@ struct CameraView: View {
                                     Button{
                                         ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
                                         Task {
-                                            await cameraViewModel.saveToCoreData(name: analysisResultViewModel.toBeAnalyzedProductName)
+                                            await cameraViewModel.saveToCoreData(name: analysisResultViewModel.toBeAnalyzedProductName, moc: self.moc)
                                         }
                                         print("Show detail is clicked")
                                         showDetailOCR = true;
