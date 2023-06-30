@@ -14,11 +14,11 @@ protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, Analysi
 
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     @Published var toBeAnalyzedProductName : String = "";
-    @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
+//    @Published var model = coreDataManager(modelName: "SkinPediaModel")
     
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
-    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water, linalool")
+    @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
     
     
     init(result: ProductAnalysisResult? = nil) {
@@ -44,16 +44,32 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
         }
     }
     
-    private func onLoad() async {
+    func saveToCoreData(name : String, fetchResult: String, moc : NSManagedObjectContext) async {
+        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name, fetchResult: fetchResult, moc : moc);
+    }
+    
+    func saveResult(moc : NSManagedObjectContext) async {
+        Task {
+            var name = self.toBeAnalyzedProductName
+            var encoder = JSONEncoder()
+            var encodedData = try! encoder.encode(self.analyzedProductResult)
+            let jsonString = String(data: encodedData, encoding: .utf8)
+            
+            await self.saveToCoreData(name: name, fetchResult: jsonString!, moc : moc)
+        }
+    }
+    
+    private func onLoad(moc : NSManagedObjectContext) async {
         await getProductAnalysis()
+        await saveResult(moc : moc)
     }
 }
 
 extension AnalysisResultViewModel {
     
-    func didAppear() {
+    func didAppear(moc : NSManagedObjectContext) {
         Task {
-            await onLoad()
+            await onLoad(moc : moc)
         }
     }
 }

@@ -11,55 +11,42 @@ struct ProfilePageView: View {
     
     @StateObject var profileViewModel : ProfileViewModel = ProfileViewModel()
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    @FetchRequest(sortDescriptors: []) var historyData : FetchedResults<ResultFetchAPI>
     
     var body: some View {
         NavigationView {
             ScrollView{
                 VStack{
-                    VStack {
-                        VStack{
-                            Text("No allergen have been found.")
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                                .padding(.bottom, 14)
-                            
-                            Text("Start personalizing to identify any potential allergens in your skincare product")
-                                .font(.subheadline)
-                                .fontWeight(.regular)
-                                .multilineTextAlignment(.center)
+                    VStack(spacing:20){
+                        HStack{
+                            Image("bro")
+                            VStack (alignment: .leading){
+                                Text("No Allergens Found!")
+                                    .fontWeight(.semibold)
+                                    .padding(.bottom,2)
+                                Text("Start personalizing to identify any potential allergens in your skincare product")
+                                    .font(.subheadline)
+                            }
                         }
-                        .frame(width: 296.9)
-                        .padding(.bottom, 21)
                         
-                        
-                        
-                        Button {
-                            profileViewModel.showProfiling = true
-                        } label: {
+                        NavigationLink(destination: ProfilingInformationView()) {
                             Text("Start Personalization")
-                                .font(.title3)
                                 .fontWeight(.semibold)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 16)
+                                .background(Color.customBrown.opacity(0.9))
                                 .foregroundColor(.white)
-                                .padding(.horizontal, 82.5)
-                                .padding(.vertical, 14)
-                                .background(Color.customBrown)
-                                .cornerRadius(12)
                         }
-                        Spacer()
+                        .cornerRadius(10)
                     }
-                    .frame(width: UIScreen.main.bounds.width, height: 228)
-                    .padding(.top, 35)
-                    .background(Color.lightestBrown.opacity(0.4))
-                    .background{
-                        NavigationLink("", destination: ProfilingInformationView(), isActive: $profileViewModel.showProfiling)
-                    }
-                    .padding()
+                    .padding(.vertical, 24)
                     
                     VStack {
                         HStack {
                             Text("Your Recent Results")
-                                .font(.title3)
-                                .fontWeight(.semibold)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.customBlack)
                             
                             Spacer()
                             
@@ -72,19 +59,16 @@ struct ProfilePageView: View {
                                     .foregroundColor(Color.customBrown)
                             }
                         }
-                        .padding(.horizontal, 16)
                         
                         // HistoryList
                         VStack {
-                            ForEach(profileViewModel.fetchHistory(), id:\.self.id) { history in
+                            ForEach(profileViewModel.fetchHistory(coreDataResults: historyData)) { history in
                                 SkinCareProductLongCard(productAnalysisResult: history, productName: "Scan #\(history.id)")
                             }
                         }
-                        .padding(.horizontal, 16)
                         
                         
                     }
-                    .padding(.top, 20)
                     .padding(.horizontal, 16)
                     Spacer()
                     

@@ -6,12 +6,12 @@
 //
 
 import Foundation
-
+import CoreData
 struct saveToCoreDataUseCase {
     
     let skinPediaRepository : SkinPediaRepository = SkinPediaRepository()
     
-    func save(name : String) async {
-        await skinPediaRepository.saveToCoreData(name: name)
+    func save(name : String, fetchResult:String, moc : NSManagedObjectContext) async {
+        await skinPediaRepository.saveToCoreData(name: name, fetchResult: fetchResult, moc : moc)
     }
 }

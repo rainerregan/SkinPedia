@@ -91,10 +91,6 @@ struct CameraView: View {
                                     
                                     Button{
                                         ocrViewModel.performTextRecog(capturedImage: cameraViewModel.capturedImage!)
-                                        Task {
-                                            await cameraViewModel.saveToCoreData(name: analysisResultViewModel.toBeAnalyzedProductName)
-                                        }
-                                        print("Show detail is clicked")
                                         showDetailOCR = true;
                                         print("showDetailocr", showDetailOCR)
                                         
@@ -145,6 +141,8 @@ struct CameraView: View {
                 let processedIngredients = newIngred.processSkincareIngredients()
                 print("Ingredients : \(processedIngredients)")
                 analysisResultViewModel.toBeAnalyzedRequest = ProductAnalysisRequest(ingredients: processedIngredients)
+                
+                print("Show detail is clicked")
             }
             .onDisappear{
                 isShowPopUp = false;

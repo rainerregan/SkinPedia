@@ -25,10 +25,6 @@ class CameraViewModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate
         setupCamera()
     }
     
-    func saveToCoreData(name : String) async {
-        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name);
-    }
-    
     func setROI(roi : CGRect) {
         self.roi = roi
     }

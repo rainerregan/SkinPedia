@@ -7,26 +7,23 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
     
-    let model : coreDataManager = coreDataManager(modelName: "SkinPediaModel")
-    let fetchResult : String? = nil
+//    @Environment(\.managedObjectContext) var moc
     
-    func saveToCoreData(name : String) async {
-        lazy var moc = model.container.viewContext
+    func saveToCoreData(name : String, fetchResult : String, moc : NSManagedObjectContext) async {
+//        var moc = model.container.viewContext
         
         let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)
         
-        if let fResult = self.fetchResult {
-            toBeSavedResult.resultString = fResult
-            toBeSavedResult.scanName = name
-            toBeSavedResult.date = Date()
-        }
-        
-        
+        toBeSavedResult.resultString = fetchResult
+        toBeSavedResult.scanName = name
+        toBeSavedResult.date = Date()
         
         do {
+            // TODO: error sini
             try moc.save()
         } catch let err {
             print(err.localizedDescription)
@@ -41,7 +38,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         }
         
         let requestBody : [String:String] = ["ingredients" : productAnalysisRequest.ingredients]
-
+        
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -65,7 +62,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
             print(String(describing: error))
             return .failure(.decodingFailed(error))
         }
-    
+        
     }
     
 }
