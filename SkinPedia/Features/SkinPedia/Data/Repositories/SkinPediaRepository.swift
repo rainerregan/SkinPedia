@@ -12,8 +12,8 @@ struct SkinPediaRepository : SkinPediaRepositoryProtocol {
     private var apiCosmilyDataSource : CosmilyAPIDataSource = CosmilyAPIDataSource();
     private var productDetailDataSource : ProductDetailDataSource = ProductDetailDataSource();
     
-    func saveToCoreData(name: String) async {
-        await apiCosmilyDataSource.saveToCoreData(name: name)
+    func saveToCoreData(name: String, fetchResult:String) async {
+        await apiCosmilyDataSource.saveToCoreData(name: name, fetchResult: fetchResult)
     }
     
     func getProductDetail(query: ProductDetailRequest) async -> Result<ProductDetailResult, ProductDetailAPIError> {

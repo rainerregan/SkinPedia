@@ -11,6 +11,7 @@ import CoreData
 
 protocol AnalysisResultViewModelInput {
     func didAppear() async throws
+    func saveToCoreData(name : String, fetchResult: String) async;
     
     
 }

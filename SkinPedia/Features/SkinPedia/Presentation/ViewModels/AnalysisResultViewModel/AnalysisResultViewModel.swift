@@ -14,7 +14,8 @@ protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, Analysi
 
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     @Published var toBeAnalyzedProductName : String = "";
-    @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
+//    @Published var model = coreDataManager(modelName: "SkinPediaModel")
+    @Environment(\.managedObjectContext) var moc
     
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
@@ -44,8 +45,24 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
         }
     }
     
+    func saveToCoreData(name : String, fetchResult: String) async {
+        await saveToCoreDataUseCase().skinPediaRepository.saveToCoreData(name: name, fetchResult: fetchResult);
+    }
+    
+    func saveResult() async {
+        Task {
+            var name = self.toBeAnalyzedProductName
+            var encoder = JSONEncoder()
+            var encodedData = try! encoder.encode(self.analyzedProductResult)
+            let jsonString = String(data: encodedData, encoding: .utf8)
+            
+            await self.saveToCoreData(name: name, fetchResult: jsonString!)
+        }
+    }
+    
     private func onLoad() async {
         await getProductAnalysis()
+        await saveResult()
     }
 }
 

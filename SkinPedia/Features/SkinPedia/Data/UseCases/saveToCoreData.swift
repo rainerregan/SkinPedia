@@ -11,7 +11,7 @@ struct saveToCoreDataUseCase {
     
     let skinPediaRepository : SkinPediaRepository = SkinPediaRepository()
     
-    func save(name : String) async {
-        await skinPediaRepository.saveToCoreData(name: name)
+    func save(name : String, fetchResult:String) async {
+        await skinPediaRepository.saveToCoreData(name: name, fetchResult: fetchResult)
     }
 }
