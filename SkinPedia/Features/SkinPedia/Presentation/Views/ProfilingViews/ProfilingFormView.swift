@@ -145,8 +145,8 @@ struct ProfilingFormView: View {
                     .frame(maxWidth: .infinity)
                     .background((profilingViewModel.SelectedProductResult.isEmpty) ? Color.customMediumGray : Color.customBrown)
                     .cornerRadius(10)
-                    .disabled((profilingViewModel.SelectedProductResult.isEmpty) ? true : false)
-            }
+                    
+            }.disabled((profilingViewModel.SelectedProductResult.isEmpty) ? true : false)
 //            NavigationLink(destination: ProfilingFormView()) {
 //                Text("Continue")
 //                    .padding(16)
