@@ -29,7 +29,7 @@ struct CameraView: View {
                                 .frame(minWidth: UIScreen.main.bounds.width, maxWidth: .infinity, minHeight : .zero, maxHeight :700)
                         }
                     } else {
-                        CameraPreviewView(session: cameraViewModel.session, roi: ocrViewModel.roi, capturedDevice: cameraViewModel.capturedDevice!)
+                        CameraPreviewView(session: cameraViewModel.session, capturedDevice: cameraViewModel.capturedDevice!)
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     }
                         
@@ -128,7 +128,7 @@ struct CameraView: View {
             
             .onAppear {
                 cameraViewModel.checkCameraPermission()
-                cameraViewModel.setROI(roi: ocrViewModel.roi)
+//                cameraViewModel.setROI(roi: ocrViewModel.roi)
             }
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in
@@ -157,7 +157,6 @@ struct CameraPreviewView: UIViewRepresentable {
     typealias UIViewType = UIView
     
     let session: AVCaptureSession
-    let roi : CGRect
     let capturedDevice : AVCaptureDevice
     
     

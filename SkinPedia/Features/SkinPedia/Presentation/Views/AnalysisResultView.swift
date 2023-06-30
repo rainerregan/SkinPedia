@@ -10,6 +10,8 @@ import WrappingHStack
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     @Environment(\.managedObjectContext) var moc
+    @State var isSavingAllergen : Bool = false;
+    
     var body: some View {
         content
             .environmentObject(analysisResultViewModel)
@@ -86,16 +88,35 @@ struct AnalysisResultView: View {
                     .cornerRadius(10)
                     .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
+//                    NavigationLink(destination: CameraView()
+//                        .navigationBarHidden(true)) {
+//                        Text("Done")
+//                            .font(.headline)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                    }
+//                    .foregroundColor(.customBrown)
+//                    .cornerRadius(10)
+//                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                    
+                    Button{
+                        analysisResultViewModel.goToCameraView = true
+                        if isSavingAllergen {
+                            analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult, moc : moc)
+                        }
+                    } label: {
                         Text("Done")
                             .font(.headline)
                             .padding()
                             .frame(maxWidth: .infinity)
+                            .foregroundColor(.darkBrown)
+                            .cornerRadius(10)
+                            .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(.customBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                    
+                }
+                .background{
+                    NavigationLink("", destination : CameraView(), isActive: $analysisResultViewModel.goToCameraView)
                 }
                 .padding(.horizontal, 16)
                 
@@ -111,7 +132,12 @@ struct AnalysisResultView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if(analysisResultViewModel.analyzedProductResult.analysis == nil){
-                self.analysisResultViewModel.didAppear(moc : moc)
+                if !isSavingAllergen {
+                    self.analysisResultViewModel.didAppear(moc : moc)
+                } else {
+                    self.analysisResultViewModel.isSavingAllergen = true
+                    self.analysisResultViewModel.didAppear(moc: moc)
+                }
             }
         }
         

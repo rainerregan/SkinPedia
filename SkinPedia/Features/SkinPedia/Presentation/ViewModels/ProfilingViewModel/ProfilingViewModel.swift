@@ -11,6 +11,8 @@ class ProfilingViewModel : ObservableObject {
     @Published var textFieldString: String = ""
     @Published var productDetailsResult: ProductDetailResult = []
     @Published var searchQuerryIsShown : Bool = false
+    @Published var SelectedProductResult : ProductDetailResult = []
+    @Published var toAnalysisResult : Bool = false
     
     // MARK: - Private
     private func getProductDetails() async {
