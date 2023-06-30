@@ -89,37 +89,40 @@ struct AnalysisResultView: View {
                         .background(Color.customBrown)
                         .cornerRadius(10)
                         .frame(maxWidth: .infinity) // Make NavigationLink full width
+                        
+                        NavigationLink(destination: CameraView()
+                            .navigationBarHidden(true)) {
+                            Text("Done")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                        }
+                        .foregroundColor(.customBrown)
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity) // Make NavigationLink full width
                     }
                     
-//                    NavigationLink(destination: CameraView()
-//                        .navigationBarHidden(true)) {
-//                        Text("Done")
-//                            .font(.headline)
-//                            .padding()
-//                            .frame(maxWidth: .infinity)
-//                    }
-//                    .foregroundColor(.customBrown)
-//                    .cornerRadius(10)
-//                    .frame(maxWidth: .infinity) // Make NavigationLink full width
-                    
-                    Button{
+                    else {
                         
-                        if isSavingAllergen {
-                            analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult, moc : moc)
-                            gobackToProfilePage = true;
-                        } else {
-                            analysisResultViewModel.goToCameraView = true
+                        Button{
+                            
+                            if isSavingAllergen {
+                                analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult, moc : moc)
+                                gobackToProfilePage = true;
+                            } else {
+                                analysisResultViewModel.goToCameraView = true
+                            }
+                            
+                        } label: {
+                            Text("Done")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(isSavingAllergen ? .white : .darkBrown)
+                                .background(isSavingAllergen ? Color.customBrown : .clear)
+                                .cornerRadius(10)
+                                .frame(maxWidth: .infinity)
                         }
-                        
-                    } label: {
-                        Text("Done")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(isSavingAllergen ? .white : .darkBrown)
-                            .background(isSavingAllergen ? Color.customBrown : .clear)
-                            .cornerRadius(10)
-                            .frame(maxWidth: .infinity)
                     }
                     
                 }
