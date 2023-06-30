@@ -21,8 +21,8 @@ class ProfileViewModel : ObservableObject {
     func fetchHistoryCoreData() -> [ResultFetchAPI] {
         var results = [ResultFetchAPI]()
         do {
-            results =
-            try self.moc.fetch(ResultFetchAPI.fetchRequest())
+            // TODO : ERROR DISINI
+            results = try self.moc.fetch(ResultFetchAPI.fetchRequest())
         } catch {
             print("couldnt fetch")
         }
