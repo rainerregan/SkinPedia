@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
     
-    @Environment(\.managedObjectContext) var moc
+//    @Environment(\.managedObjectContext) var moc
     
-    func saveToCoreData(name : String, fetchResult : String) async {
+    func saveToCoreData(name : String, fetchResult : String, moc : NSManagedObjectContext) async {
 //        var moc = model.container.viewContext
         
         let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)

@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 protocol AnalysisResultViewModelInput {
-    func didAppear() async throws
-    func saveToCoreData(name : String, fetchResult: String) async;
+    func didAppear(moc : NSManagedObjectContext) async throws
+    func saveToCoreData(name : String, fetchResult: String, moc : NSManagedObjectContext) async;
     
     
 }

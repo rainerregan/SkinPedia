@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import CoreData
 
 protocol SkinPediaRepositoryProtocol {
     func getProductAnalysis(productAnalysisRequest: ProductAnalysisRequest) async -> Result<ProductAnalysisResult, CosmilyAPIError>
     func getProductDetail(query : ProductDetailRequest) async -> Result<ProductDetailResult, ProductDetailAPIError>
-    func saveToCoreData(name : String, fetchResult: String) async
+    func saveToCoreData(name : String, fetchResult: String, moc : NSManagedObjectContext) async
 }

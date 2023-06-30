@@ -11,6 +11,7 @@ struct ProfilePageView: View {
     
     @StateObject var profileViewModel : ProfileViewModel = ProfileViewModel()
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
+    @FetchRequest(sortDescriptors: []) var historyData : FetchedResults<ResultFetchAPI>
     
     var body: some View {
         NavigationView {
@@ -61,7 +62,7 @@ struct ProfilePageView: View {
                         
                         // HistoryList
                         VStack {
-                            ForEach(profileViewModel.fetchHistory(), id:\.self.id) { history in
+                            ForEach(profileViewModel.fetchHistory(coreDataResults: historyData)) { history in
                                 SkinCareProductLongCard(productAnalysisResult: history, productName: "Scan #\(history.id)")
                             }
                         }

@@ -18,16 +18,16 @@ class ProfileViewModel : ObservableObject {
     
 //    var context = coreDataManager(modelName: "SkinPediaModel")
     
-    func fetchHistoryCoreData() -> [ResultFetchAPI] {
-        var results = [ResultFetchAPI]()
-        do {
-            // TODO : ERROR DISINI
-            results = try self.moc.fetch(ResultFetchAPI.fetchRequest())
-        } catch {
-            print("couldnt fetch")
-        }
-        return results
-    }
+//    func fetchHistoryCoreData() -> [ResultFetchAPI] {
+//        var results = [ResultFetchAPI]()
+//        do {
+//            // TODO : ERROR DISINI
+//            results = try self.moc.fetch(ResultFetchAPI.fetchRequest())
+//        } catch {
+//            print("couldnt fetch")
+//        }
+//        return results
+//    }
     
     func validateJSON(jsonString: String) -> Bool {
         let jsonData = jsonString.data(using: String.Encoding.utf8)
@@ -39,8 +39,8 @@ class ProfileViewModel : ObservableObject {
         }
     }
     
-    func fetchHistory() -> [ProductAnalysisResult] {
-        let coreDataResults = fetchHistoryCoreData();
+    func fetchHistory(coreDataResults : FetchedResults<ResultFetchAPI>) -> [ProductAnalysisResult] {
+//        let coreDataResults = fetchHistoryCoreData();
         let decoder = JSONDecoder()
         
         var productAnalysisResultList : [ProductAnalysisResult] = []

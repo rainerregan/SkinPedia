@@ -9,7 +9,7 @@ import WrappingHStack
 
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
-    
+    @Environment(\.managedObjectContext) var moc
     var body: some View {
         content
             .environmentObject(analysisResultViewModel)
@@ -111,7 +111,7 @@ struct AnalysisResultView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if(analysisResultViewModel.analyzedProductResult.analysis == nil){
-                self.analysisResultViewModel.didAppear()
+                self.analysisResultViewModel.didAppear(moc : moc)
             }
         }
         
