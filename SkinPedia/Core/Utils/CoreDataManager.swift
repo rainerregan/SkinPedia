@@ -9,12 +9,9 @@ import Foundation
 import CoreData
 
 class coreDataManager : ObservableObject  {
-    let modelName : String
-    let container : NSPersistentContainer
+    let container : NSPersistentContainer = NSPersistentContainer(name: "SkinPediaModel")
     
-    init(modelName: String) {
-        self.modelName = modelName
-        self.container = NSPersistentContainer(name: modelName)
+    init() {
         container.loadPersistentStores{
             description, err in
                 if let e = err {

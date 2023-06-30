@@ -10,11 +10,16 @@ import SwiftUI
 @main
 struct SkinPediaApp: App {
     
-    
+    @StateObject var manager : coreDataManager = coreDataManager()
     
     var body: some Scene {
         WindowGroup {
-            MainView().preferredColorScheme(.light)
+            MainView()
+                .environment(\.managedObjectContext, manager.container.viewContext)
+                .preferredColorScheme(.light)
+                .onAppear{
+                    print("Testing masuk")
+                }
         }
     }
 }

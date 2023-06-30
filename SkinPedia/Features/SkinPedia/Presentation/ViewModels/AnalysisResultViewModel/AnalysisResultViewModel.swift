@@ -14,7 +14,6 @@ protocol AnalysisResultViewModelProtocol : AnalysisResultViewModelInput, Analysi
 
 class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol {
     @Published var toBeAnalyzedProductName : String = "";
-    @StateObject var model = coreDataManager(modelName: "SkinPediaModel")
     
     // MARK: - Output
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)

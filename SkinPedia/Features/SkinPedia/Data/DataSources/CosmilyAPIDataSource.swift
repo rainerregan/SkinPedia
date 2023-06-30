@@ -10,13 +10,11 @@ import SwiftUI
 
 struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
     
-    let model : coreDataManager = coreDataManager(modelName: "SkinPediaModel")
+    @Environment(\.managedObjectContext) var moc
     let fetchResult : String? = nil
     
     func saveToCoreData(name : String) async {
-        lazy var moc = model.container.viewContext
-        
-        let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : moc)
+        let toBeSavedResult : ResultFetchAPI = ResultFetchAPI(context : self.moc)
         
         if let fResult = self.fetchResult {
             toBeSavedResult.resultString = fResult
@@ -27,7 +25,7 @@ struct CosmilyAPIDataSource : CosmilyAPIDataSourceProtocol {
         
         
         do {
-            try moc.save()
+            try self.moc.save()
         } catch let err {
             print(err.localizedDescription)
         }

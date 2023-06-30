@@ -12,38 +12,38 @@ import SwiftUI
 class ProfileViewModel : ObservableObject {
     @Published var showProfiling = false
     
-    @FetchRequest(sortDescriptors: []) var historyData : FetchedResults<ResultFetchAPI>
+ 
+//    @Environment(\.managedObjectContext) var moc
+//    var context = coreDataManager(modelName: "SkinPediaModel")
     
-    var context = coreDataManager(modelName: "SkinPediaModel")
-    
-    func fetchHistoryCoreData() -> [ResultFetchAPI] {
-        var results = [ResultFetchAPI]()
-        do {
-            results =
-            try self.context.container.viewContext.fetch(ResultFetchAPI.fetchRequest())
-        } catch {
-            print("couldnt fetch")
-        }
-        return results
-    }
+//    func fetchHistoryCoreData() -> [ResultFetchAPI] {
+//        var results = [ResultFetchAPI]()
+//        do {
+//            results =
+//            try self.moc.fetch(ResultFetchAPI.fetchRequest())
+//        } catch {
+//            print("couldnt fetch")
+//        }
+//        return historyData
+//    }
     
     
-    func fetchHistory() -> [ProductAnalysisResult] {
-        let coreDataResults = fetchHistoryCoreData();
-        let decoder = JSONDecoder()
-        
-        var productAnalysisResultList : [ProductAnalysisResult] = []
-        
-        do {
-            for result in coreDataResults {
-                let result = try decoder.decode(ProductAnalysisResult.self, from: result.resultString?.data(using: .utf8) ?? Data())
-                productAnalysisResultList.append(result)
-            }
-        } catch let error {
-            print(String(describing: error))
-            return []
-        }
-        
-        return productAnalysisResultList
-    }
+//    func fetchHistory() -> [ProductAnalysisResult] {
+//        let coreDataResults = fetchHistoryCoreData();
+//        let decoder = JSONDecoder()
+//
+//        var productAnalysisResultList : [ProductAnalysisResult] = []
+//
+//        do {
+//            for result in coreDataResults {
+//                let result = try decoder.decode(ProductAnalysisResult.self, from: result.resultString?.data(using: .utf8) ?? Data())
+//                productAnalysisResultList.append(result)
+//            }
+//        } catch let error {
+//            print(String(describing: ex`rror))
+//            return []
+//        }
+//
+//        return productAnalysisResultList
+//    }
 }
