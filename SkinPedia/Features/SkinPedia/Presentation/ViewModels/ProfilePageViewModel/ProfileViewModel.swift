@@ -36,6 +36,8 @@ class ProfileViewModel : ObservableObject {
         
         do {
             for result in coreDataResults {
+                if(result.resultString == nil) {continue}
+                
                 let result = try decoder.decode(ProductAnalysisResult.self, from: result.resultString?.data(using: .utf8) ?? Data())
                 productAnalysisResultList.append(result)
             }
