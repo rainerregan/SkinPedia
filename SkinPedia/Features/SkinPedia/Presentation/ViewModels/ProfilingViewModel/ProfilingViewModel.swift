@@ -10,6 +10,7 @@ import Foundation
 class ProfilingViewModel : ObservableObject {
     @Published var textFieldString: String = ""
     @Published var productDetailsResult: ProductDetailResult = []
+    @Published var searchQuerryIsShown : Bool = false
     
     // MARK: - Private
     private func getProductDetails() async {
