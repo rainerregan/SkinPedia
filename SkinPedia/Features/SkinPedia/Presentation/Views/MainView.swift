@@ -9,10 +9,10 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State var seletedView : Int = 0;
+    @StateObject var mainViewViewModel : MainViewViewModel = MainViewViewModel()
     
     var body: some View {
-        TabView(selection : $seletedView){
+        TabView(selection : $mainViewViewModel.seletedView){
             
             CameraView()
                 .tabItem{
@@ -21,6 +21,7 @@ struct MainView: View {
                 .tag(0)
             
             ProfilePageView()
+                .environmentObject(mainViewViewModel)
                 .tabItem{
                     Label("Profile", systemImage: "person.fill")
                     

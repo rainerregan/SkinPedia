@@ -41,6 +41,7 @@
 		AC1A987D2A49CCBA00BE3FAA /* ProfilingPage2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */; };
 		AC1A98802A4AD56F00BE3FAA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A987F2A4AD56F00BE3FAA /* ProfileViewModel.swift */; };
 		AC1A98822A4AD59B00BE3FAA /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A98812A4AD59B00BE3FAA /* ProfilePageView.swift */; };
+		AC4BB3842A4F3C20009FE604 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4BB3832A4F3C20009FE604 /* MainViewViewModel.swift */; };
 		AC6CC7F92A41DE05007BF6FA /* OCRCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */; };
 		AC6CC7FC2A41DE46007BF6FA /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */; };
 		AC6CC7FE2A41DEBA007BF6FA /* CameraViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */; };
@@ -98,6 +99,7 @@
 		AC1A987C2A49CCBA00BE3FAA /* ProfilingPage2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilingPage2.swift; sourceTree = "<group>"; };
 		AC1A987F2A4AD56F00BE3FAA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		AC1A98812A4AD59B00BE3FAA /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
+		AC4BB3832A4F3C20009FE604 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		AC6CC7F82A41DE05007BF6FA /* OCRCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRCameraView.swift; sourceTree = "<group>"; };
 		AC6CC7FB2A41DE46007BF6FA /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		AC6CC7FD2A41DEBA007BF6FA /* CameraViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewProtocol.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				AC6CC7FA2A41DE1E007BF6FA /* OCRViewModel */,
 				8316F6D02A4159B100E529AE /* AnalysisResultViewModel */,
 				8316F6DF2A419B7C00E529AE /* SampleFormViewModel.swift */,
+				AC4BB3832A4F3C20009FE604 /* MainViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 			files = (
 				8316F6F52A4442FC00E529AE /* ScanResultSummaryCardComponent.swift in Sources */,
 				832FD2F52A4C26E700CA7425 /* GetProductDetailUseCase.swift in Sources */,
+				AC4BB3842A4F3C20009FE604 /* MainViewViewModel.swift in Sources */,
 				AC6CC8092A421986007BF6FA /* OCRProductDetailView.swift in Sources */,
 				8316F6DE2A419B6200E529AE /* SampleFormView.swift in Sources */,
 				AC76C4072A409D060009EDFE /* ProductAnalysis.swift in Sources */,

@@ -12,6 +12,8 @@ struct AnalysisResultView: View {
     @Environment(\.managedObjectContext) var moc
     @State var isSavingAllergen : Bool = false;
     
+    @EnvironmentObject var mainViewViewModel : MainViewViewModel
+    
     var body: some View {
         content
             .environmentObject(analysisResultViewModel)
@@ -76,17 +78,31 @@ struct AnalysisResultView: View {
                 
                 // Bottom Buttons
                 VStack{
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
-                        Text("Scan Again")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                    }
-                    .foregroundColor(.white)
-                    .background(Color.customBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+//                    NavigationLink(destination: CameraView()
+//                        .navigationBarHidden(true)) {
+//                        Text("Scan Again")
+//                            .font(.headline)
+//                            .padding()
+//                            .frame(maxWidth: .infinity)
+//                    }
+//                    .foregroundColor(.white)
+//                    .background(Color.customBrown)
+//                    .cornerRadius(10)
+//                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                
+                Button {
+                    mainViewViewModel.seletedView = 0
+                } label: {
+                    Text("Scan Again")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color.darkBrown)
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity) // Make NavigationLink full width
+                        
+                }
                     
 //                    NavigationLink(destination: CameraView()
 //                        .navigationBarHidden(true)) {
@@ -100,10 +116,12 @@ struct AnalysisResultView: View {
 //                    .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
                     Button{
-                        analysisResultViewModel.goToCameraView = true
+                        
                         if isSavingAllergen {
                             analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult, moc : moc)
                         }
+                        
+                        mainViewViewModel.seletedView = 0
                     } label: {
                         Text("Done")
                             .font(.headline)
