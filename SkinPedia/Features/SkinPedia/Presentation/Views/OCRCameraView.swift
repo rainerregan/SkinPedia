@@ -16,6 +16,9 @@ struct CameraView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     @State var isShowPopUp : Bool = false;
     
+    @State var firstHint : Bool = true;
+    @State var secondHint : Bool = false;
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -51,6 +54,50 @@ struct CameraView: View {
                     
                     
                 }.ignoresSafeArea(.keyboard)
+                
+                
+                VStack{
+                    if firstHint {
+                        VStack{
+                            Text("Snap a picture of the ingredient label!")
+                            
+                                .padding(EdgeInsets(top: 15, leading: 29.5, bottom: 15, trailing: 29.5))
+                                .background(Color.skyLightBlue.opacity(0.6))
+                                .transition(.opacity)
+                                .cornerRadius(12)
+                                .onAppear{
+                                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) {
+                                        _ in
+                                        withAnimation(.easeInOut(duration: 2)) {
+                                            firstHint = false
+                                            secondHint  = true;
+                                        }
+                                    }
+                                }
+                            Spacer()
+                        }
+                        .padding(.top, 54)
+                    } else if secondHint {
+                        VStack{
+                            Text("Pinch to Zoom")
+                                .padding(EdgeInsets(top: 15, leading: 29.5, bottom: 15, trailing: 29.5))
+                                .background(Color.skyLightBlue.opacity(0.6))
+                                .transition(.opacity)
+                                .cornerRadius(12)
+                                .onAppear{
+                                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) {
+                                        _ in
+                                        withAnimation(.easeInOut(duration: 2)) {
+                                            secondHint = false
+                                        }
+                                }
+                            }
+                        Spacer();
+                    }
+                    .padding(.top, 54)
+                }
+                    
+            }
                 
                 if isShowPopUp {
                     PopupView(isShowingPopup: $isShowPopUp) {
@@ -129,6 +176,12 @@ struct CameraView: View {
             .onAppear {
                 cameraViewModel.checkCameraPermission()
 //                cameraViewModel.setROI(roi: ocrViewModel.roi)
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) {
+                    _ in
+                    withAnimation(.easeInOut(duration: 2)) {
+                        firstHint = true
+                    }
+                }
             }
             .onChange(of: cameraViewModel.capturedImage){
                 newImage in
