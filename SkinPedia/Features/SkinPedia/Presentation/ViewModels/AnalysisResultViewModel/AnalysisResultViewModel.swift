@@ -16,7 +16,10 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     @Published var toBeAnalyzedProductName : String = "";
 //    @Published var model = coreDataManager(modelName: "SkinPediaModel")
     
+    @Published var goToCameraView : Bool = false;
+    
     // MARK: - Output
+    @Published var isSavingAllergen : Bool = false
     @Published var analyzedProductResult: ProductAnalysisResult = ProductAnalysisResult(analysis: nil)
     @Published var toBeAnalyzedRequest: ProductAnalysisRequest = ProductAnalysisRequest(ingredients: "water")
     
@@ -30,6 +33,38 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
         var filteredIngredient = analyzedProductResult.analysis?.ingredientsTable?.filter({$0.alias == allergent.alias})
         return filteredIngredient ?? []
     }
+    
+    func saveToAllergenCoreData(result: ProductAnalysisResult, moc : NSManagedObjectContext) {
+        
+        let allergensCount : Int = result.analysis?.harmful?.allergen?.count ?? 0;
+        var allergenIngredientNames = "aw";
+        
+        if allergensCount > 0 {
+            let itemList : [ItemList] = result.analysis?.harmful?.allergen?.itemList ?? []
+            
+            itemList.forEach{
+                allergenIngredientNames = "\(allergenIngredientNames) \($0.alias ?? "No Name"),"
+            }
+        }
+        
+        if allergenIngredientNames != "" {
+            let allergenData : AllergenIngredient = AllergenIngredient(context : moc)
+            allergenData.ingredientName = allergenIngredientNames
+            
+            do {
+                try moc.save()
+                print("Saving Success")
+            } catch let err {
+                print("error saving Allergen entity with : \(err.localizedDescription)")
+            }
+        } else {
+            print("allergen kosong tidak harus di save")
+        }
+        
+        
+        
+    }
+    
     
     // MARK: - Private
     private func getProductAnalysis() async {
@@ -61,7 +96,9 @@ class AnalysisResultViewModel: ObservableObject, AnalysisResultViewModelProtocol
     
     private func onLoad(moc : NSManagedObjectContext) async {
         await getProductAnalysis()
-        await saveResult(moc : moc)
+        if !self.isSavingAllergen {
+            await saveResult(moc : moc)
+        }
     }
 }
 

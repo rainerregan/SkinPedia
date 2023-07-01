@@ -10,6 +10,9 @@ import WrappingHStack
 struct AnalysisResultView: View {
     @StateObject var analysisResultViewModel = AnalysisResultViewModel()
     @Environment(\.managedObjectContext) var moc
+    @State var isSavingAllergen : Bool = false;
+    @State var gobackToProfilePage = false;
+    
     var body: some View {
         content
             .environmentObject(analysisResultViewModel)
@@ -74,28 +77,58 @@ struct AnalysisResultView: View {
                 
                 // Bottom Buttons
                 VStack{
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
-                        Text("Scan Again")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
+                    if !isSavingAllergen {
+                        NavigationLink(destination: CameraView()
+                            .navigationBarHidden(true)) {
+                            Text("Scan Again")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                        }
+                        .foregroundColor(.white)
+                        .background(Color.customBrown)
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity) // Make NavigationLink full width
+                        
+                        NavigationLink(destination: CameraView()
+                            .navigationBarHidden(true)) {
+                            Text("Done")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                        }
+                        .foregroundColor(.customBrown)
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity) // Make NavigationLink full width
                     }
-                    .foregroundColor(.white)
-                    .background(Color.customBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
                     
-                    NavigationLink(destination: CameraView()
-                        .navigationBarHidden(true)) {
-                        Text("Done")
-                            .font(.headline)
-                            .padding()
-                            .frame(maxWidth: .infinity)
+                    else {
+                        
+                        Button{
+                            
+                            if isSavingAllergen {
+                                analysisResultViewModel.saveToAllergenCoreData(result: analysisResultViewModel.analyzedProductResult, moc : moc)
+                                gobackToProfilePage = true;
+                            } else {
+                                analysisResultViewModel.goToCameraView = true
+                            }
+                            
+                        } label: {
+                            Text("Done")
+                                .font(.headline)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(isSavingAllergen ? .white : .darkBrown)
+                                .background(isSavingAllergen ? Color.customBrown : .clear)
+                                .cornerRadius(10)
+                                .frame(maxWidth: .infinity)
+                        }
                     }
-                    .foregroundColor(.customBrown)
-                    .cornerRadius(10)
-                    .frame(maxWidth: .infinity) // Make NavigationLink full width
+                    
+                }
+                .background{
+                    NavigationLink("", destination : CameraView(), isActive: $analysisResultViewModel.goToCameraView)
+                    NavigationLink("", destination : ProfilePageView().navigationBarHidden(true), isActive: $gobackToProfilePage)
                 }
                 .padding(.horizontal, 16)
                 
@@ -111,7 +144,12 @@ struct AnalysisResultView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             if(analysisResultViewModel.analyzedProductResult.analysis == nil){
-                self.analysisResultViewModel.didAppear(moc : moc)
+                if !isSavingAllergen {
+                    self.analysisResultViewModel.didAppear(moc : moc)
+                } else {
+                    self.analysisResultViewModel.isSavingAllergen = true
+                    self.analysisResultViewModel.didAppear(moc: moc)
+                }
             }
         }
         
